@@ -96,4 +96,14 @@ test.describe("Invalid User Account Creation Test - Too Short Singular Input", (
         await testMethods.invalidUserAccountCreationTooShortEmailTest(page);
     });
 
+    // Test 002h -> invalid user account creation test - too short user password (5 chars)
+    test("Invalid User Account Creation Test - Too Short User Password", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - too short user password (5 chars)
+        await testMethods.invalidUserAccountCreationTooShortPasswordTest(page);
+    });
+
 });

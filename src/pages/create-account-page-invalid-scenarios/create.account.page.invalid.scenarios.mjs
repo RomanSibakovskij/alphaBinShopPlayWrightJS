@@ -27,6 +27,7 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         this._tooShortFirstName = "F"; //1 char
         this._tooShortLastName = "D"; //1 char
         this._tooShortEmail = testDataGenerator.generateRandomTooShortEmailAddress(1); //1 char -> name, domain
+        this._tooShortPassword = "2$#WA"; //5 chars
 
     }
 
@@ -67,6 +68,11 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const tooShortEmail = this._tooShortEmail;
         Logger.info("Too short user email: " + tooShortEmail);
         await this._signUpPageEmailInputField.fill(tooShortEmail);
+    }
+    async inputTooShortPasswordIntoPasswordInputField(){
+        const tooShortPassword = this._tooShortPassword;
+        Logger.info("Too short user password: " + tooShortPassword);
+        await this._signUpPagePasswordInputField.fill(tooShortPassword);
     }
 
 }

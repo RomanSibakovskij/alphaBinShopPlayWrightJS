@@ -421,6 +421,52 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Too Short User Email.png", fullPage: true });
     }
 
+    //invalid user account creation test method - too short user password (5 chars)
+    async invalidUserAccountCreationTooShortPasswordTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const createAccountPage = new CreateAccountPage(page);
+        const createAccountPageInvalidScenarios = new CreateAccountPageInvalidScenarios(page);
+        const createAccountPageWebElementAssert = new CreateAccountPageWebElementAssert();
+        const createAccountPageTextElementAssert = new CreateAccountPageTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //create account pge web element assert
+        await createAccountPageWebElementAssert.isCreateAccountPageWebElementVisible(page);
+        //create account page text element assert
+        await createAccountPageTextElementAssert.isCreateAccountPageTextElementAsExpected(page);
+        //capture screenshot of the create account page display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Create Account Page Display Before Data Input.png", fullPage: true });
+        //input valid first name into first name input field
+        await createAccountPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name into last name input field
+        await createAccountPage.inputLastNameIntoLastNameInputField();
+        //input valid email into email input field
+        await createAccountPage.inputEmailIntoEmailInputField();
+        //input too short password into password input field (5 chars)
+        await createAccountPageInvalidScenarios.inputTooShortPasswordIntoPasswordInputField();
+        //click "View Password" button
+        await createAccountPage.clickViewPasswordButton();
+        //capture screenshot of the create account page display after invalid data input - too short user password
+        await page.screenshot({ path: "src/tests/screenshots/Create Account Page Display After Invalid Data Input - Too Short User Password.png", fullPage: true });
+        //click "Create Account" button
+        await createAccountPage.clickSignUpButton();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(2500);
+        //assert the user gets the expected error message, throw an error otherwise
+        try {
+            const signUpInvalidSingularInputErrorMsg = await createAccountPage.getSignUpInvalidSingularInputErrorMsg();
+            expect(signUpInvalidSingularInputErrorMsg).toBe("Password must be at least 6 characters");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Too Short User Password.png", fullPage: true });
+            Logger.info("The expected too short password input error was triggered");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Too Short User Password.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
