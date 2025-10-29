@@ -174,4 +174,14 @@ test.describe("Invalid User Account Creation Test - Invalid Singular Input Forma
         await testMethods.invalidUserAccountCreationInvalidLastNameFormatTest(page);
     });
 
+    // Test 002o -> invalid user account creation test - invalid user email (missing '@')
+    test("Invalid User Account Creation Test - Invalid User Email Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - invalid user email format (missing '@')
+        await testMethods.invalidUserAccountCreationInvalidEmailFormatTest(page);
+    });
+
 });

@@ -747,6 +747,47 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Invalid User Last Name Format.png", fullPage: true });
     }
 
+    //invalid user account creation test method - invalid user email format (missing '@')
+    async invalidUserAccountCreationInvalidEmailFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const createAccountPage = new CreateAccountPage(page);
+        const createAccountPageInvalidScenarios = new CreateAccountPageInvalidScenarios(page);
+        const createAccountPageWebElementAssert = new CreateAccountPageWebElementAssert();
+        const createAccountPageTextElementAssert = new CreateAccountPageTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //create account pge web element assert
+        await createAccountPageWebElementAssert.isCreateAccountPageWebElementVisible(page);
+        //create account page text element assert
+        await createAccountPageTextElementAssert.isCreateAccountPageTextElementAsExpected(page);
+        //capture screenshot of the create account page display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Create Account Page Display Before Data Input.png", fullPage: true });
+        //input valid first name into first name input field
+        await createAccountPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name into last name input field
+        await createAccountPage.inputLastNameIntoLastNameInputField();
+        //input invalid email format into email input field (missing '@')
+        await createAccountPageInvalidScenarios.inputInvalidEmailFormatIntoEmailInputField();
+        //input valid password into password input field
+        await createAccountPage.inputPasswordIntoPasswordInputField();
+        //click "View Password" button
+        await createAccountPage.clickViewPasswordButton();
+        //capture screenshot of the create account page display after invalid data input - invalid user email format
+        await page.screenshot({ path: "src/tests/screenshots/Create Account Page Display After Invalid Data Input - Invalid User Email Format.png", fullPage: true });
+        //click "Create Account" button
+        await createAccountPage.clickSignUpButton();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(2500);
+        //assert the user gets the expected error message
+        const signUpInvalidSingularInputErrorMsg = await createAccountPage.getSignUpInvalidSingularInputErrorMsg();
+        expect(signUpInvalidSingularInputErrorMsg).toBe("Enter a valid email address");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Invalid User Email Format.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
