@@ -1064,8 +1064,8 @@ class TestMethods{
         //wait for element to load
         await page.waitForTimeout(3000);
         //assert the user receives an expected error message
-        const personalInfoPageNoFirstNameInputError = await personalInfoModal.getPersonalInfoModalInvalidSingularInputError();
-        expect(personalInfoPageNoFirstNameInputError).toBe("First name is required");
+        const personalInfoModalNoFirstNameInputError = await personalInfoModal.getPersonalInfoModalInvalidSingularInputError();
+        expect(personalInfoModalNoFirstNameInputError).toBe("First name is required");
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - No Edited First Name.png", fullPage: true });
     }
@@ -1123,8 +1123,8 @@ class TestMethods{
         //wait for element to load
         await page.waitForTimeout(3000);
         //assert the user receives an expected error message
-        const personalInfoPageNoLastNameInputError = await personalInfoModal.getPersonalInfoModalInvalidSingularInputError();
-        expect(personalInfoPageNoLastNameInputError).toBe("Last name is required");
+        const personalInfoModalNoLastNameInputError = await personalInfoModal.getPersonalInfoModalInvalidSingularInputError();
+        expect(personalInfoModalNoLastNameInputError).toBe("Last name is required");
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - No Edited Last Name.png", fullPage: true });
     }
@@ -1313,6 +1313,70 @@ class TestMethods{
         }
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Too Short Edited Last Name.png", fullPage: true });
+    }
+
+    //invalid edit account information test method - too short edited phone (9 digits)
+    async invalidEditUserAccountInfoTooShortEditedPhoneTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModal = new PersonalInfoModal(page);
+        const personalInfoModalInvalidScenarios = new PersonalInfoModalInvalidScenarios(page);
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header "Account" icon button
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4000);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //capture screenshot of the personal info modal display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display Before Data Input.png", fullPage: true });
+        //input valid edited first name into first name input field
+        await personalInfoModal.inputEditedFirstNameIntoFirstNameInputField();
+        //input valid edited last name into last name input field
+        await personalInfoModal.inputEditedLastNameIntoLastNameInputField();
+        //input too short phone into phone input field (9 digits)
+        await personalInfoModalInvalidScenarios.inputTooShortPhoneIntoPhoneInputField();
+        //capture screenshot of the personal info modal display after invalid data input - too short phone
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display After Invalid Data Input - Too Short Phone.png", fullPage: true });
+        //click "Save Changes" button
+        await personalInfoModal.clickSaveChangesButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user receives an expected error message, throw an error otherwise
+        const personalInfoModalTooShortIphoneInputError = await personalInfoModal.getPersonalInfoModalInvalidSingularInputError();
+        try {
+            expect(personalInfoModalTooShortIphoneInputError).toBe("Contact number must be 10 digits");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Too Short Edited Phone.png", fullPage: true });
+            throw new Error(`The too short edited phone input error wasn't triggered (Expected: 'Contact number must be 10 digits', actual: ${personalInfoModalUpdateFailureMsg}), test has failed.`);
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Too Short Phone.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

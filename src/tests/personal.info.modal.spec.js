@@ -100,4 +100,18 @@ test.describe("Invalid Edit User Account Info Tests - Too Short Singular Input",
         await testMethods.invalidEditUserAccountInfoTooShortEditedLastNameTest(page);
     });
 
+    // Test 005f -> invalid edit user account info test - too short edited phone (9 digits)
+    test("Invalid Edit User Account Info Test - Too Short Edited Phone", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page);
+        //invalid edit user account info test - too short edited phone (9 digits)
+        await testMethods.invalidEditUserAccountInfoTooShortEditedPhoneTest(page);
+    });
+
 });
