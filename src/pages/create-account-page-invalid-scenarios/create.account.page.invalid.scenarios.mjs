@@ -40,6 +40,7 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         this._invalidLastNameFormat = "@#$%$#%^"; //special symbols only
         this._invalidEmailFormat = "dssss243fakemail.com"; //missing '@'
         this._existingEmail = "m0@example.com"; //already used beforehand in manual testing
+        this._invalidPasswordFormat = "ddfggfhsdereytry"; //lowercases only
 
     }
 
@@ -129,6 +130,11 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const existingEmailFormat = this._existingEmail;
         Logger.info("Existing user email: " + existingEmailFormat);
         await this._signUpPageEmailInputField.fill(existingEmailFormat);
+    }
+    async inputInvalidPasswordFormatIntoPasswordInputField(){
+        const invalidPasswordFormat = this._invalidPasswordFormat;
+        Logger.info("Invalid user password format: " + invalidPasswordFormat);
+        await this._signUpPagePasswordInputField.fill(invalidPasswordFormat);
     }
 
 }
