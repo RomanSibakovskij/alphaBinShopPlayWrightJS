@@ -26,6 +26,7 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
 
         //invalid edited input data - too long singular input
         this._tooLongEditedFirstName = "Asdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //100 chars
+        this._tooLongEditedLastName = "Jsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //100 chars
 
     }
 
@@ -68,6 +69,11 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
         const tooLongEditedFirstName = this._tooLongEditedFirstName;
         Logger.info("Too long edited user first name: " + tooLongEditedFirstName);
         await this._personalInfoModalFirstNameInputField.fill(tooLongEditedFirstName);
+    }
+    async inputTooLongEditedLastNameIntoLastNameInputField(){
+        const tooLongEditedLastName = this._tooLongEditedLastName;
+        Logger.info("Too short edited user last name: " + tooLongEditedLastName);
+        await this._personalInfoModalLastNameInputField.fill(tooLongEditedLastName);
     }
 
 }

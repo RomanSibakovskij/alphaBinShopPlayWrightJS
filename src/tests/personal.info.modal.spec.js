@@ -132,4 +132,18 @@ test.describe("Invalid Edit User Account Info Tests - Too Long Singular Input", 
         await testMethods.invalidEditUserAccountInfoTooLongEditedFirstNameTest(page);
     });
 
+    // Test 005h -> invalid edit user account info test - too long edited last name (100 chars) (the error wasn't triggered, test has failed)
+    test("Invalid Edit User Account Info Test - Too Long Edited Last Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page);
+        //invalid edit user account info test - too long edited last name (100 chars)
+        await testMethods.invalidEditUserAccountInfoTooLongEditedLastNameTest(page);
+    });
+
 });
