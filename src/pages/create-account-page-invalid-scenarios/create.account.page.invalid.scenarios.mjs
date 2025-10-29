@@ -21,6 +21,7 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         this._noFirstName = "";
         this._noLastName = "";
         this._noEmail = "";
+        this._noPassword = "";
 
     }
 
@@ -39,6 +40,11 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const noEmail = this._noEmail;
         Logger.info("No user email: " + noEmail);
         await this._signUpPageEmailInputField.fill(noEmail);
+    }
+    async inputNoPasswordIntoPasswordInputField(){
+        const noPassword = this._noPassword;
+        Logger.info("No user password: " + noPassword);
+        await this._signUpPagePasswordInputField.fill(noPassword);
     }
 
 }
