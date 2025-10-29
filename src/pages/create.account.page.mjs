@@ -37,6 +37,46 @@ class CreateAccountPage extends BasePage{
         //invalid singular input error message
         this._signUpPageInvalidSingularInputErrorMsg = page.locator("//div[@id='_rht_toaster']");
 
+        const testDataGenerator = new TestDataGenerator(page);
+
+        //valid sign-up input data
+        const { firstName, lastName } = testDataGenerator.getRandomName();
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._email = testDataGenerator.generateRandomEmailAddress(8);
+        this._password = testDataGenerator.generateRandomPassword();
+
+    }
+
+    //valid sign-up data input methods
+    async inputFirstNameIntoFirstNameInputField(){
+        const firstName = this._firstName;
+        Logger.info("Valid user first name: " + firstName);
+        await this._signUpPageFirstNameInputField.fill(firstName);
+    }
+    async inputLastNameIntoLastNameInputField(){
+        const lastName = this._lastName;
+        Logger.info("Valid user last name: " + lastName);
+        await this._signUpPageLastNameInputField.fill(lastName);
+    }
+    async inputEmailIntoEmailInputField(){
+        const email = this._email;
+        Logger.info("Valid user email: " + email);
+        await this._signUpPageEmailInputField.fill(email);
+    }
+    async inputPasswordIntoPasswordInputField(){
+        const password = this._password;
+        Logger.info("Valid user password: " + password);
+        await this._signUpPagePasswordInputField.fill(password);
+    }
+
+    //click "View Password" button method
+    async clickViewPasswordButton(){await this._signUpPageViewPasswordButton.click();}
+
+    //click "Sign up" button method (common click doesn't seem to work with this button)
+    async clickSignUpButton(){
+        await this._signUpPageSignUpButton.focus();
+        await this._signUpPageSignUpButton.press('Enter');
     }
 
     //sign-up text element getters

@@ -8,9 +8,6 @@ node_modules/
 /playwright/.auth/
 
 # Ignore all .png files in the resources folder
-/src/test/resources/*.png
-# Ignore all .png files in resources and its subdirectories
-/src/test/*.png
-
-# Ignore all .png files under src/test/resources and all its subfolders
-/src/test/resources/**/*.png
+/src/tests/screenshots/*.png
+# Ignore all .png files under src/test/screenshots and all its subfolders
+/src/tests/screenshots/**/*.png
