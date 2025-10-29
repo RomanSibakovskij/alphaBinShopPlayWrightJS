@@ -1185,6 +1185,72 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - No Phone.png", fullPage: true });
     }
 
+    //too short singular input
+
+    //invalid edit account information test method - too short edited first name (1 char)
+    async invalidEditUserAccountInfoTooShortEditedFirstNameTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModal = new PersonalInfoModal(page);
+        const personalInfoModalInvalidScenarios = new PersonalInfoModalInvalidScenarios(page);
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header "Account" icon button
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4000);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //capture screenshot of the personal info modal display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display Before Data Input.png", fullPage: true });
+        //input too short edited first name into first name input field (1 char)
+        await personalInfoModalInvalidScenarios.inputTooShortEditedFirstNameIntoFirstNameInputField();
+        //input valid edited last name into last name input field
+        await personalInfoModal.inputEditedLastNameIntoLastNameInputField();
+        //input valid phone into phone input field (it's optional)
+        await personalInfoModal.inputPhoneIntoPhoneInputField();
+        //capture screenshot of the personal info modal display after invalid data input - too short edited first name
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display After Invalid Data Input - Too Short Edited First Name.png", fullPage: true });
+        //click "Save Changes" button
+        await personalInfoModal.clickSaveChangesButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user receives an expected error message, throw an error otherwise
+        const personalInfoModalUpdateFailureMsg = await personalInfoModal.getPersonalInfoModalMsgBoxText();
+        try {
+            expect(personalInfoModalUpdateFailureMsg).toBe("First name is too short");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Too Short Edited First Name.png", fullPage: true });
+            throw new Error(`The too short edited first name input error wasn't triggered (Expected: 'First name is too short', actual: ${personalInfoModalUpdateFailureMsg}), test has failed.`);
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Too Short Edited First Name.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

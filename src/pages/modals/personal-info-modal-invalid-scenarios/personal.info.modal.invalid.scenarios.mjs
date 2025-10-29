@@ -19,6 +19,9 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
         this._noEditedLastName = "";
         this._noPhone = "";
 
+        //invalid edited input data - too short singular input
+        this._tooShortEditedFirstName = "S"; //1 char
+
     }
 
     //invalid edited data input methods - no singular input
@@ -36,6 +39,13 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
         const noPhone = this._noPhone;
         Logger.info("No user phone number: " + noPhone);
         await this._personalInfoModalPhoneNumberInputField.fill(noPhone);
+    }
+
+    //invalid edited data input methods - too short singular input
+    async inputTooShortEditedFirstNameIntoFirstNameInputField(){
+        const tooShortEditedFirstName = this._tooShortEditedFirstName;
+        Logger.info("Too short edited user first name: " + tooShortEditedFirstName);
+        await this._personalInfoModalFirstNameInputField.fill(tooShortEditedFirstName);
     }
 
 }
