@@ -178,4 +178,18 @@ test.describe("Invalid Edit User Account Info Tests - Invalid Singular Input For
         await testMethods.invalidEditUserAccountInfoInvalidEditedFirstNameFormatTest(page);
     });
 
+    // Test 005k -> invalid edit user account info test - invalid edited last name format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Edit User Account Info Test - Invalid Edited Last Name Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page);
+        //invalid edit user account info test - invalid edited last name format (special symbols only)
+        await testMethods.invalidEditUserAccountInfoInvalidEditedLastNameFormatTest(page);
+    });
+
 });

@@ -31,6 +31,7 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
 
         //invalid edited input data - invalid singular input format
         this._invalidEditedFirstNameFormat = "@#!$@#%"; //special symbols only
+        this._invalidEditedLastNameFormat = "!@$@#$%"; //special symbols only
 
     }
 
@@ -90,6 +91,11 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
         const invalidEditedFirstNameFormat = this._invalidEditedFirstNameFormat;
         Logger.info("Invalid edited user first name format: " + invalidEditedFirstNameFormat);
         await this._personalInfoModalFirstNameInputField.fill(invalidEditedFirstNameFormat);
+    }
+    async inputInvalidEditedLastNameFormatIntoLastNameInputField(){
+        const invalidEditedLastNameFormat = this._invalidEditedLastNameFormat;
+        Logger.info("Invalid edited user last name format: " + invalidEditedLastNameFormat);
+        await this._personalInfoModalLastNameInputField.fill(invalidEditedLastNameFormat);
     }
 
 }
