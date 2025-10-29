@@ -35,6 +35,9 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         this._tooLongEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); //100 chars -> name, domain
         this._tooLongPassword = "DDFD@#$cffds^%&dgerder$#565432Wefrt"; // 35 chars
 
+        //invalid test data input - invalid singular input
+        this._invalidFirstNameFormat = "@#$%$%^"; //special symbols only
+
     }
 
     //invalid sign-up data input methods - no singular input
@@ -101,6 +104,13 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const tooLongPassword = this._tooLongPassword;
         Logger.info("Too long user password: " + tooLongPassword);
         await this._signUpPagePasswordInputField.fill(tooLongPassword);
+    }
+
+    //invalid sign-up data input methods - invalid singular input format
+    async inputInvalidFirstNameFormatIntoFirstNameInputField(){
+        const invalidFirstNameFormat = this._invalidFirstNameFormat;
+        Logger.info("Invalid user first name format: " + invalidFirstNameFormat);
+        await this._signUpPageFirstNameInputField.fill(invalidFirstNameFormat);
     }
 
 }

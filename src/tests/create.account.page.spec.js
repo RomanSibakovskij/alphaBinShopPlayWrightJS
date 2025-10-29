@@ -151,3 +151,17 @@ test.describe("Invalid User Account Creation Test - Too Long Singular Input", ()
     });
 
 });
+
+test.describe("Invalid User Account Creation Test - Invalid Singular Input Format", () => {
+
+    // Test 002m -> invalid user account creation test - invalid user first name format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid User Account Creation Test - Invalid User First Name Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - invalid user first name format (special symbols only)
+        await testMethods.invalidUserAccountCreationInvalidFirstNameFormatTest(page);
+    });
+
+});
