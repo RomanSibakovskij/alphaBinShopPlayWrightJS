@@ -76,4 +76,14 @@ test.describe("Invalid User Account Creation Test - Too Short Singular Input", (
         await testMethods.invalidUserAccountCreationTooShortFirstNameTest(page);
     });
 
+    // Test 002f -> invalid user account creation test - too short user last name (1 char) (the error wasn't triggered, test has failed)
+    test("Invalid User Account Creation Test - Too Short User Last Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - too short user last name (1 char)
+        await testMethods.invalidUserAccountCreationTooShortLastNameTest(page);
+    });
+
 });
