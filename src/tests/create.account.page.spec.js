@@ -140,4 +140,14 @@ test.describe("Invalid User Account Creation Test - Too Long Singular Input", ()
         await testMethods.invalidUserAccountCreationTooLongEmailTest(page);
     });
 
+    // Test 002l -> invalid user account creation test - too long user password (35 chars) (the error wasn't triggered, test has failed)
+    test("Invalid User Account Creation Test - Too Long User Password", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - too long user password (35 chars)
+        await testMethods.invalidUserAccountCreationTooLongPasswordTest(page);
+    });
+
 });

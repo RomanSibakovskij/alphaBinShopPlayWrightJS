@@ -33,6 +33,7 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         this._tooLongFirstName = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //100 chars
         this._tooLongLastName = "Asdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //100 chars
         this._tooLongEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); //100 chars -> name, domain
+        this._tooLongPassword = "DDFD@#$cffds^%&dgerder$#565432Wefrt"; // 35 chars
 
     }
 
@@ -95,6 +96,11 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const tooLongEmail = this._tooLongEmail;
         Logger.info("Too long user email: " + tooLongEmail);
         await this._signUpPageEmailInputField.fill(tooLongEmail);
+    }
+    async inputTooLongPasswordIntoPasswordInputField(){
+        const tooLongPassword = this._tooLongPassword;
+        Logger.info("Too long user password: " + tooLongPassword);
+        await this._signUpPagePasswordInputField.fill(tooLongPassword);
     }
 
 }
