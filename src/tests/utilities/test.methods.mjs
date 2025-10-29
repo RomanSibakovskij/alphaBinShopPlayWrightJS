@@ -18,6 +18,7 @@ import {CreateAccountPageTextElementAssert} from "../text-element-asserts/create
 
 import {HomePageDataLoggers} from "../data-loggers/home.page.data.loggers.mjs";
 import {expect} from "@playwright/test";
+import {Logger} from "../../pages/utilities/logger.mjs";
 
 class TestMethods{
 
@@ -786,6 +787,49 @@ class TestMethods{
         expect(signUpInvalidSingularInputErrorMsg).toBe("Enter a valid email address");
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Invalid User Email Format.png", fullPage: true });
+    }
+
+    //invalid user account creation test method - existing user email format (used beforehand in manual testing)
+    async invalidUserAccountCreationExistingEmailTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const createAccountPage = new CreateAccountPage(page);
+        const createAccountPageInvalidScenarios = new CreateAccountPageInvalidScenarios(page);
+        const createAccountPageWebElementAssert = new CreateAccountPageWebElementAssert();
+        const createAccountPageTextElementAssert = new CreateAccountPageTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //create account pge web element assert
+        await createAccountPageWebElementAssert.isCreateAccountPageWebElementVisible(page);
+        //create account page text element assert
+        await createAccountPageTextElementAssert.isCreateAccountPageTextElementAsExpected(page);
+        //capture screenshot of the create account page display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Create Account Page Display Before Data Input.png", fullPage: true });
+        //input valid first name into first name input field
+        await createAccountPage.inputFirstNameIntoFirstNameInputField();
+        //input valid last name into last name input field
+        await createAccountPage.inputLastNameIntoLastNameInputField();
+        //input existing email into email input field (used beforehand in manual testing)
+        await createAccountPageInvalidScenarios.inputExistingEmailIntoEmailInputField();
+        //input valid password into password input field
+        await createAccountPage.inputPasswordIntoPasswordInputField();
+        //click "View Password" button
+        await createAccountPage.clickViewPasswordButton();
+        //capture screenshot of the create account page display after invalid data input - existing user email
+        await page.screenshot({ path: "src/tests/screenshots/Create Account Page Display After Invalid Data Input - Existing User Email.png", fullPage: true });
+        //click "Create Account" button
+        await createAccountPage.clickSignUpButton();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(2500);
+        //assert the user gets the expected error message
+        const signUpInvalidSingularInputErrorMsg = await createAccountPage.getSignUpInvalidSingularInputErrorMsg();
+        //log the misspelling issue
+        (signUpInvalidSingularInputErrorMsg === "User already exists") ? console.log("") : Logger.error(`The existing email input error is misspelled. Expected: 'User already exists', actual: ${signUpInvalidSingularInputErrorMsg}.`);
+        expect(signUpInvalidSingularInputErrorMsg).toBe("User already Exist");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Existing User Email.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -184,4 +184,14 @@ test.describe("Invalid User Account Creation Test - Invalid Singular Input Forma
         await testMethods.invalidUserAccountCreationInvalidEmailFormatTest(page);
     });
 
+    // Test 002p -> invalid user account creation test - existing user email (used beforehand in manual testing)
+    test("Invalid User Account Creation Test - Existing User Email", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - existing user email (used beforehand in manual testing)
+        await testMethods.invalidUserAccountCreationExistingEmailTest(page);
+    });
+
 });
