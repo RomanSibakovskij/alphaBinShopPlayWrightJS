@@ -26,6 +26,7 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         //invalid test data input - too short singular input
         this._tooShortFirstName = "F"; //1 char
         this._tooShortLastName = "D"; //1 char
+        this._tooShortEmail = testDataGenerator.generateRandomTooShortEmailAddress(1); //1 char -> name, domain
 
     }
 
@@ -61,6 +62,11 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const tooShortLastName = this._tooShortLastName;
         Logger.info("Too short user last name: " + tooShortLastName);
         await this._signUpPageLastNameInputField.fill(tooShortLastName);
+    }
+    async inputTooShortEmailIntoEmailInputField(){
+        const tooShortEmail = this._tooShortEmail;
+        Logger.info("Too short user email: " + tooShortEmail);
+        await this._signUpPageEmailInputField.fill(tooShortEmail);
     }
 
 }
