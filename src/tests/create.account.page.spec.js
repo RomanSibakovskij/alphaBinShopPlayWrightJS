@@ -34,4 +34,16 @@ test.describe("Invalid User Account Creation Test - No Singular Input", () => {
         await page.close();
     });
 
+    // Test 002b -> invalid user account creation test - no user last name
+    test("Invalid User Account Creation Test - No User Last Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - no user last name
+        await testMethods.invalidUserAccountCreationNoLastNameTest(page);
+        //close the page explicitly
+        await page.close();
+    });
+
 });
