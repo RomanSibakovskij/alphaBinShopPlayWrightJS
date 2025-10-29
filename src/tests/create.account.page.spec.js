@@ -107,3 +107,17 @@ test.describe("Invalid User Account Creation Test - Too Short Singular Input", (
     });
 
 });
+
+test.describe("Invalid User Account Creation Test - Too Long Singular Input", () => {
+
+    // Test 002i -> invalid user account creation test - too long user first name (100 chars) (the error wasn't triggered, test has failed)
+    test("Invalid User Account Creation Test - Too Long User First Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - too long user first name (100 chars)
+        await testMethods.invalidUserAccountCreationTooLongFirstNameTest(page);
+    });
+
+});
