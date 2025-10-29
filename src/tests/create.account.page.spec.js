@@ -46,4 +46,16 @@ test.describe("Invalid User Account Creation Test - No Singular Input", () => {
         await page.close();
     });
 
+    // Test 002c -> invalid user account creation test - no user email
+    test("Invalid User Account Creation Test - No User Email", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - no user email
+        await testMethods.invalidUserAccountCreationNoEmailTest(page);
+        //close the page explicitly
+        await page.close();
+    });
+
 });

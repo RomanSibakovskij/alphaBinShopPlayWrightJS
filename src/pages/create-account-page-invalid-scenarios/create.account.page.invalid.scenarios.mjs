@@ -20,6 +20,7 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         //invalid test data input - no singular input
         this._noFirstName = "";
         this._noLastName = "";
+        this._noEmail = "";
 
     }
 
@@ -33,6 +34,11 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const noLastName = this._noLastName;
         Logger.info("No user last name: " + noLastName);
         await this._signUpPageLastNameInputField.fill(noLastName);
+    }
+    async inputNoEmailIntoEmailInputField(){
+        const noEmail = this._noEmail;
+        Logger.info("No user email: " + noEmail);
+        await this._signUpPageEmailInputField.fill(noEmail);
     }
 
 }
