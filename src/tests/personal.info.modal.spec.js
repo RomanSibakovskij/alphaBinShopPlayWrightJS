@@ -86,4 +86,18 @@ test.describe("Invalid Edit User Account Info Tests - Too Short Singular Input",
         await testMethods.invalidEditUserAccountInfoTooShortEditedFirstNameTest(page);
     });
 
+    // Test 005e -> invalid edit user account info test - too short edited last name (1 char) (the error wasn't triggered, test has failed)
+    test("Invalid Edit User Account Info Test - Too Short Edited Last Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page);
+        //invalid edit user account info test - too short edited last name (1 char)
+        await testMethods.invalidEditUserAccountInfoTooShortEditedLastNameTest(page);
+    });
+
 });
