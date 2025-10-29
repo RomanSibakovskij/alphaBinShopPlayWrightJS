@@ -880,5 +880,46 @@ class TestMethods{
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //valid user login test
+
+    //valid user login test method
+    async validUserLoginTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const signInPage = new SignInPage(page);
+        const signInPageWebElementAssert = new SignInPageWebElementAssert();
+        const signInPageTextElementAssert = new SignInPageTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //sign-in page web element assert
+        await signInPageWebElementAssert.isSignInPageWebElementVisible(page);
+        //sign-in page text element assert
+        await signInPageTextElementAssert.isSignInPageTextElementAsExpected(page);
+        //capture screenshot of the sign-in page display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Sign In Page Display Before Data Input.png", fullPage: true });
+        //input valid login email into sign-in email input field
+        await signInPage.inputValidLoginEmailIntoEmailInputField();
+        //input valid login password into sign-in password input field
+        await signInPage.inputValidLoginPasswordIntoPasswordInputField();
+        //click "View Password" button
+        await signInPage.clickViewPasswordButton();
+        //capture screenshot of the sign-in page display after valid data input
+        await page.screenshot({ path: "src/tests/screenshots/Sign In Page Display After Valid Data Input.png", fullPage: true });
+        //click "Sign In" button
+        await signInPage.clickSignInButton();
+        //wait for element to load
+        await page.waitForTimeout(2000);
+        //assert the user gets onto home page after successful login
+        const expectedHomePageURL = "https://demo.alphabin.co/";
+        const actualHomePageURL = page.url();
+        expect(expectedHomePageURL).toBe(actualHomePageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Valid User Login Test Result.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }
 export {TestMethods};

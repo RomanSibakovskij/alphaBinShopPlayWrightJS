@@ -1,6 +1,8 @@
 "use strict"
 
 import {BasePage} from "./utilities/base.page.mjs";
+import {CreateAccountPage} from "./create.account.page.mjs";
+import {Logger} from "./utilities/logger.mjs";
 
 class SignInPage extends BasePage{
 
@@ -28,10 +30,34 @@ class SignInPage extends BasePage{
         //invalid credentials error box
         this._signInPageInvalidCredentialsErrorMsg = page.locator("//div[@id='_rht_toaster']");
 
+        const createAccountPage = new CreateAccountPage(page);
+
+        //valid user sign-in input data
+        this._validUserLoginEmail = createAccountPage.validUserEmail;
+        this._validUserLoginPassword = createAccountPage.validUserPassword;
+
     }
 
     //click "Sign Up" link method
     async clickSignUpLink(){await this._signInPageSignUpLink.click();}
+
+    //valid user login data input methods
+    async inputValidLoginEmailIntoEmailInputField(){
+        const validLoginEmail = this._validUserLoginEmail;
+        Logger.info("Valid user login email: " + validLoginEmail);
+        await this._signInPageEmailInputField.fill(validLoginEmail);
+    }
+    async inputValidLoginPasswordIntoPasswordInputField(){
+        const validLoginPassword = this._validUserLoginPassword;
+        Logger.info("Valid user login password: " + validLoginPassword);
+        await this._signInPagePasswordInputField.fill(validLoginPassword);
+    }
+
+    //click "View Password" button method
+    async clickViewPasswordButton(){await this._signInPageViewPasswordButton.click();}
+
+    //click "Sign In" button method
+    async clickSignInButton(){await this._signInPageSignInButton.click();}
 
     //sign-in page text element getters
     async getSignInPageTitle(){return await this._signInPageTitle.innerText();}
