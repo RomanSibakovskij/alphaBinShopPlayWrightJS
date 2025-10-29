@@ -12,10 +12,12 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
         this._personalInfoModalFirstNameInputField = page.locator("//input[@data-testid='my-profile-firstname-input']");
         this._personalInfoModalLastNameInputField = page.locator("//input[@data-testid='my-profile-lastname-input']");
         this._personalInfoModalEmailInputField = page.locator("//input[@data-testid='my-profile-email-input']");
+        this._personalInfoModalPhoneNumberInputField = page.locator("//input[@data-testid='my-profile-contact-input']");
 
         //invalid edited input data - no singular input
         this._noEditedFirstName = "";
         this._noEditedLastName = "";
+        this._noPhone = "";
 
     }
 
@@ -29,6 +31,11 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
         const noEditedLastName = this._noEditedLastName;
         Logger.info("No edited user last name: " + noEditedLastName);
         await this._personalInfoModalLastNameInputField.fill(noEditedLastName);
+    }
+    async inputNoPhoneIntoPhoneInputField(){
+        const noPhone = this._noPhone;
+        Logger.info("No user phone number: " + noPhone);
+        await this._personalInfoModalPhoneNumberInputField.fill(noPhone);
     }
 
 }

@@ -54,4 +54,18 @@ test.describe("Invalid Edit User Account Info Tests - No Singular Input", () => 
         await testMethods.invalidEditUserAccountInfoNoEditedLastNameTest(page);
     });
 
+    // Test 005c -> invalid edit user account info test - no edited phone (this input field is optional)
+    test("Invalid Edit User Account Info Test - No Edited Phone", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page);
+        //invalid edit user account info test - no edited phone
+        await testMethods.invalidEditUserAccountInfoNoEditedPhoneTest(page);
+    });
+
 });
