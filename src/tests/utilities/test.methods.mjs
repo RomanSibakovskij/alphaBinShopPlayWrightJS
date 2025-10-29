@@ -3,6 +3,7 @@
 import {GeneralPage} from "../../pages/general.page.mjs";
 import {SignInPage} from "../../pages/signin.page.mjs";
 import {CreateAccountPage} from "../../pages/create.account.page.mjs";
+import {AccountDashboardPage} from "../../pages/account.dashboard.page.mjs";
 
 import {CreateAccountPageInvalidScenarios} from "../../pages/create-account-page-invalid-scenarios/create.account.page.invalid.scenarios.mjs";
 
@@ -10,13 +11,23 @@ import {GeneralPageWebElementAssert} from "../web-element-asserts/general.page.w
 import {HomePageWebElementAssert} from "../web-element-asserts/home.page.web.element.assert.mjs";
 import {SignInPageWebElementAssert} from "../web-element-asserts/signin.page.web.element.assert.mjs";
 import {CreateAccountPageWebElementAssert} from "../web-element-asserts/create.account.page.web.element.assert.mjs";
+import {AccountDashboardPageWebElementAssert} from "../web-element-asserts/account.dashboard.web.element.assert.mjs";
 
 import {GeneralPageTextElementAssert} from "../text-element-asserts/general.page.text.element.assert.mjs";
 import {HomePageTextElementAssert} from "../text-element-asserts/home.page.text.element.assert.mjs";
 import {SignInPageTextElementAssert} from "../text-element-asserts/signin.page.text.element.assert.mjs";
 import {CreateAccountPageTextElementAssert} from "../text-element-asserts/create.account.page.text.element.assert.mjs";
+import {AccountDashboardPageTextElementAssert} from "../text-element-asserts/account.dashboard.text.element.assert.mjs";
+
+import {PersonalInfoModal} from "../../pages/modals/personal.info.modal.mjs";
+
+import {PersonalInfoModalWebElementAssert} from "../web-element-asserts/modals/personal.info.modal.web.element.assert.mjs";
+
+import {PersonalInfoModalTextElementAssert} from "../text-element-asserts/modals/personal.info.modal.text.element.assert.mjs";
 
 import {HomePageDataLoggers} from "../data-loggers/home.page.data.loggers.mjs";
+import {AccountDashPageDataLogger} from "../data-loggers/account.dash.page.data.logger.mjs";
+
 import {expect} from "@playwright/test";
 import {Logger} from "../../pages/utilities/logger.mjs";
 
@@ -917,6 +928,81 @@ class TestMethods{
         expect(expectedHomePageURL).toBe(actualHomePageURL);
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Valid User Login Test Result.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //valid edit account info test
+
+    //valid edit account information test method
+    async validEditUserAccountInfoTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const accountDashboardPage = new AccountDashboardPage(page);
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModal = new PersonalInfoModal(page);
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header "Account" icon button
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4000);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //capture screenshot of the personal info modal display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display Before Data Input.png", fullPage: true });
+        //input valid edited first name into first name input field
+        await personalInfoModal.inputEditedFirstNameIntoFirstNameInputField();
+        //input valid edited last name into last name input field
+        await personalInfoModal.inputEditedLastNameIntoLastNameInputField();
+        //input valid phone into phone input field (it's optional)
+        await personalInfoModal.inputPhoneIntoPhoneInputField();
+        //capture screenshot of the personal info modal display after valid data input
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display After Valid Data Input.png", fullPage: true });
+        //click "Save Changes" button
+        await personalInfoModal.clickSaveChangesButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //log account dashboard page displayed user data (to verify the data has been updated0
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //reload the current page (without it, changes don't apply)
+        page.reload();
+        //wait for element to load
+        await page.waitForTimeout(4500);
+        //assert the account full name gets updated, throw an error otherwise
+        const expectedEditedFullName = PersonalInfoModal.editedFullName;
+        const actualEditedFullName = await accountDashboardPage.getAccountDashPageUserFullName();
+        try{
+            expect(actualEditedFullName).toBe(expectedEditedFullName);
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Valid Edit User Account Info Test Result (edited full name doesn't get applied).png", fullPage: true });
+            throw new Error(`The user full name doesn't get edited, test has failed. Expected edited full name: ${expectedEditedFullName}, actual user full name: ${actualEditedFullName}.`);
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Valid Edit User Account Info Test Result.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

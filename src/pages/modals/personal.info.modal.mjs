@@ -1,6 +1,8 @@
 "use strict"
 
 import {BasePage} from "../utilities/base.page.mjs";
+import {TestDataGenerator} from "../utilities/test.data.generator.mjs";
+import {Logger} from "../utilities/logger.mjs";
 
 class PersonalInfoModal extends BasePage{
 
@@ -36,7 +38,38 @@ class PersonalInfoModal extends BasePage{
         //invalid singular input error message
         this._personalInfoModalInvalidSingularInputErrorMsg = page.locator("//p[@class='mt-1 text-sm text-red-500']");
 
+        const testDataGenerator = new TestDataGenerator();
+
+        //valid edited input data
+        const { firstName, lastName } = testDataGenerator.getRandomName();
+        PersonalInfoModal._editedFirstName = firstName;
+        PersonalInfoModal._editedLastName = lastName;
+        this._phoneNumber = testDataGenerator.generateRandomPhoneNumber();
+
     }
+
+    //valid edited data input methods
+    async inputEditedFirstNameIntoFirstNameInputField(){
+        const editedFirstName = PersonalInfoModal._editedFirstName;
+        Logger.info("Valid edited user first name: " + editedFirstName);
+        await this._personalInfoModalFirstNameInputField.fill(editedFirstName);
+    }
+    async inputEditedLastNameIntoLastNameInputField(){
+        const editedLastName = PersonalInfoModal._editedLastName;
+        Logger.info("Valid edited user last name: " + editedLastName);
+        await this._personalInfoModalLastNameInputField.fill(editedLastName);
+    }
+    async inputPhoneIntoPhoneInputField(){
+        const phone = this._phoneNumber;
+        Logger.info("Valid user phone number: " + phone);
+        await this._personalInfoModalPhoneNumberInputField.fill(phone);
+    }
+
+    //click "Save Changes" button method
+    async clickSaveChangesButton(){await this._personalInfoModalSaveChangesButton.click();}
+
+    //private edited data getter
+    static get editedFullName(){return this._editedFirstName + " " + this._editedLastName;}
 
     //personal info modal text element getters
     async getPersonalInfoModalTitle(){return await this._personalInfoModalTitle.innerText();}
