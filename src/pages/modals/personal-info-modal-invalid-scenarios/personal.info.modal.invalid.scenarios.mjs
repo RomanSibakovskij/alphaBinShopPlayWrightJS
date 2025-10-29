@@ -15,6 +15,7 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
 
         //invalid edited input data - no singular input
         this._noEditedFirstName = "";
+        this._noEditedLastName = "";
 
     }
 
@@ -23,6 +24,11 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
         const noEditedFirstName = this._noEditedFirstName;
         Logger.info("No edited user first name: " + noEditedFirstName);
         await this._personalInfoModalFirstNameInputField.fill(noEditedFirstName);
+    }
+    async inputNoEditedLastNameIntoLastNameInputField(){
+        const noEditedLastName = this._noEditedLastName;
+        Logger.info("No edited user last name: " + noEditedLastName);
+        await this._personalInfoModalLastNameInputField.fill(noEditedLastName);
     }
 
 }
