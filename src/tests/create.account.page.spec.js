@@ -30,8 +30,6 @@ test.describe("Invalid User Account Creation Test - No Singular Input", () => {
         await testMethods.navigateToSignUpPageTest(page);
         //invalid user account creation test - no user first name
         await testMethods.invalidUserAccountCreationNoFirstNameTest(page);
-        //close the page explicitly
-        await page.close();
     });
 
     // Test 002b -> invalid user account creation test - no user last name
@@ -42,8 +40,6 @@ test.describe("Invalid User Account Creation Test - No Singular Input", () => {
         await testMethods.navigateToSignUpPageTest(page);
         //invalid user account creation test - no user last name
         await testMethods.invalidUserAccountCreationNoLastNameTest(page);
-        //close the page explicitly
-        await page.close();
     });
 
     // Test 002c -> invalid user account creation test - no user email
@@ -54,8 +50,6 @@ test.describe("Invalid User Account Creation Test - No Singular Input", () => {
         await testMethods.navigateToSignUpPageTest(page);
         //invalid user account creation test - no user email
         await testMethods.invalidUserAccountCreationNoEmailTest(page);
-        //close the page explicitly
-        await page.close();
     });
 
     // Test 002d -> invalid user account creation test - no user password
@@ -66,8 +60,20 @@ test.describe("Invalid User Account Creation Test - No Singular Input", () => {
         await testMethods.navigateToSignUpPageTest(page);
         //invalid user account creation test - no user password
         await testMethods.invalidUserAccountCreationNoPasswordTest(page);
-        //close the page explicitly
-        await page.close();
+    });
+
+});
+
+test.describe("Invalid User Account Creation Test - Too Short Singular Input", () => {
+
+    // Test 002e -> invalid user account creation test - too short user first name (1 char) (the error wasn't triggered, test has failed)
+    test("Invalid User Account Creation Test - Too Short User First Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - too short user first name (1 char)
+        await testMethods.invalidUserAccountCreationTooShortFirstNameTest(page);
     });
 
 });

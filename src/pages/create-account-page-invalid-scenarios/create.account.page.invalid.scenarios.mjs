@@ -23,6 +23,9 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         this._noEmail = "";
         this._noPassword = "";
 
+        //invalid test data input - too short singular input
+        this._tooShortFirstName = "F"; //1 char
+
     }
 
     //invalid sign-up data input methods - no singular input
@@ -45,6 +48,13 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const noPassword = this._noPassword;
         Logger.info("No user password: " + noPassword);
         await this._signUpPagePasswordInputField.fill(noPassword);
+    }
+
+    //invalid sign-up data input methods - too short singular input
+    async inputTooShortFirstNameIntoFirstNameInputField(){
+        const tooShortFirstName = this._tooShortFirstName;
+        Logger.info("Too short user first name: " + tooShortFirstName);
+        await this._signUpPageFirstNameInputField.fill(tooShortFirstName);
     }
 
 }
