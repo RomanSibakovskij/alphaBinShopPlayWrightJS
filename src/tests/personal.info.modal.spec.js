@@ -146,4 +146,18 @@ test.describe("Invalid Edit User Account Info Tests - Too Long Singular Input", 
         await testMethods.invalidEditUserAccountInfoTooLongEditedLastNameTest(page);
     });
 
+    // Test 005i -> invalid edit user account info test - too long edited phone (11 digits) (the error wasn't triggered, test has failed)
+    test("Invalid Edit User Account Info Test - Too Long Edited Phone", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page);
+        //invalid edit user account info test - too long edited phone (11 digits)
+        await testMethods.invalidEditUserAccountInfoTooLongEditedPhoneTest(page);
+    });
+
 });
