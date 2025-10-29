@@ -164,4 +164,14 @@ test.describe("Invalid User Account Creation Test - Invalid Singular Input Forma
         await testMethods.invalidUserAccountCreationInvalidFirstNameFormatTest(page);
     });
 
+    // Test 002n -> invalid user account creation test - invalid user last name format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid User Account Creation Test - Invalid User Last Name Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - invalid user last name format (special symbols only)
+        await testMethods.invalidUserAccountCreationInvalidLastNameFormatTest(page);
+    });
+
 });

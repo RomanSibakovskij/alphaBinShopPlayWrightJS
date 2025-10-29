@@ -37,6 +37,7 @@ class CreateAccountPageInvalidScenarios extends BasePage{
 
         //invalid test data input - invalid singular input
         this._invalidFirstNameFormat = "@#$%$%^"; //special symbols only
+        this._invalidLastNameFormat = "@#$%$#%^"; //special symbols only
 
     }
 
@@ -111,6 +112,11 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const invalidFirstNameFormat = this._invalidFirstNameFormat;
         Logger.info("Invalid user first name format: " + invalidFirstNameFormat);
         await this._signUpPageFirstNameInputField.fill(invalidFirstNameFormat);
+    }
+    async inputInvalidLastNameFormatIntoLastNameInputField(){
+        const invalidLastNameFormat = this._invalidLastNameFormat;
+        Logger.info("Invalid user last name format: " + invalidLastNameFormat);
+        await this._signUpPageLastNameInputField.fill(invalidLastNameFormat);
     }
 
 }
