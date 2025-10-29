@@ -23,3 +23,21 @@ test.describe("Valid Edit User Account Info Test", () => {
     });
 
 });
+
+test.describe("Invalid Edit User Account Info Tests - No Singular Input", () => {
+
+    // Test 005a -> invalid edit user account info test - no edited first name
+    test("Invalid Edit User Account Info Test - No Edited First Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page);
+        //invalid edit user account info test - no edited first name
+        await testMethods.invalidEditUserAccountInfoNoEditedFirstNameTest(page);
+    });
+
+});

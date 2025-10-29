@@ -7,6 +7,8 @@ import {AccountDashboardPage} from "../../pages/account.dashboard.page.mjs";
 
 import {CreateAccountPageInvalidScenarios} from "../../pages/create-account-page-invalid-scenarios/create.account.page.invalid.scenarios.mjs";
 
+import {PersonalInfoModalInvalidScenarios} from "../../pages/modals/personal-info-modal-invalid-scenarios/personal.info.modal.invalid.scenarios.mjs";
+
 import {GeneralPageWebElementAssert} from "../web-element-asserts/general.page.web.element.assert.mjs";
 import {HomePageWebElementAssert} from "../web-element-asserts/home.page.web.element.assert.mjs";
 import {SignInPageWebElementAssert} from "../web-element-asserts/signin.page.web.element.assert.mjs";
@@ -1003,6 +1005,69 @@ class TestMethods{
         }
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Valid Edit User Account Info Test Result.png", fullPage: true });
+    }
+
+    //invalid edit account info tests
+
+    //no singular input
+
+    //invalid edit account information test method - no edited first name
+    async invalidEditUserAccountInfoNoEditedFirstNameTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModal = new PersonalInfoModal(page);
+        const personalInfoModalInvalidScenarios = new PersonalInfoModalInvalidScenarios(page);
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header "Account" icon button
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4000);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //capture screenshot of the personal info modal display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display Before Data Input.png", fullPage: true });
+        //don't input edited first name into first name input field
+        await personalInfoModalInvalidScenarios.inputNoEditedFirstNameIntoFirstNameInputField();
+        //input valid edited last name into last name input field
+        await personalInfoModal.inputEditedLastNameIntoLastNameInputField();
+        //input valid phone into phone input field (it's optional)
+        await personalInfoModal.inputPhoneIntoPhoneInputField();
+        //capture screenshot of the personal info modal display after invalid data input - no edited first name
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display After Invalid Data Input - No Edited First Name.png", fullPage: true });
+        //click "Save Changes" button
+        await personalInfoModal.clickSaveChangesButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user receives an expected error message
+        const personalInfoPageNoFirstNameInputError = await personalInfoModal.getPersonalInfoModalInvalidSingularInputError();
+        expect(personalInfoPageNoFirstNameInputError).toBe("First name is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - No Edited First Name.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
