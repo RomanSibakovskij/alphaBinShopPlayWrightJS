@@ -32,6 +32,7 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         //invalid test data input - too long singular input
         this._tooLongFirstName = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //100 chars
         this._tooLongLastName = "Asdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //100 chars
+        this._tooLongEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); //100 chars -> name, domain
 
     }
 
@@ -89,6 +90,11 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         const tooLongLastName = this._tooLongLastName;
         Logger.info("Too long user last name: " + tooLongLastName);
         await this._signUpPageLastNameInputField.fill(tooLongLastName);
+    }
+    async inputTooLongEmailIntoEmailInputField(){
+        const tooLongEmail = this._tooLongEmail;
+        Logger.info("Too long user email: " + tooLongEmail);
+        await this._signUpPageEmailInputField.fill(tooLongEmail);
     }
 
 }
