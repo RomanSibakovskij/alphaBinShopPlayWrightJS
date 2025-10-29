@@ -29,6 +29,9 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
         this._tooLongEditedLastName = "Jsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //100 chars
         this._tooLongPhone = "56645654321"; //11 digits
 
+        //invalid edited input data - invalid singular input format
+        this._invalidEditedFirstNameFormat = "@#!$@#%"; //special symbols only
+
     }
 
     //invalid edited data input methods - no singular input
@@ -80,6 +83,13 @@ class PersonalInfoModalInvalidScenarios extends BasePage{
         const tooLongPhone = this._tooLongPhone;
         Logger.info("Too long user phone number: " + tooLongPhone);
         await this._personalInfoModalPhoneNumberInputField.fill(tooLongPhone);
+    }
+
+    //invalid edited data input methods - invalid singular input format
+    async inputInvalidEditedFirstNameFormatIntoFirstNameInputField(){
+        const invalidEditedFirstNameFormat = this._invalidEditedFirstNameFormat;
+        Logger.info("Invalid edited user first name format: " + invalidEditedFirstNameFormat);
+        await this._personalInfoModalFirstNameInputField.fill(invalidEditedFirstNameFormat);
     }
 
 }

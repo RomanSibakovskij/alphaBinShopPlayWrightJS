@@ -1573,6 +1573,72 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Too Long Phone.png", fullPage: true });
     }
 
+    //invalid singular input format
+
+    //invalid edit account information test method - invalid edited first name format (special symbols only)
+    async invalidEditUserAccountInfoInvalidEditedFirstNameFormatTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModal = new PersonalInfoModal(page);
+        const personalInfoModalInvalidScenarios = new PersonalInfoModalInvalidScenarios(page);
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header "Account" icon button
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4000);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //capture screenshot of the personal info modal display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display Before Data Input.png", fullPage: true });
+        //input invalid edited first name format into first name input field (special symbols only)
+        await personalInfoModalInvalidScenarios.inputInvalidEditedFirstNameFormatIntoFirstNameInputField();
+        //input valid edited last name into last name input field
+        await personalInfoModal.inputEditedLastNameIntoLastNameInputField();
+        //input valid phone into phone input field (it's optional)
+        await personalInfoModal.inputPhoneIntoPhoneInputField();
+        //capture screenshot of the personal info modal display after invalid data input - invalid edited first name format
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display After Invalid Data Input - Invalid Edited First Name Format.png", fullPage: true });
+        //click "Save Changes" button
+        await personalInfoModal.clickSaveChangesButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user receives an expected error message, throw an error otherwise
+        const personalInfoModalUpdateFailureMsg = await personalInfoModal.getPersonalInfoModalMsgBoxText();
+        try {
+            expect(personalInfoModalUpdateFailureMsg).toBe("First name cannot consist of special symbols only");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Invalid Edited First Name Format.png", fullPage: true });
+            throw new Error(`The invalid edited first name input format error wasn't triggered (Expected: 'First name cannot consist of special symbols only', actual: ${personalInfoModalUpdateFailureMsg}), test has failed.`);
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Invalid Edited First Name Format.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

@@ -161,3 +161,21 @@ test.describe("Invalid Edit User Account Info Tests - Too Long Singular Input", 
     });
 
 });
+
+test.describe("Invalid Edit User Account Info Tests - Invalid Singular Input Format", () => {
+
+    // Test 005j -> invalid edit user account info test - invalid edited first name (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Edit User Account Info Test - Invalid Edited First Name Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page);
+        //invalid edit user account info test - invalid edited first name (special symbols only)
+        await testMethods.invalidEditUserAccountInfoInvalidEditedFirstNameFormatTest(page);
+    });
+
+});
