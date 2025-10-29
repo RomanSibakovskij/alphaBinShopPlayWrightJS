@@ -19,3 +19,19 @@ test.describe("Valid User Account Creation Test", () => {
     });
 
 });
+
+test.describe("Invalid User Account Creation Test - No Singular Input", () => {
+
+    // Test 002a -> invalid user account creation test - no user first name
+    test("Invalid User Account Creation Test - No User First Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //invalid user account creation test - no user first name
+        await testMethods.invalidUserAccountCreationNoFirstNameTest(page);
+        //close the page explicitly
+        await page.close();
+    });
+
+});

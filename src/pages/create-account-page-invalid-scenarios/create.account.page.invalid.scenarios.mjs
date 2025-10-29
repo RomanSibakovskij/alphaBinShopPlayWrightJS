@@ -1,6 +1,8 @@
 "use strict"
 
 import {BasePage} from "../utilities/base.page.mjs";
+import {TestDataGenerator} from "../utilities/test.data.generator.mjs";
+import {Logger} from "../utilities/logger.mjs";
 
 class CreateAccountPageInvalidScenarios extends BasePage{
 
@@ -13,6 +15,18 @@ class CreateAccountPageInvalidScenarios extends BasePage{
         this._signUpPageEmailInputField = page.locator("//input[@id='email']");
         this._signUpPagePasswordInputField = page.locator("//input[@id='password']");
 
+        const testDataGenerator = new TestDataGenerator(page);
+
+        //invalid test data input - no singular input
+        this._noFirstName = "";
+
+    }
+
+    //invalid sign-up data input methods - no singular input
+    async inputNoFirstNameIntoFirstNameInputField(){
+        const noFirstName = this._noFirstName;
+        Logger.info("No user first name: " + noFirstName);
+        await this._signUpPageFirstNameInputField.fill(noFirstName);
     }
 
 }
