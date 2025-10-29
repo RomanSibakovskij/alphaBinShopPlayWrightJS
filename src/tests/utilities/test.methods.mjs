@@ -515,6 +515,52 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Too Long User First Name.png", fullPage: true });
     }
 
+    //invalid user account creation test method - too long user last name (100 chars)
+    async invalidUserAccountCreationTooLongLastNameTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const createAccountPage = new CreateAccountPage(page);
+        const createAccountPageInvalidScenarios = new CreateAccountPageInvalidScenarios(page);
+        const createAccountPageWebElementAssert = new CreateAccountPageWebElementAssert();
+        const createAccountPageTextElementAssert = new CreateAccountPageTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //create account pge web element assert
+        await createAccountPageWebElementAssert.isCreateAccountPageWebElementVisible(page);
+        //create account page text element assert
+        await createAccountPageTextElementAssert.isCreateAccountPageTextElementAsExpected(page);
+        //capture screenshot of the create account page display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Create Account Page Display Before Data Input.png", fullPage: true });
+        //input valid first name into first name input field
+        await createAccountPage.inputFirstNameIntoFirstNameInputField();
+        //input too long last name into last name input field (100 chars)
+        await createAccountPageInvalidScenarios.inputTooLongLastNameIntoLastNameInputField();
+        //input valid email into email input field
+        await createAccountPage.inputEmailIntoEmailInputField();
+        //input valid password into password input field
+        await createAccountPage.inputPasswordIntoPasswordInputField();
+        //click "View Password" button
+        await createAccountPage.clickViewPasswordButton();
+        //capture screenshot of the create account page display after invalid data input - too long user last name
+        await page.screenshot({ path: "src/tests/screenshots/Create Account Page Display After Invalid Data Input - Too Long User Last Name.png", fullPage: true });
+        //click "Create Account" button
+        await createAccountPage.clickSignUpButton();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(2500);
+        //assert the user gets the expected error message, throw an error otherwise
+        try {
+            const signUpInvalidSingularInputErrorMsg = await createAccountPage.getSignUpInvalidSingularInputErrorMsg();
+            expect(signUpInvalidSingularInputErrorMsg).toBe("Last Name is too long");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Too Long User Last Name.png", fullPage: true });
+            throw new Error("The too long last name input error wasn't triggered, test has failed.");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid User Account Creation Test Result - Too Long User Last Name.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
