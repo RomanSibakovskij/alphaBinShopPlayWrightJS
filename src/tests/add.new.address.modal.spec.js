@@ -22,4 +22,20 @@ test.describe("Valid Add User Address Tests", () => {
         await testMethods.validAddUserAddressTest(page);
     });
 
+    // Test 007a -> add second user address test
+    test("Add Second User Address Test", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address test
+        await testMethods.validAddUserAddressTest(page);
+        //valid add second user address test
+        await testMethods.validAddSecondUserAddressTest(page);
+    });
+
 });
