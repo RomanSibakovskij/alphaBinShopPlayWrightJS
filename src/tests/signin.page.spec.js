@@ -85,3 +85,19 @@ test.describe("Invalid User Login Tests - No Singular Input", () => {
     });
 
 });
+
+test.describe("Invalid User Login Tests - Invalid Singular Input", () => {
+
+    // Test 003e -> invalid user login test - invalid login email
+    test("Invalid User Login Test - Invalid Login Email", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //invalid user login test - invalid login email
+        await testMethods.invalidUserLoginInvalidEmailTest(page)
+    });
+
+});
