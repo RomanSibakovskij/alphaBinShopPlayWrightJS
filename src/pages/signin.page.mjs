@@ -2,6 +2,7 @@
 
 import {BasePage} from "./utilities/base.page.mjs";
 import {CreateAccountPage} from "./create.account.page.mjs";
+import {PasswordModal} from "./modals/password.modal.mjs";
 import {AddNewAddressModal} from "./modals/add.new.address.modal.mjs";
 import {Logger} from "./utilities/logger.mjs";
 
@@ -32,6 +33,7 @@ class SignInPage extends BasePage{
         this._signInPageInvalidCredentialsErrorMsg = page.locator("//div[@id='_rht_toaster']");
 
         const createAccountPage = new CreateAccountPage(page);
+        const passwordModal = new PasswordModal(page);
         const addNewAddressModal = new AddNewAddressModal(page);
 
         //valid user sign-in input data
@@ -40,6 +42,7 @@ class SignInPage extends BasePage{
 
         //valid edited user sign-in input data
         this._validEditedLoginEmail = addNewAddressModal.validAddressEditedEmail;
+        this._validEditedLoginPassword = passwordModal.validEditedPassword;
 
     }
 
@@ -63,6 +66,11 @@ class SignInPage extends BasePage{
         const validEditedLoginEmail = this._validEditedLoginEmail;
         Logger.info("Valid edited user login email: " + validEditedLoginEmail);
         await this._signInPageEmailInputField.fill(validEditedLoginEmail);
+    }
+    async inputValidEditedLoginPasswordIntoPasswordInputField(){
+        const validEditedLoginPassword = this._validEditedLoginPassword;
+        Logger.info("Valid edited user login password: " + validEditedLoginPassword);
+        await this._signInPagePasswordInputField.fill(validEditedLoginPassword);
     }
 
     //click "View Password" button method
