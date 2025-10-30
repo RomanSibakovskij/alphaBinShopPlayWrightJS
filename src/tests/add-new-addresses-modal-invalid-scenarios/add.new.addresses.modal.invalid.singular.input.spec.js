@@ -384,4 +384,18 @@ test.describe("Invalid Add User Address Tests - Invalid Singular Input Format", 
         await testMethods.invalidAddUserAddressInvalidStateFormatTest(page);
     });
 
+    // Test 007ac -> invalid add user address test - invalid address country format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Add User Address Test - Invalid Country Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - invalid address country format (special symbols only)
+        await testMethods.invalidAddUserAddressInvalidCountryFormatTest(page);
+    });
+
 });

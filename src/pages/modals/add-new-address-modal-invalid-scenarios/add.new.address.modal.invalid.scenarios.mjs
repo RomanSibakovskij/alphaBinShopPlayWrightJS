@@ -53,6 +53,7 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._invalidAddressStreetFormat = "@#$%$#^$%&"; // special symbols only
         this._invalidAddressCityFormat = "@$##$%^%"; // special symbols only
         this._invalidAddressStateFormat = "#%$$^"; // special symbols only
+        this._invalidAddressCountryFormat = "#%$$&"; // special symbols only
 
     }
 
@@ -192,6 +193,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const invalidNewAddressStateFormat = this._invalidAddressStateFormat;
         Logger.info("Invalid new user address state format: " + invalidNewAddressStateFormat);
         await this._addNewAddressModalStateInputField.fill(invalidNewAddressStateFormat);
+    }
+    async inputInvalidNewAddressCountryFormatIntoCountryInputField(){
+        const invalidNewAddressCountryFormat = this._invalidAddressCountryFormat;
+        Logger.info("Invalid new user address country format: " + invalidNewAddressCountryFormat);
+        await this._addNewAddressModalCountryInputField.fill(invalidNewAddressCountryFormat);
     }
 
 }
