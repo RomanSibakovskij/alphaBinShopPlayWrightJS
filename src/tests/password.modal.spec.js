@@ -59,3 +59,21 @@ test.describe("Invalid Edit User Account Password Test - Too Short Input", () =>
     });
 
 });
+
+test.describe("Invalid Edit User Account Password Test - Too Long Input", () => {
+
+    // Test 006c -> invalid edit user account password test - too long new/confirm password (35 chars) (the error wasn't triggered, test has failed)
+    test("Invalid Edit User Account Password Test - Too Long New And Confirm Password", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid edit user account password test - too long new/confirm password (35 chars)
+        await testMethods.invalidEditUserAccountPasswordTooLongNewConfirmPasswordTest(page);
+    });
+
+});

@@ -19,6 +19,10 @@ class PasswordModalInvalidScenarios extends BasePage{
         this._tooShortNewPassword = "Fr34#f$"; //7 chars
         this._tooShortConfirmPassword = "Fr34#f$"; //7 chars
 
+        //invalid password input data - too long singular input (matching inputs)
+        this._tooLongNewPassword = "DDFD@#$cffds^%&dgerder$#565432Wefrt"; //35 chars
+        this._tooLongConfirmPassword = "DDFD@#$cffds^%&dgerder$#565432Wefrt";  //35 chars
+
     }
 
     //invalid password input data methods - no singular input
@@ -38,6 +42,18 @@ class PasswordModalInvalidScenarios extends BasePage{
         const tooShortConfirmPassword = this._tooShortConfirmPassword;
         Logger.info("Too short matching user confirm password: " + tooShortConfirmPassword);
         await this._passwordModalConfirmPasswordInputField.fill(tooShortConfirmPassword);
+    }
+
+    //invalid password input data methods - too long singular input
+    async inputTooLongNewPasswordIntoNewPasswordInputField(){
+        const tooLongNewPassword = this._tooLongNewPassword;
+        Logger.info("Too long new user password: " + tooLongNewPassword);
+        await this._passwordModalNewPasswordInputField.fill(tooLongNewPassword);
+    }
+    async inputTooLongConfirmPasswordIntoConfirmPasswordInputField(){
+        const tooLongConfirmPassword = this._tooLongConfirmPassword;
+        Logger.info("Too long matching user confirm password: " + tooLongConfirmPassword);
+        await this._passwordModalConfirmPasswordInputField.fill(tooLongConfirmPassword);
     }
 
 }

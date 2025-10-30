@@ -1990,6 +1990,83 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Password Test Result - Too Short New And Confirm Password.png", fullPage: true });
     }
 
+    //too long input
+
+    //invalid edit user account password test method - too long new/confirm password (35 chars)
+    async invalidEditUserAccountPasswordTooLongNewConfirmPasswordTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModal = new PersonalInfoModal(page);
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        const passwordModal = new PasswordModal(page);
+        const passwordModalInvalidScenarios = new PasswordModalInvalidScenarios(page);
+        const passwordModalWebElementAssert = new PasswordModalWebElementAssert();
+        const passwordModalTextElementAssert = new PasswordModalTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header "Account" icon button
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4000);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //capture screenshot of the personal info modal display
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display.png", fullPage: true });
+        //click "Security" button
+        await personalInfoModal.clickSecurityButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //password modal web element assert
+        await passwordModalWebElementAssert.isPasswordModalWebElementVisible(page);
+        //password modal text element assert
+        await passwordModalTextElementAssert.isPasswordModalTextElementAsExpected(page);
+        //capture screenshot of the password modal display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Password Modal Display Before Data Input.png", fullPage: true });
+        //input too long new password into new password input field (35 chars)
+        await passwordModalInvalidScenarios.inputTooLongNewPasswordIntoNewPasswordInputField();
+        //input matching too long confirm password into confirm password input field (35 chars)
+        await passwordModalInvalidScenarios.inputTooLongConfirmPasswordIntoConfirmPasswordInputField();
+        //capture screenshot of the password modal display after invalid data input - too long new/confirm password
+        await page.screenshot({ path: "src/tests/screenshots/Password Modal Display After Invalid Data Input - Too Long New And Confirm Password.png", fullPage: true });
+        //click "Update Password" button
+        await passwordModal.clickUpdatePasswordButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //assert the user gets an expected error message
+        try {
+            const passwordModalInputSingularErrorMsg = await passwordModal.getPasswordModalInvalidCredentialsInputErrorMsg();
+            expect(passwordModalInputSingularErrorMsg).toBe("Password is too long");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Password Test Result - Too Long New And Confirm Password.png", fullPage: true });
+            throw new Error("The too long password input error wasn't triggered, test has failed.");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Password Test Result - Too Long New And Confirm Password.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
