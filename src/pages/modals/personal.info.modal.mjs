@@ -68,6 +68,9 @@ class PersonalInfoModal extends BasePage{
     //click "Save Changes" button method
     async clickSaveChangesButton(){await this._personalInfoModalSaveChangesButton.click();}
 
+    //click "Security" button method
+    async clickSecurityButton(){await this._personalInfoModalSecurityButton.click();}
+
     //private edited data getter
     static get editedFullName(){return this._editedFirstName + " " + this._editedLastName;}
 

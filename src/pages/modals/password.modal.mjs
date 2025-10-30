@@ -1,6 +1,8 @@
 "use strict"
 
 import {BasePage} from "../utilities/base.page.mjs";
+import {TestDataGenerator} from "../utilities/test.data.generator.mjs";
+import {Logger} from "../utilities/logger.mjs";
 
 class PasswordModal extends BasePage{
 
@@ -31,7 +33,27 @@ class PasswordModal extends BasePage{
         //invalid credentials error box
         this._passwordModalInvalidCredentialsErrorMsg = page.locator("//div[@id='_rht_toaster']");
 
+        const testDataGenerator = new TestDataGenerator(page);
+
+        //valid password input data
+        this._newPassword = testDataGenerator.generateRandomPassword();
+
     }
+
+    //valid password input data methods
+    async inputNewPasswordIntoNewPasswordInputField(){
+        const newPassword = this._newPassword;
+        Logger.info("Valid new user password: " + newPassword);
+        await this._passwordModalNewPasswordInputField.fill(newPassword);
+    }
+    async inputConfirmPasswordIntoConfirmPasswordInputField(){
+        const confirmPassword = this._newPassword;
+        Logger.info("Valid matching user confirm password: " + confirmPassword);
+        await this._passwordModalConfirmPasswordInputField.fill(confirmPassword);
+    }
+
+    //click "Update password" button method
+    async clickUpdatePasswordButton(){await this._passwordModalUpdatePasswordButton.click();}
 
     //password modal text element getters
     async getPasswordModalTitle(){return await this._passwordModalTitle.innerText();}
@@ -58,6 +80,9 @@ class PasswordModal extends BasePage{
     async getPasswordModalInvalidSingularInputErrorMsg(){return await this._passwordModalInvalidSingularInputError.innerText();}
     //invalid credentials error message getter
     async getPasswordModalInvalidCredentialsInputErrorMsg(){return await this._passwordModalInvalidCredentialsErrorMsg.innerText();}
+
+    //private data getter
+    get validEditedPassword(){return this._newPassword;}
 
     //password modal web element getters
     get passwordModalIcon(){return this._passwordModalIcon;}
