@@ -17,3 +17,15 @@ test.describe("Navigate To Signup Page Test", () => {
     });
 
 });
+
+test.describe("Add Single Featured Product To Cart Tests", () => {
+
+    // Test 009 -> add single featured product ("Dell XPS 13 (2021) Laptop") to cart test (as a guest)
+    test("Add Single Featured Product To Cart Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add single featured product ("Dell XPS 13 (2021) Laptop") to cart test (as a guest)
+        await testMethods.addSingleFeaturedProductToCartTest(page);
+    });
+
+});

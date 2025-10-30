@@ -7,7 +7,7 @@ class ShoppingCartModal extends BasePage{
     constructor(page) {
         super(page);
 
-        /shopping cart modal web elements
+        //shopping cart modal web elements
         this._shoppingCartModalIcon = page.locator("//span[@class='anticon anticon-shopping-cart text-xl mr-2']");
         this._shoppingCartModalTitle = page.locator("//h2[@class='text-xl font-semibold']");
         this._shoppingCartModalProductCounter = page.locator("//span[@class='ml-2 bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-sm']");
@@ -32,6 +32,9 @@ class ShoppingCartModal extends BasePage{
         this._shoppingCartModalViewCartButton = page.locator("//button[@data-testid='view-cart-button']");
 
     }
+
+    //click "View Cart" button method
+    async clickViewCartButton(){await this._shoppingCartModalViewCartButton.click();}
 
     //shopping cart modal product data getters
     async getShoppingCartModalProductName(){

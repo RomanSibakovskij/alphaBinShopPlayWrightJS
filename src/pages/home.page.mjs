@@ -65,6 +65,18 @@ class HomePage extends BasePage{
 
     }
 
+    //click featured product scroll left button method
+    async clickFeaturedProductScrollLeftBtn(){await this._homePageFeaturedProductsScrollLeftBtn.click();}
+
+    //click set featured product "Add to Cart" button method
+    async clickAddSetFeaturedProductToCartBtn(index){
+        const addToCartBtn = this._homePageFeaturedProductAddToCartBtnElements.nth(index);
+        //wait for the button to be attached in the DOM
+        await addToCartBtn.waitFor({ state: 'attached' });
+        //click via JavaScript executor (common click causes a glitch loop, hover doesn't work)
+        await addToCartBtn.evaluate(button => button.click());
+    }
+
     //home page product data getters
     //featured products section
     //list elements
