@@ -240,4 +240,18 @@ test.describe("Invalid Add User Address Tests - Too Long Singular Input", () => 
         await testMethods.invalidAddUserAddressTooLongEmailTest(page);
     });
 
+    // Test 007s -> invalid add user address test - too long address street (100 chars) (the error wasn't triggered, test has failed)
+    test("Invalid Add User Address Test - Too Long Street", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - too long address street (100 chars)
+        await testMethods.invalidAddUserAddressTooLongStreetTest(page);
+    });
+
 });
