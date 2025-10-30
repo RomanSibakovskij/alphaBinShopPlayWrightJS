@@ -22,4 +22,18 @@ test.describe("Invalid Add User Address Tests - No Singular Input", () => {
         await testMethods.invalidAddUserAddressNoFullNameTest(page);
     });
 
+    // Test 007d -> invalid add user address test - no address email
+    test("Invalid Add User Address Test - No Email", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - no address email
+        await testMethods.invalidAddUserAddressNoEmailTest(page);
+    });
+
 });

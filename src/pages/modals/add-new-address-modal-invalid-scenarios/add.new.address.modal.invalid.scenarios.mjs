@@ -19,6 +19,7 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
 
         //invalid user address input data - no singular input
         this._noAddressFullName = "";
+        this._noAddressEmail = "";
 
     }
 
@@ -27,6 +28,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const noNewAddressFullName = this._noAddressFullName;
         Logger.info("No new user address full name: " + noNewAddressFullName);
         await this._addNewAddressModalFullNameInputField.fill(noNewAddressFullName);
+    }
+    async inputNoNewAddressEmailIntoEmailInputField(){
+        const noNewAddressEmail = this._noAddressEmail;
+        Logger.info("No new user address email: " + noNewAddressEmail);
+        await this._addNewAddressModalEmailInputField.fill(noNewAddressEmail);
     }
 
 }
