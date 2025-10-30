@@ -107,3 +107,21 @@ test.describe("Invalid Add User Address Tests - No Singular Input", () => {
     });
 
 });
+
+test.describe("Invalid Add User Address Tests - Too Short Singular Input", () => {
+
+    // Test 007j -> invalid add user address test - too short address full name (3 chars) (the error wasn't triggered, test has failed)
+    test("Invalid Add User Address Test - Too Short Full Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - too short address full name (3 chars)
+        await testMethods.invalidAddUserAddressTooShortFullNameTest(page);
+    });
+
+});

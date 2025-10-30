@@ -26,6 +26,9 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._noAddressCountry = "";
         this._noAddressPostCode = "";
 
+        //invalid user address input data - too short singular input
+        this._tooShortAddressFullName = "R S"; //3 chars
+
     }
 
     //invalid new address data input methods - no singular input
@@ -63,6 +66,13 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const noNewAddressPostCode = this._noAddressPostCode;
         Logger.info("No new user address post code: " + noNewAddressPostCode);
         await this._addNewAddressModalPostCodeInputField.fill(noNewAddressPostCode);
+    }
+
+    //invalid new address data input methods - too short singular input
+    async inputTooShortNewAddressFullNameIntoFullNameInputField(){
+        const tooShortNewAddressFullName = this._tooShortAddressFullName;
+        Logger.info("Too short new user address full name: " + tooShortNewAddressFullName);
+        await this._addNewAddressModalFullNameInputField.fill(tooShortNewAddressFullName);
     }
 
 }
