@@ -112,4 +112,16 @@ test.describe("Invalid User Login Tests - Invalid Singular Input", () => {
         await testMethods.invalidUserLoginInvalidEmailFormatTest(page)
     });
 
+    // Test 003g -> invalid user login test - invalid login password
+    test("Invalid User Login Test - Invalid Login Password", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //invalid user login test - invalid login password
+        await testMethods.invalidUserLoginInvalidPasswordTest(page)
+    });
+
 });
