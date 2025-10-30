@@ -42,6 +42,7 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._tooLongAddressFullName = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Rsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 201 chars
         this._tooLongAddressEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); // 100 chars -> name, domain
         this._tooLongAddressStreet = testDataGenerator.generateRandomAddress(94); // 100 chars
+        this._tooLongAddressCity = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
 
     }
 
@@ -134,6 +135,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const tooLongNewAddressStreet = this._tooLongAddressStreet;
         Logger.info("Too long new user address street: " + tooLongNewAddressStreet);
         await this._addNewAddressModalStreetInputField.fill(tooLongNewAddressStreet);
+    }
+    async inputTooLongNewAddressCityIntoCityInputField(){
+        const tooLongNewAddressCity = this._tooLongAddressCity;
+        Logger.info("Too long new user address city: " + tooLongNewAddressCity);
+        await this._addNewAddressModalCityInputField.fill(tooLongNewAddressCity);
     }
 
 }

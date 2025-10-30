@@ -4169,6 +4169,108 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid Add User Address Test Result - Too Long Street.png", fullPage: true });
     }
 
+    //invalid add user address test method - too long address city (100 chars)
+    async invalidAddUserAddressTooLongCityTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const accountDashboardPage = new AccountDashboardPage(page);
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        const addressesDashboardModal = new AddressesDashboardModal(page);
+        const addressesDashboardModalWebElementAsserts = new AddressesDashboardModalWebElementAsserts();
+        const addressesDashboardModalTextElementAsserts = new AddressesDashboardModalTextElementAsserts();
+        const addNewAddressModal = new AddNewAddressModal(page);
+        const addNewAddressModalInvalidScenarios = new AddNewAddressModalInvalidScenarios(page);
+        const addNewAddressModalWebElementAssert = new AddNewAddressModalWebElementAssert();
+        const addNewAddressModalTextElementAsserts = new AddNewAddressModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header "Account" icon button
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4000);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //capture screenshot of the personal info modal display
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display.png", fullPage: true });
+        //click "Addresses" aside navbar link
+        await accountDashboardPage.clickSetAsideAccountNavbarLink(2);
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //addresses dashboard modal web element assert (no addresses)
+        await addressesDashboardModalWebElementAsserts.isAddressesDashboardNoAddressWebElementVisible(page);
+        //addresses dashboard modal text element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalTextElementAsExpected(page);
+        //addresses dashboard modal (no addresses) test element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalNoAddressTextElementAsExpected(page);
+        //capture screenshot of the addresses dashboard modal display (without address)
+        await page.screenshot({ path: "src/tests/screenshots/Addresses Dashboard Modal Display (no addresses).png", fullPage: true });
+        //click "Add New Address" button
+        await addressesDashboardModal.clickAddNewAddressButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //add new address modal web element assert
+        await addNewAddressModalWebElementAssert.isAddNewAddressModalWebElementVisible(page);
+        //add new address modal (upper elements) text element assert
+        await addNewAddressModalTextElementAsserts.isAddNewAddressModalUpperElementTextAsExpected(page);
+        //add new address modal text element assert
+        await addNewAddressModalTextElementAsserts.isAddNewAddressModalTextAsExpected(page);
+        //capture screenshot of the add new address modal display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Add New Address Modal Display Before Data Input.png", fullPage: true });
+        //input valid first name into first name input field
+        await addNewAddressModal.inputNewAddressFullNameIntoFullNameInputField();
+        //input valid email into email input field
+        await addNewAddressModal.inputNewAddressEmailIntoEmailInputField();
+        //input valid street into street input field
+        await addNewAddressModal.inputNewAddressStreetIntoStreetInputField();
+        //input too long city into city input field (100 chars)
+        await addNewAddressModalInvalidScenarios.inputTooLongNewAddressCityIntoCityInputField();
+        //input valid state into state input field
+        await addNewAddressModal.inputNewAddressStateIntoStateInputField();
+        //input valid country into country input field (it's optional)
+        await addNewAddressModal.inputNewAddressCountryIntoCountryInputField();
+        //input valid post code into post code input field
+        await addNewAddressModal.inputNewAddressPostCodeIntoPostCodeInputField();
+        //capture screenshot of the add new address modal display after invalid data input - too long city
+        await page.screenshot({ path: "src/tests/screenshots/Add New Address Modal Display After Invalid Data Input - Too Long City.png", fullPage: true });
+        //click "Save Address" button
+        await addNewAddressModal.clickSaveAddressButton();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3600);
+        //assert the user receives an expected error, throw an error otherwise
+        try {
+            const addNewAddressModalTooShortCityInputError = await addNewAddressModal.getAddNewAddressModalInvalidCredentialsInputErrorMsg();
+            expect(addNewAddressModalTooShortCityInputError).toBe("City is too long");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Add User Address Test Result - Too Long City.png", fullPage: true });
+            throw new Error("The too long address city input error, test has failed.");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add User Address Test Result - Too Long City.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
