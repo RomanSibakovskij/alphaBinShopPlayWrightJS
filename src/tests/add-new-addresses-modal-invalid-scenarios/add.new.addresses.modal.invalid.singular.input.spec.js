@@ -296,4 +296,18 @@ test.describe("Invalid Add User Address Tests - Too Long Singular Input", () => 
         await testMethods.invalidAddUserAddressTooLongCountryTest(page);
     });
 
+    // Test 007w -> invalid add user address test - too long address post code (6 digits) (the error wasn't triggered, test has failed)
+    test("Invalid Add User Address Test - Too Long Post Code", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - too long address post code (6 digits)
+        await testMethods.invalidAddUserAddressTooLongPostCodeTest(page);
+    });
+
 });

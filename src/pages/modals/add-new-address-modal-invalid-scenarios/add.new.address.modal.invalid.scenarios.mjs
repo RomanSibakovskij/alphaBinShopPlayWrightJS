@@ -45,6 +45,7 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._tooLongAddressCity = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
         this._tooLongAddressState = "Gsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
         this._tooLongAddressCountry = "Ssdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
+        this._tooLongAddressPostCode = 564553; // 6 digits
 
     }
 
@@ -152,6 +153,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const tooLongNewAddressCountry = this._tooLongAddressCountry;
         Logger.info("Too long new user address country: " + tooLongNewAddressCountry);
         await this._addNewAddressModalCountryInputField.fill(tooLongNewAddressCountry);
+    }
+    async inputTooLongNewAddressPostCodeIntoPostCodeInputField(){
+        const tooLongNewAddressPostCode = this._tooLongAddressPostCode;
+        Logger.info("Too long new user address post code: " + tooLongNewAddressPostCode);
+        await this._addNewAddressModalPostCodeInputField.fill(String(tooLongNewAddressPostCode));
     }
 
 }
