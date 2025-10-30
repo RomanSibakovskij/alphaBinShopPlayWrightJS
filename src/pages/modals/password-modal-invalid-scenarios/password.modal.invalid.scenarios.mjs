@@ -23,6 +23,9 @@ class PasswordModalInvalidScenarios extends BasePage{
         this._tooLongNewPassword = "DDFD@#$cffds^%&dgerder$#565432Wefrt"; //35 chars
         this._tooLongConfirmPassword = "DDFD@#$cffds^%&dgerder$#565432Wefrt";  //35 chars
 
+        //invalid password input data - invalid singular input
+        this._mismatchingConfirmPassword = "^&^445vcxvxcDFD";
+
     }
 
     //invalid password input data methods - no singular input
@@ -54,6 +57,13 @@ class PasswordModalInvalidScenarios extends BasePage{
         const tooLongConfirmPassword = this._tooLongConfirmPassword;
         Logger.info("Too long matching user confirm password: " + tooLongConfirmPassword);
         await this._passwordModalConfirmPasswordInputField.fill(tooLongConfirmPassword);
+    }
+
+    //invalid password input data methods - invalid singular input
+    async inputMismatchingConfirmPasswordIntoConfirmPasswordInputField(){
+        const mismatchingConfirmPassword = this._mismatchingConfirmPassword;
+        Logger.info("Mismatching user confirm password: " + mismatchingConfirmPassword);
+        await this._passwordModalConfirmPasswordInputField.fill(mismatchingConfirmPassword);
     }
 
 }

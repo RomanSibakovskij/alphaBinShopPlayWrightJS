@@ -77,3 +77,21 @@ test.describe("Invalid Edit User Account Password Test - Too Long Input", () => 
     });
 
 });
+
+test.describe("Invalid Edit User Account Password Test - Invalid Singular Input", () => {
+
+    // Test 006d -> invalid edit user account password test - mismatching confirm password
+    test("Invalid Edit User Account Password Test - Mismatching Confirm Password", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid edit user account password test - mismatching confirm password
+        await testMethods.invalidEditUserAccountPasswordMismatchingConfirmPasswordTest(page);
+    });
+
+});
