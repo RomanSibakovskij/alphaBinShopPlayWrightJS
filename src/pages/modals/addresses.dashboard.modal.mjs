@@ -23,6 +23,11 @@ class AddressesDashboardModal extends BasePage{
         this._addressesDashModalAddressIconElements = page.locator("//p[@data-testid='address-details']/span[@role='img']");
         this._addressesDashModalAddressDataElements = page.locator("//p[@data-testid='address-details']/span[2]");
         this._addressesDashModalAddressEmailElements = page.locator("//p[@class='text-gray-500 text-sm']");
+        //delete address pop-up elements
+        this._deleteAddressPopUpTitle = page.locator("//h3[@data-testid='delete-address-title']");
+        this._deleteAddressPopUpSubtext = page.locator("//p[@data-testid='delete-address-description']");
+        this._deleteAddressPopUpCancelButton = page.locator("//button[@data-testid='delete-address-cancel-button']");
+        this._deleteAddressPopUpDeleteButton = page.locator("//button[@data-testid='delete-address-delete-button']");
 
     }
 
@@ -31,6 +36,12 @@ class AddressesDashboardModal extends BasePage{
 
     //click set "Edit Address" button method
     async clickSetEditAddressButton(index){await this._addressesDashModalEditAddressBtnElements.nth(index).click();}
+
+    //click set "Delete Address" button method
+    async clickSetDeleteAddressButton(index){await this._addressesDashModalDeleteAddressBtnElements.nth(index).click();}
+
+    //click "Delete" button (delete address pop-up) method
+    async clickDeleteButton(){await this._deleteAddressPopUpDeleteButton.click();}
 
     //addresses dashboard address data element getters
     async getAddressesDashboardModalAddressFullName(){
@@ -67,6 +78,11 @@ class AddressesDashboardModal extends BasePage{
     async getAddressesDashboardModalNoAddressTitle(){return await this._addressesDashModalNoAddressTitle.innerText();}
     async getAddressesDashboardModalNoAddressSubtxt(){return await this._addressesDashModalNoAddressSubtext.innerText();}
     async getAddressesDashboardModalAddFirstAddressBtnText(){return await this._addressesDashModalAddFirstAddressButton.innerText();}
+    //delete pop-up elements
+    async getDeleteAddressPopUpTitle(){return await this._deleteAddressPopUpTitle.innerText();}
+    async getDeleteAddressPopUpSubtext(){return await this._deleteAddressPopUpSubtext.innerText();}
+    async getDeleteAddressPopUpCancelBtnText(){return await this._deleteAddressPopUpCancelButton.innerText();}
+    async getDeleteAddressPopUpDeleteBtnText(){return await this._deleteAddressPopUpDeleteButton.innerText();}
 
     //addresses dashboard modal web element getters
     get addressesDashboardModalIcon(){return this._addressesDashModalIcon;}
@@ -84,6 +100,11 @@ class AddressesDashboardModal extends BasePage{
     get addressesDashboardModalAddressIconElement(){return this._addressesDashModalAddressIconElements;}
     get addressesDashboardModalAddressDataElement(){return this._addressesDashModalAddressDataElements;}
     get addressesDashboardModalAddressEmailElement(){return this._addressesDashModalAddressEmailElements;}
+    //delete address pop-up elements
+    get deleteAddressPopUpTitle(){return this._deleteAddressPopUpTitle;}
+    get deleteAddressPopUpSubtext(){return this._deleteAddressPopUpSubtext;}
+    get deleteAddressPopUpCancelButton(){return this._deleteAddressPopUpCancelButton;}
+    get deleteAddressPopUpDeleteButton(){return this._deleteAddressPopUpDeleteButton;}
 
 }
 export {AddressesDashboardModal};

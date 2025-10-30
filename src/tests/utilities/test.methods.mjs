@@ -1845,9 +1845,9 @@ class TestMethods{
         await passwordModal.clickUpdatePasswordButton();
         //wait for element to load
         await page.waitForTimeout(2700);
-        //assert the user receives an expected error message
+        //assert the user receives an expected success message
         const passwordUpdateSuccessMsg = await personalInfoModal.getPersonalInfoModalMsgBoxText();
-        expect(passwordUpdateSuccessMsg).toBe("Password updated successfully")
+        expect(passwordUpdateSuccessMsg).toBe("Password updated successfully");
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Valid Edit User Account Password Test Result.png", fullPage: true });
     }
@@ -2167,6 +2167,7 @@ class TestMethods{
         const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
         const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
         const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModal = new PersonalInfoModal(page);
         const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
         const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
         const addressesDashboardModal = new AddressesDashboardModal(page);
@@ -2252,6 +2253,9 @@ class TestMethods{
         await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalTextElementAsExpected(page);
         //log addresses dashboard modal displayed data
         await addressesDashboardModalDataLogger.logAddressDashModalAddressData(page);
+        //assert the user receives an expected success message
+        const addressAdditionSuccessMsg = await personalInfoModal.getPersonalInfoModalMsgBoxText();
+        expect(addressAdditionSuccessMsg).toBe("Address added successfully");
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Valid Add User Address Test Result.png", fullPage: true });
     }
@@ -2262,6 +2266,7 @@ class TestMethods{
         const generalPageTextElementAssert = new GeneralPageTextElementAssert();
         const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
         const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const personalInfoModal = new PersonalInfoModal(page);
         const addressesDashboardModal = new AddressesDashboardModal(page);
         const addressesDashboardModalWebElementAsserts = new AddressesDashboardModalWebElementAsserts();
         const addressesDashboardModalTextElementAsserts = new AddressesDashboardModalTextElementAsserts();
@@ -2317,6 +2322,9 @@ class TestMethods{
         await addNewAddressModal.clickSaveAddressButton();
         //wait for element to load (due to network issues, time is extended)
         await page.waitForTimeout(5000);
+        //assert the user receives an expected success message
+        const addressAdditionSuccessMsg = await personalInfoModal.getPersonalInfoModalMsgBoxText();
+        expect(addressAdditionSuccessMsg).toBe("Address added successfully");
         //addresses dashboard modal web element assert
         await addressesDashboardModalWebElementAsserts.isAddressesDashboardModalWebElementVisible(page);
         //addresses dashboard modal text element assert
@@ -2398,6 +2406,59 @@ class TestMethods{
         await addressesDashboardModalDataLogger.logAddressDashModalAddressData(page);
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Update User Address Test Result.png", fullPage: true });
+    }
+
+    //remove user address test
+
+    //remove user address test method
+    async removeUserAddressTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const personalInfoModal = new PersonalInfoModal(page);
+        const addressesDashboardModal = new AddressesDashboardModal(page);
+        const addressesDashboardModalWebElementAsserts = new AddressesDashboardModalWebElementAsserts();
+        const addressesDashboardModalTextElementAsserts = new AddressesDashboardModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //addresses dashboard modal web element assert
+        await addressesDashboardModalWebElementAsserts.isAddressesDashboardModalWebElementVisible(page);
+        //addresses dashboard modal text element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalTextElementAsExpected(page);
+        //capture screenshot of the addresses dashboard modal display
+        await page.screenshot({ path: "src/tests/screenshots/Addresses Dashboard Modal Display.png", fullPage: true });
+        //click set delete address button
+        await addressesDashboardModal.clickSetDeleteAddressButton(0);
+        //wait for element to load
+        await page.waitForTimeout(1950);
+        //addresses dashboard modal delete pop-up web element assert
+        await addressesDashboardModalWebElementAsserts.isAddressesDashboardDeletePopUpWebElementVisible(page);
+        //addresses dashboard modal delete pop-up text element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalDeletePopUpTextElementAsExpected(page);
+        //capture screenshot of the addresses dashboard modal delete address pop-up display
+        await page.screenshot({ path: "src/tests/screenshots/Addresses Dashboard Modal Delete Address Pop Up Display.png", fullPage: true });
+        //click "Delete" button
+        await addressesDashboardModal.clickDeleteButton();
+        //wait for element to load
+        await page.waitForTimeout(3200);
+        //addresses dashboard modal web element assert (no addresses)
+        await addressesDashboardModalWebElementAsserts.isAddressesDashboardNoAddressWebElementVisible(page);
+        //addresses dashboard modal text element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalTextElementAsExpected(page);
+        //addresses dashboard modal (no addresses) test element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalNoAddressTextElementAsExpected(page);
+        //assert the user receives an expected success message
+        const addressRemovalSuccessMsg = await personalInfoModal.getPersonalInfoModalMsgBoxText();
+        expect(addressRemovalSuccessMsg).toBe("Address deleted successfully");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Remove User Address Test Result.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

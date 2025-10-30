@@ -59,3 +59,23 @@ test.describe("Update User Address Test", () => {
     });
 
 });
+
+test.describe("Remove User Address Test", () => {
+
+    // Test 008 -> remove user address test
+    test("Remove User Address Test", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address test
+        await testMethods.validAddUserAddressTest(page);
+        //remove user address test
+        await testMethods.removeUserAddressTest(page);
+    });
+
+});
