@@ -44,6 +44,7 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._tooLongAddressStreet = testDataGenerator.generateRandomAddress(94); // 100 chars
         this._tooLongAddressCity = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
         this._tooLongAddressState = "Gsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
+        this._tooLongAddressCountry = "Ssdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
 
     }
 
@@ -146,6 +147,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const tooLongNewAddressState = this._tooLongAddressState;
         Logger.info("Too long new user address state: " + tooLongNewAddressState);
         await this._addNewAddressModalStateInputField.fill(tooLongNewAddressState);
+    }
+    async inputTooLongNewAddressCountryIntoCountryInputField(){
+        const tooLongNewAddressCountry = this._tooLongAddressCountry;
+        Logger.info("Too long new user address country: " + tooLongNewAddressCountry);
+        await this._addNewAddressModalCountryInputField.fill(tooLongNewAddressCountry);
     }
 
 }
