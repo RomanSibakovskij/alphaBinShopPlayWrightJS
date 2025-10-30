@@ -50,4 +50,18 @@ test.describe("Invalid Add User Address Tests - No Singular Input", () => {
         await testMethods.invalidAddUserAddressNoStreetTest(page);
     });
 
+    // Test 007f -> invalid add user address test - no address city
+    test("Invalid Add User Address Test - No City", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - no address city
+        await testMethods.invalidAddUserAddressNoCityTest(page);
+    });
+
 });

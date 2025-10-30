@@ -21,6 +21,7 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._noAddressFullName = "";
         this._noAddressEmail = "";
         this._noAddressStreet = "";
+        this._noAddressCity = "";
 
     }
 
@@ -39,6 +40,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const noNewAddressStreet = this._noAddressStreet;
         Logger.info("No new user address street: " + noNewAddressStreet);
         await this._addNewAddressModalStreetInputField.fill(noNewAddressStreet);
+    }
+    async inputNoNewAddressCityIntoCityInputField(){
+        const noNewAddressCity = this._noAddressCity;
+        Logger.info("No new user address city: " + noNewAddressCity);
+        await this._addNewAddressModalCityInputField.fill(noNewAddressCity);
     }
 
 }
