@@ -35,6 +35,7 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._tooShortAddressStreet = "4 F"; //3 chars
         this._tooShortAddressCity = "X"; // 1 char
         this._tooShortAddressState = "W"; // 1 char
+        this._tooShortAddressCountry = "C"; // 1 char
 
     }
 
@@ -100,6 +101,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const tooShortNewAddressState = this._tooShortAddressState;
         Logger.info("Too short new user address state: " + tooShortNewAddressState);
         await this._addNewAddressModalStateInputField.fill(tooShortNewAddressState);
+    }
+    async inputTooShortNewAddressCountryIntoCountryInputField(){
+        const tooShortNewAddressCountry = this._tooShortAddressCountry;
+        Logger.info("Too short new user address country: " + tooShortNewAddressCountry);
+        await this._addNewAddressModalCountryInputField.fill(tooShortNewAddressCountry);
     }
 
 }
