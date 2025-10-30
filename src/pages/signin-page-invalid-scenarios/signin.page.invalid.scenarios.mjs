@@ -14,6 +14,7 @@ class SignInPageInvalidScenarios extends BasePage{
 
         //invalid signin data - no singular input
         this._noLoginEmail = "";
+        this._noLoginPassword = "";
 
     }
 
@@ -22,6 +23,11 @@ class SignInPageInvalidScenarios extends BasePage{
         const noLoginEmail = this._noLoginEmail;
         Logger.info("No user login email: " + noLoginEmail);
         await this._signInPageEmailInputField.fill(noLoginEmail);
+    }
+    async inputNoLoginPasswordIntoPasswordInputField(){
+        const noLoginPassword = this._noLoginPassword;
+        Logger.info("No user login password: " + noLoginPassword);
+        await this._signInPagePasswordInputField.fill(noLoginPassword);
     }
 
 }

@@ -72,4 +72,16 @@ test.describe("Invalid User Login Tests - No Singular Input", () => {
         await testMethods.invalidUserLoginNoEmailTest(page)
     });
 
+    // Test 003d -> invalid user login test - no login password
+    test("Invalid User Login Test - No Login Password", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //invalid user login test - no login password
+        await testMethods.invalidUserLoginNoPasswordTest(page)
+    });
+
 });

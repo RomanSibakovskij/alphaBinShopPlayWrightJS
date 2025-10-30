@@ -1099,6 +1099,43 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid User Login Test Result - No Login Email.png", fullPage: true });
     }
 
+    //invalid user login test method - no login password
+    async invalidUserLoginNoPasswordTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const signInPage = new SignInPage(page);
+        const signInPageInvalidScenarios = new SignInPageInvalidScenarios(page);
+        const signInPageWebElementAssert = new SignInPageWebElementAssert();
+        const signInPageTextElementAssert = new SignInPageTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //sign-in page web element assert
+        await signInPageWebElementAssert.isSignInPageWebElementVisible(page);
+        //sign-in page text element assert
+        await signInPageTextElementAssert.isSignInPageTextElementAsExpected(page);
+        //capture screenshot of the sign-in page display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Sign In Page Display Before Data Input.png", fullPage: true });
+        //input valid login email into sign-in email input field
+        await signInPage.inputValidLoginEmailIntoEmailInputField();
+        //don't input login password into sign-in password input field
+        await signInPageInvalidScenarios.inputNoLoginPasswordIntoPasswordInputField();
+        //click "View Password" button
+        await signInPage.clickViewPasswordButton();
+        //capture screenshot of the sign-in page display after invalid data input - no login password
+        await page.screenshot({ path: "src/tests/screenshots/Sign In Page Display After Invalid Data Input - No Login Password.png", fullPage: true });
+        //click "Sign In" button
+        await signInPage.clickSignInButton();
+        //wait for element to load
+        await page.waitForTimeout(2000);
+        //assert the user gets an expected user message
+        const signInPageMissingPasswordInputError = await signInPage.getSignInPageInvalidSingularInputErrorMsg();
+        expect(signInPageMissingPasswordInputError).toBe("Password is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid User Login Test Result - No Login Password.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //valid edit account info test
