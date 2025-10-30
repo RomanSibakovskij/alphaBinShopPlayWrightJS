@@ -311,3 +311,21 @@ test.describe("Invalid Add User Address Tests - Too Long Singular Input", () => 
     });
 
 });
+
+test.describe("Invalid Add User Address Tests - Invalid Singular Input Format", () => {
+
+    // Test 007x -> invalid add user address test - invalid address full name format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Add User Address Test - Invalid Full Name Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - invalid address full name format (special symbols only)
+        await testMethods.invalidAddUserAddressInvalidFullNameFormatTest(page);
+    });
+
+});
