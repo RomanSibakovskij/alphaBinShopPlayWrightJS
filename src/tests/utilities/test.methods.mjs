@@ -2623,6 +2623,110 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Valid Add User Address Test Result.png", fullPage: true });
     }
 
+//valid add user address (without email) test method
+    async validAddUserAddressWithoutEmailTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const accountDashboardPage = new AccountDashboardPage(page);
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModal = new PersonalInfoModal(page);
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        const addressesDashboardModal = new AddressesDashboardModal(page);
+        const addressesDashboardModalWebElementAsserts = new AddressesDashboardModalWebElementAsserts();
+        const addressesDashboardModalTextElementAsserts = new AddressesDashboardModalTextElementAsserts();
+        const addressesDashboardModalDataLogger = new AddressesDashboardModalDataLogger();
+        const addNewAddressModal = new AddNewAddressModal(page);
+        const addNewAddressModalWebElementAssert = new AddNewAddressModalWebElementAssert();
+        const addNewAddressModalTextElementAsserts = new AddNewAddressModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header "Account" icon button
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4000);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //capture screenshot of the personal info modal display
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display.png", fullPage: true });
+        //click "Addresses" aside navbar link
+        await accountDashboardPage.clickSetAsideAccountNavbarLink(2);
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //addresses dashboard modal web element assert (no addresses)
+        await addressesDashboardModalWebElementAsserts.isAddressesDashboardNoAddressWebElementVisible(page);
+        //addresses dashboard modal text element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalTextElementAsExpected(page);
+        //addresses dashboard modal (no addresses) test element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalNoAddressTextElementAsExpected(page);
+        //capture screenshot of the addresses dashboard modal display (without address)
+        await page.screenshot({ path: "src/tests/screenshots/Addresses Dashboard Modal Display (no addresses).png", fullPage: true });
+        //click "Add New Address" button
+        await addressesDashboardModal.clickAddNewAddressButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //add new address modal web element assert
+        await addNewAddressModalWebElementAssert.isAddNewAddressModalWebElementVisible(page);
+        //add new address modal (upper elements) text element assert
+        await addNewAddressModalTextElementAsserts.isAddNewAddressModalUpperElementTextAsExpected(page);
+        //add new address modal text element assert
+        await addNewAddressModalTextElementAsserts.isAddNewAddressModalTextAsExpected(page);
+        //capture screenshot of the add new address modal display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Add New Address Modal Display Before Data Input.png", fullPage: true });
+        //input valid first name into first name input field
+        await addNewAddressModal.inputNewAddressFullNameIntoFullNameInputField();
+        //input current user email into email input field
+        await addNewAddressModal.inputOldAddressEmailIntoEmailInputField();
+        //input valid street into street input field
+        await addNewAddressModal.inputNewAddressStreetIntoStreetInputField();
+        //input valid city into city input field
+        await addNewAddressModal.inputNewAddressCityIntoCityInputField();
+        //input valid state into state input field
+        await addNewAddressModal.inputNewAddressStateIntoStateInputField();
+        //input valid country into country input field (it's optional)
+        await addNewAddressModal.inputNewAddressCountryIntoCountryInputField();
+        //input valid post code into post code input field
+        await addNewAddressModal.inputNewAddressPostCodeIntoPostCodeInputField();
+        //capture screenshot of the add new address modal display after valid data input
+        await page.screenshot({ path: "src/tests/screenshots/Add New Address Modal Display After Valid Data Input.png", fullPage: true });
+        //click "Save Address" button
+        await addNewAddressModal.clickSaveAddressButton();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(5000);
+        //addresses dashboard modal web element assert
+        await addressesDashboardModalWebElementAsserts.isAddressesDashboardModalWebElementVisible(page);
+        //addresses dashboard modal text element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalTextElementAsExpected(page);
+        //log addresses dashboard modal displayed data
+        await addressesDashboardModalDataLogger.logAddressDashModalAddressData(page);
+        //assert the user receives an expected success message
+        const addressAdditionSuccessMsg = await personalInfoModal.getPersonalInfoModalMsgBoxText();
+        expect(addressAdditionSuccessMsg).toBe("Address added successfully");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Valid Add User Address (Without Changing Email) Test Result.png", fullPage: true });
+    }
+
     //valid add second user address test method
     async validAddSecondUserAddressTest(page){
         const generalPageWebElementAssert = new GeneralPageWebElementAssert();
@@ -5734,6 +5838,84 @@ class TestMethods{
         expect(expectedCartPageURL).toBe(actualCartPageURL);
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Add Single Featured Product To Cart Test Result (guest).png", fullPage: true });
+    }
+
+    //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test method (as a registered user)
+    async addSingleFeaturedProductToCartRegUserTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePage = new HomePage(page);
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(0);
+        //wait for element to load
+        await page.waitForTimeout(2000);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click set featured product ("Epson EF-100 Smart Portable Projector") add to cart button
+        await homePage.clickAddSetFeaturedProductToCartBtn(3);
+        //click header "hopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct product has been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const actualFeaturedProductName = productNames[0];
+        expect(actualFeaturedProductName).toBe("Epson EF-100 Smart Portable Projector");
+        //assert product quantity count stays constant
+        const productCounterCount = await shoppingCartModal.getShoppingCartModalProductCount();
+        const productQuantity = await shoppingCartModal.getShoppingCartModalProductQty();
+        const totalQty = productQuantity.reduce((sum, qty) => sum + Number(qty), 0)
+        expect(Number(productCounterCount)).toBe(totalQty);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (single Epson EF-100 Smart Portable Projector).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Single Featured Product To Cart Test Result (registered user).png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
