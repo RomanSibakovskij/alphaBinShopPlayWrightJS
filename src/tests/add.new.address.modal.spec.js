@@ -39,3 +39,23 @@ test.describe("Valid Add User Address Tests", () => {
     });
 
 });
+
+test.describe("Update User Address Test", () => {
+
+    // Test 007b -> update user address test
+    test("Update User Address Test", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address test
+        await testMethods.validAddUserAddressTest(page);
+        //update user address test
+        await testMethods.updateUserAddressTest(page);
+    });
+
+});

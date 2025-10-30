@@ -29,6 +29,9 @@ class AddressesDashboardModal extends BasePage{
     //click "Add New Address" button method
     async clickAddNewAddressButton(){await this._addressesDashModalAddNewAddressButton.click();}
 
+    //click set "Edit Address" button method
+    async clickSetEditAddressButton(index){await this._addressesDashModalEditAddressBtnElements.nth(index).click();}
+
     //addresses dashboard address data element getters
     async getAddressesDashboardModalAddressFullName(){
         const elements = await this._addressesDashModalAddressFullNameElements.all();
