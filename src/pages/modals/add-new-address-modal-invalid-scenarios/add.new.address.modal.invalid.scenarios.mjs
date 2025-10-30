@@ -40,6 +40,8 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
 
         //invalid user address input data - too long singular input
         this._tooLongAddressFullName = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Rsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 201 chars
+        this._tooLongAddressEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); // 100 chars -> name, domain
+
 
     }
 
@@ -122,6 +124,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const tooLongNewAddressFullName = this._tooLongAddressFullName;
         Logger.info("Too long new user address full name: " + tooLongNewAddressFullName);
         await this._addNewAddressModalFullNameInputField.fill(tooLongNewAddressFullName);
+    }
+    async inputTooLongNewAddressEmailIntoEmailInputField(){
+        const tooLongNewAddressEmail = this._tooLongAddressEmail;
+        Logger.info("Too long new user address email: " + tooLongNewAddressEmail);
+        await this._addNewAddressModalEmailInputField.fill(tooLongNewAddressEmail);
     }
 
 }
