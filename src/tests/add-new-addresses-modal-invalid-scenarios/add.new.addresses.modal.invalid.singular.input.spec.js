@@ -138,4 +138,18 @@ test.describe("Invalid Add User Address Tests - Too Short Singular Input", () =>
         await testMethods.invalidAddUserAddressTooShortEmailTest(page);
     });
 
+    // Test 007l -> invalid add user address test - too short address street (3 chars) (the error wasn't triggered, test has failed)
+    test("Invalid Add User Address Test - Too Short Street", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - too short address street (3 chars)
+        await testMethods.invalidAddUserAddressTooShortStreetTest(page);
+    });
+
 });
