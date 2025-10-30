@@ -125,3 +125,21 @@ test.describe("Invalid User Login Tests - Invalid Singular Input", () => {
     });
 
 });
+
+test.describe("Valid User Logout Test", () => {
+
+    // Test 004 -> valid user logout test
+    test("Valid User Logout Test", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid user logout test
+        await testMethods.validUserLogoutTest(page);
+    });
+
+});
