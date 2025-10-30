@@ -18,6 +18,7 @@ class SignInPageInvalidScenarios extends BasePage{
 
         //invalid signin data - invalid singular input
         this._invalidLoginEmail = "dfgfdgd@fakemail.com";
+        this._invalidLoginEmailFormat = "rtrytfakemail.com"; //missing '@'
 
     }
 
@@ -38,6 +39,11 @@ class SignInPageInvalidScenarios extends BasePage{
         const invalidLoginEmail = this._invalidLoginEmail;
         Logger.info("Invalid user login email: " + invalidLoginEmail);
         await this._signInPageEmailInputField.fill(invalidLoginEmail);
+    }
+    async inputInvalidLoginEmailFormatIntoEmailInputField(){
+        const invalidLoginEmailFormat = this._invalidLoginEmailFormat;
+        Logger.info("Invalid user login email format: " + invalidLoginEmailFormat);
+        await this._signInPageEmailInputField.fill(invalidLoginEmailFormat);
     }
 
 }

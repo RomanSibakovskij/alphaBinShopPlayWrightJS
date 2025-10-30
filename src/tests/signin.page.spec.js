@@ -100,4 +100,16 @@ test.describe("Invalid User Login Tests - Invalid Singular Input", () => {
         await testMethods.invalidUserLoginInvalidEmailTest(page)
     });
 
+    // Test 003f -> invalid user login test - invalid login email format (missing '@')
+    test("Invalid User Login Test - Invalid Login Email Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //invalid user login test - invalid login email format (missing '@')
+        await testMethods.invalidUserLoginInvalidEmailFormatTest(page)
+    });
+
 });
