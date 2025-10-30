@@ -192,4 +192,18 @@ test.describe("Invalid Edit User Account Info Tests - Invalid Singular Input For
         await testMethods.invalidEditUserAccountInfoInvalidEditedLastNameFormatTest(page);
     });
 
+    // Test 005l -> invalid edit user account info test - invalid edited phone (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Edit User Account Info Test - Invalid Edited Phone Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page);
+        //invalid edit user account info test - invalid edited phone (special symbols only)
+        await testMethods.invalidEditUserAccountInfoInvalidEditedPhoneFormatTest(page);
+    });
+
 });
