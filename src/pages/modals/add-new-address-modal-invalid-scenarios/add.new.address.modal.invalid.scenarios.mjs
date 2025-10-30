@@ -1,6 +1,7 @@
 "use strict"
 
 import {BasePage} from "../../utilities/base.page.mjs";
+import {Logger} from "../../utilities/logger.mjs";
 
 class AddNewAddressModalInvalidScenarios extends BasePage{
 
@@ -16,9 +17,17 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._addNewAddressModalCountryInputField = page.locator("//input[@data-testid='country-input']");
         this._addNewAddressModalPostCodeInputField = page.locator("//input[@data-testid='zip-code-input']");
 
+        //invalid user address input data - no singular input
+        this._noAddressFullName = "";
+
     }
 
-    
+    //invalid new address data input methods - no singular input
+    async inputNoNewAddressFullNameIntoFullNameInputField(){
+        const noNewAddressFullName = this._noAddressFullName;
+        Logger.info("No new user address full name: " + noNewAddressFullName);
+        await this._addNewAddressModalFullNameInputField.fill(noNewAddressFullName);
+    }
 
 }
 export {AddNewAddressModalInvalidScenarios};
