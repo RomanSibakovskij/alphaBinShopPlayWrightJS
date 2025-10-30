@@ -22,6 +22,7 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._noAddressEmail = "";
         this._noAddressStreet = "";
         this._noAddressCity = "";
+        this._noAddressState = "";
 
     }
 
@@ -45,6 +46,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const noNewAddressCity = this._noAddressCity;
         Logger.info("No new user address city: " + noNewAddressCity);
         await this._addNewAddressModalCityInputField.fill(noNewAddressCity);
+    }
+    async inputNoNewAddressStateIntoStateInputField(){
+        const noNewAddressState = this._noAddressState;
+        Logger.info("No new user address state: " + noNewAddressState);
+        await this._addNewAddressModalStateInputField.fill(noNewAddressState);
     }
 
 }
