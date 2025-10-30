@@ -38,6 +38,9 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         this._tooShortAddressCountry = "C"; // 1 char
         this._tooShortAddressPostCode = 4536; // 4 digits
 
+        //invalid user address input data - too long singular input
+        this._tooLongAddressFullName = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Rsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 201 chars
+
     }
 
     //invalid new address data input methods - no singular input
@@ -112,6 +115,13 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const tooShortNewAddressPostCode = this._tooShortAddressPostCode;
         Logger.info("Too short new user address post code: " + tooShortNewAddressPostCode);
         await this._addNewAddressModalPostCodeInputField.fill(String(tooShortNewAddressPostCode));
+    }
+
+    //invalid new address data input methods - too long singular input
+    async inputTooLongNewAddressFullNameIntoFullNameInputField(){
+        const tooLongNewAddressFullName = this._tooLongAddressFullName;
+        Logger.info("Too long new user address full name: " + tooLongNewAddressFullName);
+        await this._addNewAddressModalFullNameInputField.fill(tooLongNewAddressFullName);
     }
 
 }
