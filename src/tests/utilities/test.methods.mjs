@@ -24,15 +24,23 @@ import {AccountDashboardPageTextElementAssert} from "../text-element-asserts/acc
 
 import {PersonalInfoModal} from "../../pages/modals/personal.info.modal.mjs";
 import {PasswordModal} from "../../pages/modals/password.modal.mjs";
+import {AddressesDashboardModal} from "../../pages/modals/addresses.dashboard.modal.mjs";
+import {AddNewAddressModal} from "../../pages/modals/add.new.address.modal.mjs";
 
 import {PersonalInfoModalWebElementAssert} from "../web-element-asserts/modals/personal.info.modal.web.element.assert.mjs";
 import {PasswordModalWebElementAssert} from "../web-element-asserts/modals/password.modal.web.element.assert.mjs";
+import {AddressesDashboardModalWebElementAsserts} from "../web-element-asserts/modals/addresses.dashbard.modal.web.element.asserts.mjs";
+import {AddNewAddressModalWebElementAssert} from "../web-element-asserts/modals/add.new.address.modal.web.element.assert.mjs";
 
 import {PersonalInfoModalTextElementAssert} from "../text-element-asserts/modals/personal.info.modal.text.element.assert.mjs";
 import {PasswordModalTextElementAssert} from "../text-element-asserts/modals/password.modal.text.element.assert.mjs";
+import {AddressesDashboardModalTextElementAsserts} from "../text-element-asserts/modals/addresses.dashboard.modal.text.element.asserts.mjs";
+import {AddNewAddressModalTextElementAsserts} from "../text-element-asserts/modals/add.new.address.modal.text.element.asserts.mjs";
 
 import {HomePageDataLoggers} from "../data-loggers/home.page.data.loggers.mjs";
 import {AccountDashPageDataLogger} from "../data-loggers/account.dash.page.data.logger.mjs";
+
+import {AddressesDashboardModalDataLogger} from "../data-loggers/modals/addresses.dashboard.modal.data.logger.mjs";
 
 import {expect} from "@playwright/test";
 import {Logger} from "../../pages/utilities/logger.mjs";
@@ -2142,6 +2150,110 @@ class TestMethods{
         }
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Password Test Result - Mismatching Confirm Password.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //valid add user address tests
+
+    //valid add user address test method
+    async validAddUserAddressTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const accountDashboardPage = new AccountDashboardPage(page);
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        const addressesDashboardModal = new AddressesDashboardModal(page);
+        const addressesDashboardModalWebElementAsserts = new AddressesDashboardModalWebElementAsserts();
+        const addressesDashboardModalTextElementAsserts = new AddressesDashboardModalTextElementAsserts();
+        const addressesDashboardModalDataLogger = new AddressesDashboardModalDataLogger();
+        const addNewAddressModal = new AddNewAddressModal(page);
+        const addNewAddressModalWebElementAssert = new AddNewAddressModalWebElementAssert();
+        const addNewAddressModalTextElementAsserts = new AddNewAddressModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header "Account" icon button
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4000);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //capture screenshot of the personal info modal display
+        await page.screenshot({ path: "src/tests/screenshots/Personal Info Modal Display.png", fullPage: true });
+        //click "Addresses" aside navbar link
+        await accountDashboardPage.clickSetAsideAccountNavbarLink(2);
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //addresses dashboard modal web element assert (no addresses)
+        await addressesDashboardModalWebElementAsserts.isAddressesDashboardNoAddressWebElementVisible(page);
+        //addresses dashboard modal text element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalTextElementAsExpected(page);
+        //addresses dashboard modal (no addresses) test element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalNoAddressTextElementAsExpected(page);
+        //capture screenshot of the addresses dashboard modal display (without address)
+        await page.screenshot({ path: "src/tests/screenshots/Addresses Dashboard Modal Display (no addresses).png", fullPage: true });
+        //click "Add New Address" button
+        await addressesDashboardModal.clickAddNewAddressButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //add new address modal web element assert
+        await addNewAddressModalWebElementAssert.isAddNewAddressModalWebElementVisible(page);
+        //add new address modal (upper elements) text element assert
+        await addNewAddressModalTextElementAsserts.isAddNewAddressModalUpperElementTextAsExpected(page);
+        //add new address modal text element assert
+        await addNewAddressModalTextElementAsserts.isAddNewAddressModalTextAsExpected(page);
+        //capture screenshot of the add new address modal display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Add New Address Modal Display Before Data Input.png", fullPage: true });
+        //input valid first name into first name input field
+        await addNewAddressModal.inputNewAddressFullNameIntoFullNameInputField();
+        //input valid email into email input field
+        await addNewAddressModal.inputNewAddressEmailIntoEmailInputField();
+        //input valid street into street input field
+        await addNewAddressModal.inputNewAddressStreetIntoStreetInputField();
+        //input valid city into city input field
+        await addNewAddressModal.inputNewAddressCityIntoCityInputField();
+        //input valid state into state input field
+        await addNewAddressModal.inputNewAddressStateIntoStateInputField();
+        //input valid country into country input field (it's optional)
+        await addNewAddressModal.inputNewAddressCountryIntoCountryInputField();
+        //input valid post code into post code input field
+        await addNewAddressModal.inputNewAddressPostCodeIntoPostCodeInputField();
+        //capture screenshot of the add new address modal display after valid data input
+        await page.screenshot({ path: "src/tests/screenshots/Add New Address Modal Display After Valid Data Input.png", fullPage: true });
+        //click "Save Address" button
+        await addNewAddressModal.clickSaveAddressButton();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(5000);
+        //addresses dashboard modal web element assert
+        await addressesDashboardModalWebElementAsserts.isAddressesDashboardModalWebElementVisible(page);
+        //addresses dashboard modal text element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalTextElementAsExpected(page);
+        //log addresses dashboard modal displayed data
+        await addressesDashboardModalDataLogger.logAddressDashModalAddressData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Valid Add User Address Test Result.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

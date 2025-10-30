@@ -23,6 +23,9 @@ class AccountDashboardPage extends BasePage{
 
     }
 
+    //click set aside account navbar link method
+    async clickSetAsideAccountNavbarLink(index){await this._accountDashPageAsideAccountNavbarLinkElements.nth(index).click();}
+
     //account dashboard page text element getters
     //aside elements
     async getAccountDashPageUserFullName(){return await this._accountDashPageUserFullName.innerText();}

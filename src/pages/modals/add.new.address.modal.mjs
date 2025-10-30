@@ -1,6 +1,9 @@
 "use strict"
 
 import {BasePage} from "../utilities/base.page.mjs";
+import {TestDataGenerator} from "../utilities/test.data.generator.mjs";
+import {CreateAccountPage} from "../create.account.page.mjs";
+import {Logger} from "../utilities/logger.mjs";
 
 class AddNewAddressModal extends BasePage{
 
@@ -36,7 +39,73 @@ class AddNewAddressModal extends BasePage{
         //invalid credentials error box
         this._addNewAddressModalInvalidCredentialsErrorMsg = page.locator("//div[@id='_rht_toaster']");
 
+        const testDataGenerator = new TestDataGenerator(page);
+        const createAccountPage = new CreateAccountPage(page);
+
+        //valid new address input data
+        this._addressFullName = "Thomas Jameson";
+        this._oldAddressEmail = createAccountPage.validUserEmail;
+        this._addressEmail = testDataGenerator.generateRandomEmailAddress(8);
+        this._addressStreet = testDataGenerator.generateRandomAddress(8);
+        this._addressCity = testDataGenerator.getRandomCity();
+        this._addressState = "Illinois";
+        this._addressCountry = "United States";
+        this._addressPostCode = String(testDataGenerator.getRandomPostalCode());
+
     }
+
+    //valid new address data input methods
+    async inputNewAddressFullNameIntoFullNameInputField(){
+        const newAddressFullName = this._addressFullName;
+        Logger.info("Valid new user address full name: " + newAddressFullName);
+        await this._addNewAddressModalFullNameInputField.fill(newAddressFullName);
+    }
+    async inputNewAddressEmailIntoEmailInputField(){
+        const newAddressEmail = this._addressEmail;
+        Logger.info("Valid new user address email: " + newAddressEmail);
+        await this._addNewAddressModalEmailInputField.fill(newAddressEmail);
+    }
+    async inputOldAddressEmailIntoEmailInputField(){
+        const oldAddressEmail = this._oldAddressEmail;
+        Logger.info("Valid old user address email: " + oldAddressEmail);
+        await this._addNewAddressModalEmailInputField.fill(oldAddressEmail);
+    }
+    async inputNewAddressStreetIntoStreetInputField(){
+        const newAddressStreet = this._addressStreet;
+        Logger.info("Valid new user address street: " + newAddressStreet);
+        await this._addNewAddressModalStreetInputField.fill(newAddressStreet);
+    }
+    async inputNewAddressCityIntoCityInputField(){
+        const newAddressCity = this._addressCity;
+        Logger.info("Valid new user address city: " + newAddressCity);
+        await this._addNewAddressModalCityInputField.fill(newAddressCity);
+    }
+    async inputNewAddressStateIntoStateInputField(){
+        const newAddressState = this._addressState;
+        Logger.info("Valid new user address state: " + newAddressState);
+        await this._addNewAddressModalStateInputField.fill(newAddressState);
+    }
+    async inputNewAddressCountryIntoCountryInputField(){
+        const newAddressCountry = this._addressCountry;
+        Logger.info("Valid new user address country: " + newAddressCountry);
+        await this._addNewAddressModalCountryInputField.fill(newAddressCountry);
+    }
+    async inputNewAddressPostCodeIntoPostCodeInputField(){
+        const newAddressPostCode = this._addressPostCode;
+        Logger.info("Valid new user address post code: " + newAddressPostCode);
+        await this._addNewAddressModalPostCodeInputField.fill(newAddressPostCode);
+    }
+
+    //click "Save Address" button method
+    async clickSaveAddressButton(){await this._addNewAddressModalSaveAddressButton.click();}
+
+    //private data getter
+    get validAddressEditedEmail(){return this._addressEmail;}
+    get validAddressStreet(){return this._addressStreet;}
+    get validAddressCity(){return this._addressCity;}
+    get validAddressState(){return this._addressState;}
+    get validAddressCountry(){return this._addressCountry;}
+    get validAddressPostCode(){return this._addressPostCode;}
 
     //add new address modal text element getters
     async getAddNewAddressModalTitle(){return await this._addNewAddressModalTitle.innerText();}
