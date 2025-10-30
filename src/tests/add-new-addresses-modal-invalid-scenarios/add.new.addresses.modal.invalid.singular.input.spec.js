@@ -124,4 +124,18 @@ test.describe("Invalid Add User Address Tests - Too Short Singular Input", () =>
         await testMethods.invalidAddUserAddressTooShortFullNameTest(page);
     });
 
+    // Test 007k -> invalid add user address test - too short address email (1 char -> name, domain) (the error wasn't triggered, test has failed)
+    test("Invalid Add User Address Test - Too Short Email", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - too short address email (1 char -> name, domain)
+        await testMethods.invalidAddUserAddressTooShortEmailTest(page);
+    });
+
 });
