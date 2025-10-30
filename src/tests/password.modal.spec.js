@@ -38,8 +38,24 @@ test.describe("Invalid Edit User Account Password Test - No Singular Input", () 
         await testMethods.validUserLoginTest(page)
         //invalid edit user account password test - no confirm password
         await testMethods.invalidEditUserAccountPasswordNoConfirmPasswordTest(page);
-        //close the page explicitly
-        await page.close();
+    });
+
+});
+
+test.describe("Invalid Edit User Account Password Test - Too Short Input", () => {
+
+    // Test 006b -> invalid edit user account password test - too short new/confirm password (7 chars)
+    test("Invalid Edit User Account Password Test - Too Short New And Confirm Password", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid edit user account password test - too short new/confirm password (7 chars)
+        await testMethods.invalidEditUserAccountPasswordTooShortNewConfirmPasswordTest(page);
     });
 
 });
