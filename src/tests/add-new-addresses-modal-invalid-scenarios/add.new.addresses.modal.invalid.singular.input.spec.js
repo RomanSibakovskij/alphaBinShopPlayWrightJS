@@ -92,4 +92,18 @@ test.describe("Invalid Add User Address Tests - No Singular Input", () => {
         await testMethods.invalidAddUserAddressNoCountryTest(page);
     });
 
+    // Test 007i -> invalid add user address test - no address post code
+    test("Invalid Add User Address Test - No Post Code", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - no address post code
+        await testMethods.invalidAddUserAddressNoPostCodeTest(page);
+    });
+
 });
