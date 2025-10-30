@@ -945,6 +945,62 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Valid User Login Test Result.png", fullPage: true });
     }
 
+    //valid user login with edited login email test method
+    async validUserLoginEditedEmailTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const accountDashboardPage = new AccountDashboardPage(page);
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const addressesDashboardModalWebElementAsserts = new AddressesDashboardModalWebElementAsserts();
+        const addressesDashboardModalTextElementAsserts = new AddressesDashboardModalTextElementAsserts();
+        const signInPage = new SignInPage(page);
+        const signInPageWebElementAssert = new SignInPageWebElementAssert();
+        const signInPageTextElementAssert = new SignInPageTextElementAssert();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //addresses dashboard modal web element assert
+        await addressesDashboardModalWebElementAsserts.isAddressesDashboardModalWebElementVisible(page);
+        //addresses dashboard modal text element assert
+        await addressesDashboardModalTextElementAsserts.isAddressesDashboardModalTextElementAsExpected(page);
+        //capture screenshot of the addresses dashboard modal display
+        await page.screenshot({ path: "src/tests/screenshots/Addresses Dashboard Modal Display.png", fullPage: true });
+        //click "Log out" aside navbar link
+        await accountDashboardPage.clickSetAsideAccountNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //sign-in page web element assert
+        await signInPageWebElementAssert.isSignInPageWebElementVisible(page);
+        //sign-in page text element assert
+        await signInPageTextElementAssert.isSignInPageTextElementAsExpected(page);
+        //capture screenshot of the sign-in page display before data input
+        await page.screenshot({ path: "src/tests/screenshots/Sign In Page Display Before Data Input.png", fullPage: true });
+        //input valid edited login email into sign-in email input field
+        await signInPage.inputValidEditedLoginEmailIntoEmailInputField();
+        //input valid login password into sign-in password input field
+        await signInPage.inputValidLoginPasswordIntoPasswordInputField();
+        //click "View Password" button
+        await signInPage.clickViewPasswordButton();
+        //capture screenshot of the sign-in page display after valid data input
+        await page.screenshot({ path: "src/tests/screenshots/Sign In Page Display After Valid Data Input (edited login email).png", fullPage: true });
+        //click "Sign In" button
+        await signInPage.clickSignInButton();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4500);
+        //assert the user gets onto home page after successful login
+        const expectedHomePageURL = "https://demo.alphabin.co/";
+        const actualHomePageURL = page.url();
+        expect(expectedHomePageURL).toBe(actualHomePageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Valid User Login With Edited Email Test Result.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //valid edit account info test

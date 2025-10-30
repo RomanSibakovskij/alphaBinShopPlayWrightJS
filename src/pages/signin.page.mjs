@@ -2,6 +2,7 @@
 
 import {BasePage} from "./utilities/base.page.mjs";
 import {CreateAccountPage} from "./create.account.page.mjs";
+import {AddNewAddressModal} from "./modals/add.new.address.modal.mjs";
 import {Logger} from "./utilities/logger.mjs";
 
 class SignInPage extends BasePage{
@@ -31,10 +32,14 @@ class SignInPage extends BasePage{
         this._signInPageInvalidCredentialsErrorMsg = page.locator("//div[@id='_rht_toaster']");
 
         const createAccountPage = new CreateAccountPage(page);
+        const addNewAddressModal = new AddNewAddressModal(page);
 
         //valid user sign-in input data
         this._validUserLoginEmail = createAccountPage.validUserEmail;
         this._validUserLoginPassword = createAccountPage.validUserPassword;
+
+        //valid edited user sign-in input data
+        this._validEditedLoginEmail = addNewAddressModal.validAddressEditedEmail;
 
     }
 
@@ -51,6 +56,13 @@ class SignInPage extends BasePage{
         const validLoginPassword = this._validUserLoginPassword;
         Logger.info("Valid user login password: " + validLoginPassword);
         await this._signInPagePasswordInputField.fill(validLoginPassword);
+    }
+
+    //valid edited login data input methods
+    async inputValidEditedLoginEmailIntoEmailInputField(){
+        const validEditedLoginEmail = this._validEditedLoginEmail;
+        Logger.info("Valid edited user login email: " + validEditedLoginEmail);
+        await this._signInPageEmailInputField.fill(validEditedLoginEmail);
     }
 
     //click "View Password" button method

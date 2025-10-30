@@ -24,4 +24,21 @@ test.describe("Valid User Login Tests", () => {
         await testMethods.validUserLoginTest(page)
     });
 
+    // Test 003a -> valid user login with edited email test
+    test("Valid User Login With Edited Email Test", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address test
+        await testMethods.validAddUserAddressTest(page);
+        //valid user login with edited email test
+        await testMethods.validUserLoginEditedEmailTest(page);
+    });
+
+
 });
