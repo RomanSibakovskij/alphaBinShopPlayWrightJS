@@ -31,7 +31,7 @@ import {AddNewAddressModal} from "../../pages/modals/add.new.address.modal.mjs";
 
 import {PersonalInfoModalWebElementAssert} from "../web-element-asserts/modals/personal.info.modal.web.element.assert.mjs";
 import {PasswordModalWebElementAssert} from "../web-element-asserts/modals/password.modal.web.element.assert.mjs";
-import {AddressesDashboardModalWebElementAsserts} from "../web-element-asserts/modals/addresses.dashbard.modal.web.element.asserts.mjs";
+import {AddressesDashboardModalWebElementAsserts} from "../web-element-asserts/modals/addresses.dashboard.modal.web.element.asserts.mjs";
 import {AddNewAddressModalWebElementAssert} from "../web-element-asserts/modals/add.new.address.modal.web.element.assert.mjs";
 
 import {PersonalInfoModalTextElementAssert} from "../text-element-asserts/modals/personal.info.modal.text.element.assert.mjs";
@@ -1738,12 +1738,12 @@ class TestMethods{
         //wait for element to load
         await page.waitForTimeout(3000);
         //assert the user receives an expected error message, throw an error otherwise
-        const personalInfoModalTooShortIphoneInputError = await personalInfoModal.getPersonalInfoModalInvalidSingularInputError();
+        const personalInfoModalTooShortPhoneInputError = await personalInfoModal.getPersonalInfoModalInvalidSingularInputError();
         try {
-            expect(personalInfoModalTooShortIphoneInputError).toBe("Contact number must be 10 digits");
+            expect(personalInfoModalTooShortPhoneInputError).toBe("Contact number must be 10 digits");
         } catch {
             await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Too Short Edited Phone.png", fullPage: true });
-            throw new Error(`The too short edited phone input error wasn't triggered (Expected: 'Contact number must be 10 digits', actual: ${personalInfoModalUpdateFailureMsg}), test has failed.`);
+            throw new Error(`The too short edited phone input error wasn't triggered (Expected: 'Contact number must be 10 digits', actual: ${personalInfoModalTooShortPhoneInputError}), test has failed.`);
         }
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Invalid Edit User Account Info Test Result - Too Short Phone.png", fullPage: true });
