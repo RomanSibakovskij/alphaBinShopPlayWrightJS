@@ -23,3 +23,23 @@ test.describe("Valid Edit User Account Password Test", () => {
     });
 
 });
+
+test.describe("Invalid Edit User Account Password Test - No Singular Input", () => {
+
+    // Test 006a -> invalid edit user account password test - no confirm password
+    test("Invalid Edit User Account Password Test - No Confirm Password", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid edit user account password test - no confirm password
+        await testMethods.invalidEditUserAccountPasswordNoConfirmPasswordTest(page);
+        //close the page explicitly
+        await page.close();
+    });
+
+});

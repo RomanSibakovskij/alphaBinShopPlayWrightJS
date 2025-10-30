@@ -1,6 +1,7 @@
 "use strict"
 
 import {BasePage} from "../../utilities/base.page.mjs";
+import {Logger} from "../../utilities/logger.mjs";
 
 class PasswordModalInvalidScenarios extends BasePage{
 
@@ -11,6 +12,16 @@ class PasswordModalInvalidScenarios extends BasePage{
         this._passwordModalNewPasswordInputField = page.locator("//input[@data-testid='my-profile-new-password-input']");
         this._passwordModalConfirmPasswordInputField = page.locator("//input[@data-testid='my-profile-confirm-password-input']");
 
+        //invalid password input data - no singular input
+        this._noConfirmPassword = "";
+
+    }
+
+    //invalid password input data methods - no singular input
+    async inputNoConfirmPasswordIntoConfirmPasswordInputField(){
+        const noConfirmPassword = this._noConfirmPassword;
+        Logger.info("No user confirm password: " + noConfirmPassword);
+        await this._passwordModalConfirmPasswordInputField.fill(noConfirmPassword);
     }
 
 }
