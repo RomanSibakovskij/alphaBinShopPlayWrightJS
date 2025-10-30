@@ -328,4 +328,18 @@ test.describe("Invalid Add User Address Tests - Invalid Singular Input Format", 
         await testMethods.invalidAddUserAddressInvalidFullNameFormatTest(page);
     });
 
+    // Test 007y -> invalid add user address test - invalid address email format (missing '@')
+    test("Invalid Add User Address Test - Invalid Email Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //invalid add user address test - invalid address email format (missing '@')
+        await testMethods.invalidAddUserAddressInvalidEmailFormatTest(page);
+    });
+
 });

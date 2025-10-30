@@ -49,6 +49,7 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
 
         //invalid user address input data - invalid singular input format
         this._invalidAddressFullNameFormat = "@#$@#% #$%$%"; // special symbols only
+        this._invalidAddressEmailFormat = "dfgdgfakemail.com"; // missing '@'
 
     }
 
@@ -168,6 +169,11 @@ class AddNewAddressModalInvalidScenarios extends BasePage{
         const invalidNewAddressFullNameFormat = this._invalidAddressFullNameFormat;
         Logger.info("Invalid new user address full name format: " + invalidNewAddressFullNameFormat);
         await this._addNewAddressModalFullNameInputField.fill(invalidNewAddressFullNameFormat);
+    }
+    async inputInvalidNewAddressEmailFormatIntoEmailInputField(){
+        const invalidNewAddressEmailFormat = this._invalidAddressEmailFormat;
+        Logger.info("Invalid new user address email format: " + invalidNewAddressEmailFormat);
+        await this._addNewAddressModalEmailInputField.fill(invalidNewAddressEmailFormat);
     }
 
 }
