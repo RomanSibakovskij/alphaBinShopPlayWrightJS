@@ -20,6 +20,9 @@ class AddReviewModalInvalidScenarios extends BasePage{
         this._noReviewTitle = "";
         this._noReview = "";
 
+        //invalid review input data - too short singular input
+        this._tooShortReviewFullName = "R T"; //3 chars
+
     }
 
     //invalid user (review) data input methods - no singular input
@@ -42,6 +45,13 @@ class AddReviewModalInvalidScenarios extends BasePage{
         const noGuestReview = this._noReview;
         Logger.info("No user (guest) review: " + noGuestReview);
         await this._addReviewModalOpinionTextarea.fill(noGuestReview);
+    }
+
+    //invalid user (review) data input methods - too short singular input
+    async inputTooShortGuestFullNameIntoYourNameInputField(){
+        const tooShortGuestReviewFullName = this._tooShortReviewFullName;
+        Logger.info("Too short user (guest) review full name: " + tooShortGuestReviewFullName);
+        await this._addReviewModalYourNameInputField.fill(tooShortGuestReviewFullName);
     }
 
 }
