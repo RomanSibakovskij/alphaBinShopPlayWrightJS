@@ -132,4 +132,12 @@ test.describe("Invalid Add Product Review Tests - Invalid Singular Input Format"
         await testMethods.invalidAddProductReviewInvalidGuestFullNameFormatTest(page);
     });
 
+    // Test 016p -> invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - invalid guest review email format (missing '@') (the React error was triggered)
+    test("Invalid Add Product Review Test (as a guest) - Invalid Guest Email Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - invalid guest review email format
+        await testMethods.invalidAddProductReviewInvalidGuestEmailFormatTest(page);
+    });
+
 });
