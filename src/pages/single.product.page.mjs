@@ -29,9 +29,6 @@ class SingleProductPage extends BasePage{
         this._singleProductPageProductDescription = page.locator("//div[@data-testid='description-content']");
         //additional information section
         this._singleProductPageAdditionalInformationData = page.locator("//div[@class='p-4 bg-white ']");
-        //reviews section
-        //this._singleProductPageWriteReviewButton = page.locator("//button[@data-testid='write-review-button']"); //not currently used
-        //this._singleProductPageNoReviewsMessage = page.locator("//div[@class='p-4 ']");
         //list elements
         this._singleProductPageReviewNameElements = page.locator("//p[@data-testid='review-name']");
         this._singleProductPageReviewSubmissionDateElements = page.locator("//span[@data-testid='review-date']");
