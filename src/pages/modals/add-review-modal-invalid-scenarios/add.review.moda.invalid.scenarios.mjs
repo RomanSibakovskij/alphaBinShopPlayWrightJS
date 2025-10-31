@@ -17,6 +17,7 @@ class AddReviewModalInvalidScenarios extends BasePage{
         //invalid review input data - no singular input
         this._noReviewFullName = "";
         this._noReviewEmail = "";
+        this._noReviewTitle = "";
 
     }
 
@@ -30,6 +31,11 @@ class AddReviewModalInvalidScenarios extends BasePage{
         const noGuestReviewEmail = this._noReviewEmail;
         Logger.info("No user (guest) review email: " + noGuestReviewEmail);
         await this._addReviewModalYourEmailInputField.fill(noGuestReviewEmail);
+    }
+    async inputNoGuestReviewTitleIntoReviewTitleInputField(){
+        const noGuestReviewTitle = this._noReviewTitle;
+        Logger.info("No user (guest) review title: " + noGuestReviewTitle);
+        await this._addReviewModalReviewTitleInputField.fill(noGuestReviewTitle);
     }
 
 }
