@@ -75,6 +75,15 @@ class SingleProductPage extends BasePage{
         await setEditReviewLink.evaluate(button => button.click());
     }
 
+    //click set "Delete review" link method
+    async clickSetDeleteReviewLink(index){
+        const setDeleteReviewLink = this._singleProductPageReviewDeleteLinkElements.nth(index);
+        //wait for the link to be attached in the DOM
+        await setDeleteReviewLink.waitFor({ state: 'attached' });
+        //click via JavaScript executor (common click causes a glitch loop, hover doesn't work)
+        await setDeleteReviewLink.evaluate(button => button.click());
+    }
+
     //click "Add to Cart" button method
     async clickAddToCartButton(){await this._singleProductPageProductAddToCartButton.click();}
 

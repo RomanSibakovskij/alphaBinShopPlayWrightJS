@@ -171,3 +171,19 @@ test.describe("Update Product Review Test", () => {
     });
 
 });
+
+test.describe("Remove Product Review Test", () => {
+
+    // Test 018 -> remove product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) (the link click doesn't appear to do anything (in automation run), test has failed)
+    test("Remove Product Review Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest)
+        await testMethods.addProductReviewTest(page);
+        //remove product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest)
+        await testMethods.removeProductReviewTest(page);
+        //close the page explicitly
+        await page.close();
+    });
+
+});

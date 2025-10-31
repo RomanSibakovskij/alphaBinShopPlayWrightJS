@@ -10720,6 +10720,44 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Update Product Review Test Result (guest).png", fullPage: true });
     }
 
+    //remove product review test
+
+    //remove product review test method
+    async removeProductReviewTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page review section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageReviewWebElementVisible(page);
+        //single product page review section text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageReviewTextElementAsExpected(page);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //click set "Delete review" link
+        await singleProductPage.clickSetDeleteReviewLink(0);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+
+        //assert the empty review modal section elements appear, otherwise, throw an error
+        try {
+            await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+            await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page);
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Remove Product Review Test Result (guest).png", fullPage: true });
+            throw new Error("The set 'Delete' review link click doesn't seem to have any effect, test has failed.");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Remove Product Review Test Result (guest).png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
