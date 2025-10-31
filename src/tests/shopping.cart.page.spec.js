@@ -82,4 +82,22 @@ test.describe("Add Single New Arrivals Product To Checkout Tests", () => {
         await testMethods.addProductToCheckoutTest(page);
     });
 
+    // Test 020a -> add single new arrivals product ("SanDisk Ultra Dual Drive 32GB USB 3.0") to check out test (as a registered user)
+    test("Add Single New Arrivals Product To Checkout Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single new arrivals product ("SanDisk Ultra Dual Drive 32GB USB 3.0") to cart test (as a registered user)
+        await testMethods.addSingleNewArrivalsProductToCartRegUserTest(page);
+        //add single new arrivals product ("SanDisk Ultra Dual Drive 32GB USB 3.0") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+    });
+
 });
