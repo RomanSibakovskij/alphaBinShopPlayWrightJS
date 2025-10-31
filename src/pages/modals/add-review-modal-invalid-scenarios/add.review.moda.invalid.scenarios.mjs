@@ -1,6 +1,7 @@
 "use strict"
 
 import {BasePage} from "../../utilities/base.page.mjs";
+import {TestDataGenerator} from "../../utilities/test.data.generator.mjs";
 import {Logger} from "../../utilities/logger.mjs";
 
 class AddReviewModalInvalidScenarios extends BasePage{
@@ -14,6 +15,8 @@ class AddReviewModalInvalidScenarios extends BasePage{
         this._addReviewModalReviewTitleInputField = page.locator("//input[@data-testid='review-form-title-input']");
         this._addReviewModalOpinionTextarea = page.locator("//textarea[@data-testid='review-form-review-input']");
 
+        const testDataGenerator = new TestDataGenerator(page);
+
         //invalid review input data - no singular input
         this._noReviewFullName = "";
         this._noReviewEmail = "";
@@ -22,6 +25,7 @@ class AddReviewModalInvalidScenarios extends BasePage{
 
         //invalid review input data - too short singular input
         this._tooShortReviewFullName = "R T"; //3 chars
+        this._tooShortReviewEmail = testDataGenerator.generateRandomTooShortEmailAddress(1); //1 char -> name, domain
 
     }
 
@@ -52,6 +56,11 @@ class AddReviewModalInvalidScenarios extends BasePage{
         const tooShortGuestReviewFullName = this._tooShortReviewFullName;
         Logger.info("Too short user (guest) review full name: " + tooShortGuestReviewFullName);
         await this._addReviewModalYourNameInputField.fill(tooShortGuestReviewFullName);
+    }
+    async inputTooShortGuestEmailIntoYourEmailInputField(){
+        const tooShortGuestReviewEmail = this._tooShortReviewEmail;
+        Logger.info("Too short user (guest) review email: " + tooShortGuestReviewEmail);
+        await this._addReviewModalYourEmailInputField.fill(tooShortGuestReviewEmail);
     }
 
 }
