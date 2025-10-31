@@ -6810,6 +6810,38 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Add Multiple Featured Products (single SanDisk Extreme Pro 3.0 USB-C Memory Card Reader, HP LaserJet Pro MFP M428fdw Wireless Printer, Epson EF-100 Smart Portable Projector) To Wishlist Test Result (registered user).png", fullPage: true });
     }
 
+    //remove single product from wishlist test (it may apply to any single product added to wishlist)
+
+    //remove single product from wishlist test method
+    async removeSingleProductFromWishlistTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const wishlistDashboardPage = new WishlistDashboardPage(page);
+        const wishlistDashboardPageWebElementAsserts = new WishlistDashboardPageWebElementAsserts();
+        const wishlistDashboardPageTextElementAsserts = new WishlistDashboardPageTextElementAsserts();
+        const wishlistDashboardPageDataLogger = new WishlistDashboardPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //wishlist dashboard page web element assert
+        await wishlistDashboardPageWebElementAsserts.isWishlistDashboardPageWebElementVisible(page);
+        //wishlist dashboard page text element assert
+        await wishlistDashboardPageTextElementAsserts.isWishlistDashboardPageTextElementAsExpected(page);
+        //log wishlist dashboard page product data
+        await wishlistDashboardPageDataLogger.logWishlistDashboardPageProductData(page);
+        //click set product remove from wishlist button
+        await wishlistDashboardPage.clickSetRemoveProductFromWishlistBtn(0);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //empty wishlist dashboard page web element assert
+        await wishlistDashboardPageWebElementAsserts.isEmptyWishlistDashboardPageWebElementVisible(page);
+        //empty wishlist dashboard page text element assert
+        await wishlistDashboardPageTextElementAsserts.isEmptyWishlistDashboardPageTextElementAsExpected(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Remove Single Product From Wishlist Test Result (guest).png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

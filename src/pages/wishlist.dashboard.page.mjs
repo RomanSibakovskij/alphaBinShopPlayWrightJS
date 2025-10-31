@@ -22,7 +22,21 @@ class WishlistDashboardPage extends BasePage{
         this._wishlistDashPageProductReviewCountElements = page.locator("//span[@data-testid='wishlist-review-count']");
         this._wishlistDashPageProductUnitPriceElements = page.locator("//span[@data-testid='wishlist-product-price']");
         this._wishlistDashPageProductAddToCartBtnElements = page.locator("//button[@class='px-3 py-1 rounded-md text-sm font-medium bg-black text-white hover:bg-gray-800 transition-colors']");
+        //empty wishlist elements
+        this._wishlistDashPageEmptyWishlistIcon = page.locator("//span[@class='anticon anticon-heart']");
+        this._wishlistDashPageEmptyWishlistMessageOne = page.locator("//h2[@data-testid='wishlist-empty-title']");
+        this._wishlistDashPageEmptyWishlistMessageTwo = page.locator("//p[@data-testid='wishlist-empty-description']");
+        this._wishlistDashPageEmptyWishlistShopNowButton = page.locator("//button[@data-testid='wishlist-shop-now-button']");
 
+    }
+
+    //click set product remove from wishlist button method
+    async clickSetRemoveProductFromWishlistBtn(index){
+        const removeFromWishlistBtn = this._wishlistDashPageProductRemoveFromWishlistBtnElements.nth(index);
+        //wait for the button to be attached in the DOM
+        await removeFromWishlistBtn.waitFor({ state: 'attached' });
+        //click via JavaScript executor (common click causes a glitch loop, hover doesn't work)
+        await removeFromWishlistBtn.evaluate(button => button.click());
     }
 
     //wishlist dashboard page product data getters
@@ -73,6 +87,10 @@ class WishlistDashboardPage extends BasePage{
         const rawText = await this._wishlistDashPageViewCartBtn.innerText();
         return rawText.replace(/\(\d+\)/, "").trim(); //removes count from button
     }
+    //empty wishlist elements
+    async getWishlistDashPageEmptyWishlistMessageOne (){return await this._wishlistDashPageEmptyWishlistMessageOne .innerText();}
+    async getWishlistDashPageEmptyWishlistMessageTwo (){return await this._wishlistDashPageEmptyWishlistMessageTwo .innerText();}
+    async getWishlistDashPageEmptyWishlistShopNowBtnText (){return await this._wishlistDashPageEmptyWishlistShopNowButton .innerText();}
 
     //wishlist dashboard page web element getters
     get wishlistDashPageReturnBackButton(){return this._wishlistDashPageReturnBackButton;}
@@ -87,6 +105,11 @@ class WishlistDashboardPage extends BasePage{
     get wishlistDashPageProductReviewCountElement(){return this._wishlistDashPageProductReviewCountElements;}
     get wishlistDashPageProductUnitPriceElement(){return this._wishlistDashPageProductUnitPriceElements;}
     get wishlistDashPageProductAddToCartBtnElement(){return this._wishlistDashPageProductAddToCartBtnElements;}
+    //empty wishlist elements
+    get wishlistDashPageEmptyWishlistIcon(){return this._wishlistDashPageEmptyWishlistIcon;}
+    get wishlistDashPageEmptyWishlistMessageOne(){return this._wishlistDashPageEmptyWishlistMessageOne;}
+    get wishlistDashPageEmptyWishlistMessageTwo(){return this._wishlistDashPageEmptyWishlistMessageTwo;}
+    get wishlistDashPageEmptyWishlistShopNowBtnText(){return this._wishlistDashPageEmptyWishlistShopNowButton;}
 
 }
 export {WishlistDashboardPage};

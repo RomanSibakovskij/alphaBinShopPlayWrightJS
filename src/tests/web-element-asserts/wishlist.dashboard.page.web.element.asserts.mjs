@@ -57,5 +57,22 @@ class WishlistDashboardPageWebElementAsserts {
         }
     }
 
+    //wishlist dashboard page (empty) web element assert test method
+    async isEmptyWishlistDashboardPageWebElementVisible(page){
+        const wishlistDashboardPage = new WishlistDashboardPage(page);
+        //assert the wishlist dashboard page return back button is visible
+        await expect(wishlistDashboardPage.wishlistDashPageReturnBackButton).toBeVisible();
+        //assert the wishlist dashboard page title is visible
+        await expect(wishlistDashboardPage.wishlistDashPageTitle).toBeVisible();
+        //assert the wishlist dashboard page empty wishlist icon is visible
+        await expect(wishlistDashboardPage.wishlistDashPageEmptyWishlistIcon).toBeVisible();
+        //assert the wishlist dashboard page empty wishlist title is visible
+        await expect(wishlistDashboardPage.wishlistDashPageEmptyWishlistMessageOne).toBeVisible();
+        //assert the wishlist dashboard page empty wishlist description is visible
+        await expect(wishlistDashboardPage.wishlistDashPageEmptyWishlistMessageTwo).toBeVisible();
+        //assert the wishlist dashboard page empty wishlist shop now button is visible
+        await expect(wishlistDashboardPage.wishlistDashPageEmptyWishlistShopNowBtnText).toBeVisible();
+    }
+
 }
 export {WishlistDashboardPageWebElementAsserts};

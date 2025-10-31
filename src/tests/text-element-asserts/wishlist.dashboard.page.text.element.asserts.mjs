@@ -26,5 +26,22 @@ class WishlistDashboardPageTextElementAsserts {
         });
     }
 
+    //wishlist dashboard page (empty) text element assert test method
+    async isEmptyWishlistDashboardPageTextElementAsExpected(page){
+        const wishlistDashboardPage = new WishlistDashboardPage(page);
+        //assert the wishlist dashboard page title is as expected
+        const wishlistDashPageTitle = await wishlistDashboardPage.getWishlistDashPageTitle();
+        expect(wishlistDashPageTitle).toBe("My Wishlist");
+        //assert the wishlist dashboard page empty wishlist title is as expected
+        const wishlistDashPageEmptyWishlistTitle = await wishlistDashboardPage.getWishlistDashPageEmptyWishlistMessageOne();
+        expect(wishlistDashPageEmptyWishlistTitle).toBe("Your wishlist is empty");
+        //assert the wishlist dashboard page empty wishlist description is as expected
+        const wishlistDashPageEmptyWishlistDesc = await wishlistDashboardPage.getWishlistDashPageEmptyWishlistMessageTwo();
+        expect(wishlistDashPageEmptyWishlistDesc).toBe("Items added to your wishlist will be saved here. Start browsing and add your favorite products!");
+        //assert the wishlist dashboard page title is as expected
+        const wishlistDashPageShopNowBtnText = await wishlistDashboardPage.getWishlistDashPageEmptyWishlistShopNowBtnText();
+        expect(wishlistDashPageShopNowBtnText).toBe("Shop Now");
+    }
+
 }
 export {WishlistDashboardPageTextElementAsserts};
