@@ -150,8 +150,23 @@ test.describe("Add Single Featured Product To Wishlist Tests", () => {
         await page.goto('/');
         //add single featured product ("Dell XPS 13 (2021) Laptop") to wishlist test (as a guest)
         await testMethods.addSingleFeaturedProductToWishlistTest(page);
-        //close the page explicitly
-        await page.close();
     });
+
+    // Test 012a -> add single featured product ("Dell XPS 13 (2021) Laptop") to wishlist test (as a registered user)
+    test("Add Single Featured Product To Wishlist Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Dell XPS 13 (2021) Laptop") to wishlist test (as a registered user)
+        await testMethods.addSingleFeaturedProductToWishlistRegUserTest(page);
+    });
+
 
 });
