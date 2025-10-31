@@ -37,3 +37,17 @@ test.describe("Add Single Featured Product To Checkout Tests", () => {
     });
 
 });
+
+test.describe("Add Multiple Featured Products To Checkout Tests", () => {
+
+    // Test 019b -> add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer") to check out test (as a guest) (the user account is required, test has failed)
+    test("Add Multiple Featured Products To Checkout Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer") to cart test (as a guest)
+        await testMethods.addMultipleFeaturedProductsToCartTest(page);
+        //add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer") to check out test (as a guest)
+        await testMethods.addProductToCheckoutTest(page);
+    });
+
+});
