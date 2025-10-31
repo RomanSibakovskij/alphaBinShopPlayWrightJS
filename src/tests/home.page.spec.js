@@ -73,3 +73,15 @@ test.describe("Add Multiple Featured Products To Cart Tests", () => {
     });
 
 });
+
+test.describe("Add Single New Arrivals Product To Cart Tests", () => {
+
+    // Test 010 -> add single new arrivals product ("Seagate 4TB External Hard Drive") to cart test (as a guest)
+    test("Add Single New Arrivals Product To Cart Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add single new arrivals product ("Seagate 4TB External Hard Drive") to cart test (as a guest)
+        await testMethods.addSingleNewArrivalsProductToCartTest(page);
+    });
+
+});
