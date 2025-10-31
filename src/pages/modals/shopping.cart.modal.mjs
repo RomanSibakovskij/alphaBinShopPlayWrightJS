@@ -33,6 +33,14 @@ class ShoppingCartModal extends BasePage{
 
     }
 
+    //click set product increase quantity button (to click a set button multiple times)
+    async clickSetQtyIncreaseButton(index, count = 1) {
+        const setQtyIncreaseBtn = this._shoppingCartModalProductQtyIncreaseBtnElements.nth(index);
+        for (let i = 0; i < count; i++) {
+            await setQtyIncreaseBtn.click();
+        }
+    }
+
     //click "View Cart" button method
     async clickViewCartButton(){await this._shoppingCartModalViewCartButton.click();}
 

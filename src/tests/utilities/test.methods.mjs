@@ -5918,6 +5918,98 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Add Single Featured Product To Cart Test Result (registered user).png", fullPage: true });
     }
 
+    //add multiple featured products to cart tests
+
+    //add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer") to cart test method (as a guest)
+    async addMultipleFeaturedProductsToCartTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePage = new HomePage(page);
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click set featured product ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader") add to cart button
+        await homePage.clickAddSetFeaturedProductToCartBtn(1);
+        //click set featured product ("HP LaserJet Pro MFP M428fdw Wireless Printer") add to cart button
+        await homePage.clickAddSetFeaturedProductToCartBtn(2);
+        //click header "Shopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct products have been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const expectedProductNames = ["SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer"];
+        expect(productNames).toEqual(expectedProductNames);
+        //assert product quantity count stays constant
+        const productCounterCount = await shoppingCartModal.getShoppingCartModalProductCount();
+        const productQuantity = await shoppingCartModal.getShoppingCartModalProductQty();
+        const totalQty = productQuantity.reduce((sum, qty) => sum + Number(qty), 0)
+        expect(Number(productCounterCount)).toBe(totalQty);
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (single Dell XPS 13 (2021) Laptop and HP LaserJet Pro MFP M428fdw Wireless Printer).png", fullPage: true });
+        //alter set product (Dell laptop) quantity
+        await shoppingCartModal.clickSetQtyIncreaseButton(0, 6);
+        //log shopping cart modal product data (to verify the product quantity has been altered)
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //capture screenshot of the shopping cart modal display (to verify the product quantity has been altered)
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (multiple Dell XPS 13 (2021) Laptops and HP LaserJet Pro MFP M428fdw Wireless Printer).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Multiple Featured Products To Cart Test Result (guest).png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
