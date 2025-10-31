@@ -9653,7 +9653,7 @@ class TestMethods{
         //input valid guest review into review (opinion) text area
         await addReviewModal.inputGuestReviewIntoReviewTextarea();
         //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too long guest email
-        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Long Guest Email).png", fullPage: true });
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Long Guest Email.png", fullPage: true });
         //click "Submit" button
         await addReviewModal.clickSubmitButton();
         //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
@@ -9806,7 +9806,7 @@ class TestMethods{
         //add review modal text element assert
         await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
         //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
-        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input.png", fullPage: true });
         //input valid guest full name into your name input field
         await addReviewModal.inputGuestFullNameIntoYourNameInputField();
         //input valid guest email into your email input field
@@ -9818,7 +9818,7 @@ class TestMethods{
         //input valid guest review into review (opinion) text area
         await addReviewModal.inputGuestReviewIntoReviewTextarea();
         //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too long guest review title
-        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Long Guest Review Title).png", fullPage: true });
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Long Guest Review Title.png", fullPage: true });
         //click "Submit" button
         await addReviewModal.clickSubmitButton();
         //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
@@ -9832,6 +9832,171 @@ class TestMethods{
         }
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Review Title.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - too long guest review (10001 chars)
+    async invalidAddProductReviewTooLongGuestReviewTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAssert = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAssert.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAssert.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(2);
+        //input too short guest review into review (opinion) text area (10001 chars)
+        await addReviewModalInvalidScenarios.inputTooLongGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too long guest review
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Long Guest Review).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Review.png", fullPage: true});
+            throw new Error("The too long review input error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Review.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
