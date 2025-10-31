@@ -8,6 +8,7 @@ import {AccountDashboardPage} from "../../pages/account.dashboard.page.mjs";
 import {WishlistDashboardPage} from "../../pages/wishlist.dashboard.page.mjs";
 import {AllProductsDashboardPage} from "../../pages/all.products.dashboard.page.mjs";
 import {SingleProductPage} from "../../pages/single.product.page.mjs";
+import {ShoppingCartPage} from "../../pages/shopping.cart.page.mjs";
 
 import {CreateAccountPageInvalidScenarios} from "../../pages/create-account-page-invalid-scenarios/create.account.page.invalid.scenarios.mjs";
 import {SignInPageInvalidScenarios} from "../../pages/signin-page-invalid-scenarios/signin.page.invalid.scenarios.mjs";
@@ -25,6 +26,7 @@ import {AccountDashboardPageWebElementAssert} from "../web-element-asserts/accou
 import {WishlistDashboardPageWebElementAsserts} from "../web-element-asserts/wishlist.dashboard.page.web.element.asserts.mjs";
 import {AllProductsDashPageWebElementAsserts} from "../web-element-asserts/all.products.dash.page.web.element.asserts.mjs";
 import {SingleProductPageWebElementAsserts} from "../web-element-asserts/single.product.page.web.element.asserts.mjs";
+import {ShoppingCartPageWebElementAsserts} from "../web-element-asserts/shopping.cart.page.web.element.asserts.mjs";
 
 import {GeneralPageTextElementAssert} from "../text-element-asserts/general.page.text.element.assert.mjs";
 import {HomePageTextElementAssert} from "../text-element-asserts/home.page.text.element.assert.mjs";
@@ -34,6 +36,7 @@ import {AccountDashboardPageTextElementAssert} from "../text-element-asserts/acc
 import {WishlistDashboardPageTextElementAsserts} from "../text-element-asserts/wishlist.dashboard.page.text.element.asserts.mjs";
 import {AllProductsDashPageTextElementAsserts} from "../text-element-asserts/all.products.dash.page.text.element.asserts.mjs";
 import {SingleProductPageTextElementAsserts} from "../text-element-asserts/single.product.page.text.element.asserts.mjs";
+import {ShoppingCartPageTextElementAsserts} from "../text-element-asserts/shopping.cart.page.text.element.asserts.mjs";
 
 import {PersonalInfoModal} from "../../pages/modals/personal.info.modal.mjs";
 import {PasswordModal} from "../../pages/modals/password.modal.mjs";
@@ -61,6 +64,7 @@ import {AccountDashPageDataLogger} from "../data-loggers/account.dash.page.data.
 import {WishlistDashboardPageDataLogger} from "../data-loggers/wishlist.dashboard.page.data.logger.mjs";
 import {AllProductsDashPageDataLoggers} from "../data-loggers/all.products.dash.page.data.loggers.mjs";
 import {SingleProductPageDataLoggers} from "../data-loggers/single.product.page.data.loggers.mjs";
+import {ShoppingCartPageDataLogger} from "../data-loggers/shopping.cart.page.data.logger.mjs";
 
 import {AddressesDashboardModalDataLogger} from "../data-loggers/modals/addresses.dashboard.modal.data.logger.mjs";
 import {ShoppingCartModalDataLogger} from "../data-loggers/modals/shopping.cart.modal.data.logger.mjs";
@@ -10756,6 +10760,48 @@ class TestMethods{
         }
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Remove Product Review Test Result (guest).png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //add product(s) to checkout test (the registered user and guest will share the same method)
+
+    //add product(s) to checkout test method
+    async addProductToCheckoutTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const shoppingCartPage = new ShoppingCartPage(page);
+        const shoppingCartPageWebElementAsserts = new ShoppingCartPageWebElementAsserts();
+        const shoppingCartPageTextElementAsserts = new ShoppingCartPageTextElementAsserts();
+        const shoppingCartPageDataLogger = new ShoppingCartPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //shopping cart page web element
+        await shoppingCartPageWebElementAsserts.isShoppingCartPageWebElementVisible(page);
+        //shopping cart page text element
+        await shoppingCartPageTextElementAsserts.isShoppingCartPageTextElementAsExpected(page);
+        //log shopping cart page product data
+        await shoppingCartPageDataLogger.logShoppingCartPageProductData(page);
+        //capture screenshot of the shopping cart page display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Page Display.png", fullPage: true });
+        //click "Checkout" button
+        await shoppingCartPage.clickCheckoutButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto checkout page after "Checkout" button click
+        const expectedURL = "https://demo.alphabin.co/checkout"
+        const actualURL = page.url();
+        //if the user fails to get onto checkout page, log the issue (it may be intended that way for a guest user)
+        try {
+            await expect(actualURL).toEqual(expectedURL);
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Add Product(s) To Checkout Page Test Result (guest).png", fullPage: true });
+            throw new Error(`The 'guest' level user fails to checkout the product, the user account must be registered beforehand for checking out.`);
+        }
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Add Product(s) To Checkout Page Test Result (registered user).png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -37,6 +37,9 @@ class ShoppingCartPage extends BasePage{
 
     }
 
+    //click "Checkout" button method
+    async clickCheckoutButton(){await this._shoppingCartPageCheckoutButton.click();}
+
     //shopping cart page product data getters
     //product table
     async getShopCartPageProductName() {
