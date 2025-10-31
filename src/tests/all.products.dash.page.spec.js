@@ -16,4 +16,20 @@ test.describe("Add All Products Dashboard Page Single Product To Cart Tests", ()
         await testMethods.addSingleAllProductsDashPageProductToCartTest(page);
     });
 
+    // Test 015a -> add all products dashboard page single product ("Apple iPad Air (2022, 5th Gen)") to cart test (as a registered user)
+    test("Add All Products Dashboard Page Single Product To Cart Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add all products dashboard page single product ("Apple iPad Air (2022, 5th Gen)") to cart test (as a registered user)
+        await testMethods.addSingleAllProductsDashPageProductToCartRegUserTest(page);
+    });
+
 });

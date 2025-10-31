@@ -76,6 +76,9 @@ class AllProductsDashboardPage extends BasePage{
     //click set product card method (while view is switched to list)
     async clickSetProductCardListMethod(index){await this._allProductsDashboardPageProductListCardElements.nth(index).click()}
 
+    //click set product card method (while view is switched to grid)
+    async clickSetProductCardMethod(index){await this._allProductsDashboardPageProductCardElements.nth(index).click()}
+
     //all products dashboard product data getters
     async getAllProductsDashboardPageProductCount(){return await this._allProductsDashboardPageProductCounter.innerText();}
     //list elements
