@@ -24,4 +24,12 @@ test.describe("Invalid Add Product Review Tests - No Singular Input", () => {
         await testMethods.invalidAddProductReviewNoGuestEmailTest(page);
     });
 
+    // Test 016d -> invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - no guest review stars (the error wasn't triggered but the missing review stars input wasn't permitted)
+    test("Invalid Add Product Review Test (as a guest) - No Guest Review Stars", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - no guest review stars
+        await testMethods.invalidAddProductReviewNoGuestReviewStarsTest(page);
+    });
+
 });
