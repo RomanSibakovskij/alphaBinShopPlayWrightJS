@@ -6430,5 +6430,95 @@ class TestMethods{
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //remove single featured product to cart test (since registered user and guest will have the same output, only gust branch is being tested to avoid redundancy)
+
+    //remove single featured product ("Dell XPS 13 (2021) Laptop") to cart test method
+    async removeSingleFeaturedProductFromCartModalTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePage = new HomePage(page);
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click set featured product ("Dell XPS 13 (2021) Laptop") add to cart button
+        await homePage.clickAddSetFeaturedProductToCartBtn(0);
+        //click header "hopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct product has been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const actualFeaturedProductName = productNames[0];
+        expect(actualFeaturedProductName).toBe("Dell XPS 13 (2021) Laptop");
+        //assert product quantity count stays constant
+        const productCounterCount = await shoppingCartModal.getShoppingCartModalProductCount();
+        const productQuantity = await shoppingCartModal.getShoppingCartModalProductQty();
+        const totalQty = productQuantity.reduce((sum, qty) => sum + Number(qty), 0)
+        expect(Number(productCounterCount)).toBe(totalQty);
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (single Dell XPS 13 (2021) Laptop).png", fullPage: true });
+        //click set product remove button
+        await shoppingCartModal.clickSetProductRemoveFromCartButton(0);
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //empty shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isEmptyShoppingCartModalWebElementVisible(page);
+        //shopping cart header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //empty shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isEmptyShoppingCartModalTextElementAsExpected(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Remove Single Featured Product From Cart Test Result.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }
 export {TestMethods};

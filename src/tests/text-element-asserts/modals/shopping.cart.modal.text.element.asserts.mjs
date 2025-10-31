@@ -35,5 +35,19 @@ class ShoppingCartModalTextElementAsserts{
         expect(shopCartModalViewCartBtnText).toBe("View Cart");
     }
 
+    //empty shopping cart modal text element test method
+    async isEmptyShoppingCartModalTextElementAsExpected(page){
+        const shoppingCartModal = new ShoppingCartModal(page);
+        //assert empty shopping cart modal title is as expected
+        const emptyShopCartModalTitle = await shoppingCartModal.getShoppingCartModalEmptyCartTitle();
+        expect(emptyShopCartModalTitle).toBe("Your cart is empty");
+        //assert empty shopping cart modal subtext is as expected
+        const emptyShopCartModalSubtext = await shoppingCartModal.getShoppingCartModalEmptyCartSubtext();
+        expect(emptyShopCartModalSubtext).toBe("Looks like you haven't added any products to your cart yet.");
+        //assert empty shopping cart modal shopping button text is as expected
+        const emptyShopCartModalShopBtnText = await shoppingCartModal.getShoppingCartModalEmptyCartButton();
+        expect(emptyShopCartModalShopBtnText).toBe("Start Shopping");
+    }
+
 }
 export {ShoppingCartModalTextElementAsserts};

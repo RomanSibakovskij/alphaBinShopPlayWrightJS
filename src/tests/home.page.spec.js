@@ -129,3 +129,15 @@ test.describe("Add Multiple New Arrivals Products To Cart Tests", () => {
     });
 
 });
+
+test.describe("Remove Single Product From Cart Modal Test", () => {
+
+    // Test 011 -> remove single featured product ("Dell XPS 13 (2021) Laptop") from cart modal test (as a guest)
+    test("Remove Single Featured Product From Cart Modal Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //remove single featured product ("Dell XPS 13 (2021) Laptop") from cart modal test (as a guest)
+        await testMethods.removeSingleFeaturedProductFromCartModalTest(page);
+    });
+
+});

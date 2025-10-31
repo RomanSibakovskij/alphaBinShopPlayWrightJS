@@ -30,6 +30,11 @@ class ShoppingCartModal extends BasePage{
         //buttons
         this._shoppingCartModalCheckoutButton = page.locator("//button[@data-testid='checkout-button']");
         this._shoppingCartModalViewCartButton = page.locator("//button[@data-testid='view-cart-button']");
+        //empty shopping cart modal elements
+        this._shoppingCartModalEmptyCartIcon = page.locator("//span[@class='anticon anticon-shopping-cart']");
+        this._shoppingCartModalEmptyCartTitle = page.locator("//h3[@class='text-xl font-semibold mb-2']");
+        this._shoppingCartModalEmptyCartSubtext = page.locator("//p[@class='text-gray-500 mb-6']");
+        this._shoppingCartModalEmptyCartButton = page.locator("//button[@data-testid='continue-shopping-btn']");
 
     }
 
@@ -40,6 +45,9 @@ class ShoppingCartModal extends BasePage{
             await setQtyIncreaseBtn.click();
         }
     }
+
+    //click set product remove from cart button method
+    async clickSetProductRemoveFromCartButton(index){await this._shoppingCartModalProductRemoveBtnElements.nth(index).click();}
 
     //click "View Cart" button method
     async clickViewCartButton(){await this._shoppingCartModalViewCartButton.click();}
@@ -90,6 +98,10 @@ class ShoppingCartModal extends BasePage{
         return text.trim();
     }
     async getShoppingCartModalViewCartBtnText(){return await this._shoppingCartModalViewCartButton.innerText();}
+    //empty shopping cart elements
+    async getShoppingCartModalEmptyCartTitle(){return await this._shoppingCartModalEmptyCartTitle.innerText();}
+    async getShoppingCartModalEmptyCartSubtext(){return await this._shoppingCartModalEmptyCartSubtext.innerText();}
+    async getShoppingCartModalEmptyCartButton(){return await this._shoppingCartModalEmptyCartButton.innerText();}
 
     //shopping cart modal web element getters
     get shoppingCartModalIcon(){return this._shoppingCartModalIcon;}
@@ -114,6 +126,11 @@ class ShoppingCartModal extends BasePage{
     //buttons
     get shoppingCartModalCheckoutButton(){return this._shoppingCartModalCheckoutButton;}
     get shoppingCartModalViewCartButton(){return this._shoppingCartModalViewCartButton;}
+    //empty shopping cart elements
+    get shoppingCartModalEmptyCartIcon(){return this._shoppingCartModalEmptyCartIcon;}
+    get shoppingCartModalEmptyCartTitle(){return this._shoppingCartModalEmptyCartTitle;}
+    get shoppingCartModalEmptyCartSubtext(){return this._shoppingCartModalEmptyCartSubtext;}
+    get shoppingCartModalEmptyCartButton(){return this._shoppingCartModalEmptyCartButton;}
 
 }
 export {ShoppingCartModal};

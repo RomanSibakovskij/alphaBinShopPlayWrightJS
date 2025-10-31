@@ -86,5 +86,18 @@ class ShoppingCartModalWebElementAsserts {
         await expect(shoppingCartModal.shoppingCartModalViewCartButton).toBeVisible();
     }
 
+    //empty shopping cart modal web element assert test method
+    async isEmptyShoppingCartModalWebElementVisible(page){
+        const shoppingCartModal = new ShoppingCartModal(page);
+        //assert empty shopping cart modal icon is visible
+        await expect(shoppingCartModal.shoppingCartModalEmptyCartIcon).toBeVisible();
+        //assert empty shopping cart modal title is visible
+        await expect(shoppingCartModal.shoppingCartModalEmptyCartTitle).toBeVisible();
+        //assert empty shopping cart modal subtext is visible
+        await expect(shoppingCartModal.shoppingCartModalEmptyCartSubtext).toBeVisible();
+        //assert empty shopping cart modal shopping button is visible
+        await expect(shoppingCartModal.shoppingCartModalEmptyCartButton).toBeVisible();
+    }
+
 }
 export {ShoppingCartModalWebElementAsserts};
