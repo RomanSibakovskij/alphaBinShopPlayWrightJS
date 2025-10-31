@@ -33,3 +33,15 @@ test.describe("Add All Products Dashboard Page Single Product To Cart Tests", ()
     });
 
 });
+
+test.describe("Add All Products Dashboard Page Multiple Products To Cart Tests", () => {
+
+    // Test 015b -> add all products dashboard page multiple products ("Seagate 4TB External Hard Drive") to cart test (as a guest)
+    test("Add All Products Dashboard Page Multiple Products To Cart Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add all products dashboard page multiple products ("Seagate 4TB External Hard Drive") to cart test (as a guest)
+        await testMethods.addMultipleAllProductsDashPageProductsToCartTest(page);
+    });
+
+});

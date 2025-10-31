@@ -7252,6 +7252,140 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Add All Products Dashboard Page Single Product To Cart Test Result (guest).png", fullPage: true });
     }
 
+    //add multiple all products category dashboard page products to cart tests
+
+    //add multiple all products category dashboard page products ("Seagate 4TB External Hard Drive") to cart test method (as a guest)
+    async addMultipleAllProductsDashPageProductsToCartTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click set product ("Seagate 4TB External Hard Drive") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(2);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Seagate 4TB External Hard Drive") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Seagate 4TB External Hard Drive).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Seagate 4TB External Hard Drive";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Seagate 4TB External Hard Drive") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Seagate 4TB External Hard Drive Additional Info Section).png", fullPage: true });
+        //click product increase button
+        await singleProductPage.clickProductQtyIncreaseButton(4);
+        //wait for element to load
+        await page.waitForTimeout(1300);
+        //capture screenshot of the single product page ("Seagate 4TB External Hard Drive" -> multiple products) display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (multiple Seagate 4TB External Hard Drive Products).png", fullPage: true });
+        //click "Add to Cart" button
+        await singleProductPage.clickAddToCartButton();
+        //click header "Shopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(4000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct product has been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const actualSingleProductName = productNames[0];
+        expect(actualSingleProductName).toBe("Seagate 4TB External Hard Drive");
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (multiple Seagate 4TB External Hard Drives).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add All Products Dashboard Page Multiple Products To Cart Test Result (guest).png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

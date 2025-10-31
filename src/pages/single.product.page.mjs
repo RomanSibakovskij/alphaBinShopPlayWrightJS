@@ -58,6 +58,14 @@ class SingleProductPage extends BasePage{
     //click set navbar button method
     async clickSetNavbarButton(index){await this._singleProductPageNavbarButtonElements.nth(index).click();}
 
+    //click product quantity increase button method (to click a set button multiple times)
+    async clickProductQtyIncreaseButton(count = 1) {
+        const productQtyIncreaseBtn = this._singleProductPageProductQtyIncreaseButton;
+        for (let i = 0; i < count; i++) {
+            await productQtyIncreaseBtn.click();
+        }
+    }
+
     //click "Add to Cart" button method
     async clickAddToCartButton(){await this._singleProductPageProductAddToCartButton.click();}
 
