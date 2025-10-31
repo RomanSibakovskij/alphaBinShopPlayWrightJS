@@ -6,6 +6,8 @@ import {SignInPage} from "../../pages/signin.page.mjs";
 import {CreateAccountPage} from "../../pages/create.account.page.mjs";
 import {AccountDashboardPage} from "../../pages/account.dashboard.page.mjs";
 import {WishlistDashboardPage} from "../../pages/wishlist.dashboard.page.mjs";
+import {AllProductsDashboardPage} from "../../pages/all.products.dashboard.page.mjs";
+import {SingleProductPage} from "../../pages/single.product.page.mjs";
 
 import {CreateAccountPageInvalidScenarios} from "../../pages/create-account-page-invalid-scenarios/create.account.page.invalid.scenarios.mjs";
 import {SignInPageInvalidScenarios} from "../../pages/signin-page-invalid-scenarios/signin.page.invalid.scenarios.mjs";
@@ -20,6 +22,8 @@ import {SignInPageWebElementAssert} from "../web-element-asserts/signin.page.web
 import {CreateAccountPageWebElementAssert} from "../web-element-asserts/create.account.page.web.element.assert.mjs";
 import {AccountDashboardPageWebElementAssert} from "../web-element-asserts/account.dashboard.web.element.assert.mjs";
 import {WishlistDashboardPageWebElementAsserts} from "../web-element-asserts/wishlist.dashboard.page.web.element.asserts.mjs";
+import {AllProductsDashPageWebElementAsserts} from "../web-element-asserts/all.products.dash.page.web.element.asserts.mjs";
+import {SingleProductPageWebElementAsserts} from "../web-element-asserts/single.product.page.web.element.asserts.mjs";
 
 import {GeneralPageTextElementAssert} from "../text-element-asserts/general.page.text.element.assert.mjs";
 import {HomePageTextElementAssert} from "../text-element-asserts/home.page.text.element.assert.mjs";
@@ -27,6 +31,8 @@ import {SignInPageTextElementAssert} from "../text-element-asserts/signin.page.t
 import {CreateAccountPageTextElementAssert} from "../text-element-asserts/create.account.page.text.element.assert.mjs";
 import {AccountDashboardPageTextElementAssert} from "../text-element-asserts/account.dashboard.text.element.assert.mjs";
 import {WishlistDashboardPageTextElementAsserts} from "../text-element-asserts/wishlist.dashboard.page.text.element.asserts.mjs";
+import {AllProductsDashPageTextElementAsserts} from "../text-element-asserts/all.products.dash.page.text.element.asserts.mjs";
+import {SingleProductPageTextElementAsserts} from "../text-element-asserts/single.product.page.text.element.asserts.mjs";
 
 import {PersonalInfoModal} from "../../pages/modals/personal.info.modal.mjs";
 import {PasswordModal} from "../../pages/modals/password.modal.mjs";
@@ -49,6 +55,8 @@ import {ShoppingCartModalTextElementAsserts} from "../text-element-asserts/modal
 import {HomePageDataLoggers} from "../data-loggers/home.page.data.loggers.mjs";
 import {AccountDashPageDataLogger} from "../data-loggers/account.dash.page.data.logger.mjs";
 import {WishlistDashboardPageDataLogger} from "../data-loggers/wishlist.dashboard.page.data.logger.mjs";
+import {AllProductsDashPageDataLoggers} from "../data-loggers/all.products.dash.page.data.loggers.mjs";
+import {SingleProductPageDataLoggers} from "../data-loggers/single.product.page.data.loggers.mjs";
 
 import {AddressesDashboardModalDataLogger} from "../data-loggers/modals/addresses.dashboard.modal.data.logger.mjs";
 import {ShoppingCartModalDataLogger} from "../data-loggers/modals/shopping.cart.modal.data.logger.mjs";
@@ -6914,6 +6922,172 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Add Multiple Products From Wishlist To Cart Test Result.png", fullPage: true });
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //add single all products category dashboard page product to cart tests
+
+    //add single all products category dashboard page product ("Rode NT1-A Condenser Mic") to cart test method (as a guest)
+    async addSingleAllProductsDashPageProductToCartTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "List view" button
+        await allProductsDashboardPage.clickListViewButton();
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (list view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageListWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (list view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (list view).png", fullPage: true });
+        //set price range from (to a set value) -> 10000
+        await allProductsDashboardPage.setPriceRangeFrom(0.11);
+        //set price range to (to a set value) -> 25000
+        await allProductsDashboardPage.setPriceRangeTo(0.27);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (list view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (list view with set price range).png", fullPage: true });
+        //click set product ("Rode NT1-A Condenser Mic") card (list view)
+        await allProductsDashboardPage.clickSetProductCardListMethod(0);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //capture screenshot of the single product page ("Rode NT1-A Condenser Mic") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Rode NT1-A Condenser Mic).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Rode NT1-A Condenser Mic";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Rode NT1-A Condenser Mic") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Rode NT1-A Condenser Mic Additional Info Section).png", fullPage: true });
+        //click "Add to Cart" button
+        await singleProductPage.clickAddToCartButton();
+        //click header "hopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct product has been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const actualSingleProductName = productNames[0];
+        await expect(actualSingleProductName).toBe("Rode NT1-A Condenser Mic");
+        //assert product quantity count stays constant
+        const productCounterCount = await shoppingCartModal.getShoppingCartModalProductCount();
+        const productQuantity = await shoppingCartModal.getShoppingCartModalProductQty();
+        const totalQty = productQuantity.reduce((sum, qty) => sum + Number(qty), 0)
+        expect(Number(productCounterCount)).toBe(totalQty);
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (single Rode NT1-A Condenser Mic).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add All Products Dashboard Page Single Product To Cart Test Result (guest).png", fullPage: true });
+    }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

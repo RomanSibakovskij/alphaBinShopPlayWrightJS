@@ -55,6 +55,12 @@ class SingleProductPage extends BasePage{
 
     }
 
+    //click set navbar button method
+    async clickSetNavbarButton(index){await this._singleProductPageNavbarButtonElements.nth(index).click();}
+
+    //click "Add to Cart" button method
+    async clickAddToCartButton(){await this._singleProductPageProductAddToCartButton.click();}
+
     //single product page product data getters
     async getSingleProductPageTitle(){return await this._singleProductPageTitle.innerText();}
     async getSingleProductPageDescription(){return await this._singleProductPageDescription.innerText();}

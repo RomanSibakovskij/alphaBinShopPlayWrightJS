@@ -40,6 +40,42 @@ class AllProductsDashboardPage extends BasePage{
 
     }
 
+    //click "List view" button method
+    async clickListViewButton(){await this._allProductsDashboardPageListViewButton.click();}
+
+    //click "Filters" button method
+    async clickFiltersButton(){await this._allProductsDashboardPageFiltersButton.click();}
+
+    //slider manipulator method
+    async dragSlider(sliderLocator, targetPercentage) {
+        const box = await sliderLocator.boundingBox();
+        if (!box) throw new Error("Slider not visible");
+
+        //calculate target position along the slider track
+        const targetX = box.x + box.width * targetPercentage;
+        const targetY = box.y + box.height / 2;
+
+        //start dragging from current knob position (approx center of slider)
+        const startX = box.x + box.width / 2;
+        await this.page.mouse.move(startX, targetY);
+        await this.page.mouse.down();
+        await this.page.mouse.move(targetX, targetY, { steps: 10 });
+        await this.page.mouse.up();
+    }
+
+    //set price from method (by set percentage)
+    async setPriceRangeFrom(percentage) {
+        await this.dragSlider(this._allProductsDashboardPageFiltersCategoryPriceRangeFromSliderBar, percentage);
+    }
+
+    //set price to method (by set percentage)
+    async setPriceRangeTo(percentage) {
+        await this.dragSlider(this._allProductsDashboardPageFiltersCategoryPriceRangeToSliderBar, percentage);
+    }
+
+    //click set product card method (while view is switched to list)
+    async clickSetProductCardListMethod(index){await this._allProductsDashboardPageProductListCardElements.nth(index).click()}
+
     //all products dashboard product data getters
     async getAllProductsDashboardPageProductCount(){return await this._allProductsDashboardPageProductCounter.innerText();}
     //list elements
