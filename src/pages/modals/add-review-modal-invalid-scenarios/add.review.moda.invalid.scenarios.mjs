@@ -29,6 +29,9 @@ class AddReviewModalInvalidScenarios extends BasePage{
         this._tooShortReviewTitle = "D"; //1 char
         this._tooShortReview = "Csdsertyf"; //9 chars
 
+        //invalid review input data - too long singular input
+        this._tooLongReviewFullName = "Rsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Tsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //201 chars
+
     }
 
     //invalid user (review) data input methods - no singular input
@@ -73,6 +76,13 @@ class AddReviewModalInvalidScenarios extends BasePage{
         const tooShortGuestReview = this._tooShortReview;
         Logger.info("Too short user (guest) review: " + tooShortGuestReview);
         await this._addReviewModalOpinionTextarea.fill(tooShortGuestReview);
+    }
+
+    //invalid user (review) data input methods - too long singular input
+    async inputTooLongGuestFullNameIntoYourNameInputField(){
+        const tooLongGuestReviewFullName = this._tooLongReviewFullName;
+        Logger.info("Too long user (guest) review full name: " + tooLongGuestReviewFullName);
+        await this._addReviewModalYourNameInputField.fill(tooLongGuestReviewFullName);
     }
 
 }

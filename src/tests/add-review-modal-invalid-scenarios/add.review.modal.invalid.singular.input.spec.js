@@ -85,3 +85,15 @@ test.describe("Invalid Add Product Review Tests - Too Short Singular Input", () 
     });
 
 });
+
+test.describe("Invalid Add Product Review Tests - Too Long Singular Input", () => {
+
+    // Test 016k -> invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - too long guest review full name (201 chars) (the error wasn't triggered, test has failed)
+    test("Invalid Add Product Review Test (as a guest) - Too Long Guest Full Name", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - too long guest review full name
+        await testMethods.invalidAddProductReviewTooLongGuestFullNameTest(page);
+    });
+
+});
