@@ -44,4 +44,20 @@ test.describe("Add All Products Dashboard Page Multiple Products To Cart Tests",
         await testMethods.addMultipleAllProductsDashPageProductsToCartTest(page);
     });
 
+    // Test 015c -> add all products dashboard page multiple products ("Samsung 32-inch UHD 4K Smart TV") to cart test (as a registered user)
+    test("Add All Products Dashboard Page Multiple Products To Cart Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add all products dashboard page multiple products ("Samsung 32-inch UHD 4K Smart TV") to cart test (as a registered user)
+        await testMethods.addMultipleAllProductsDashPageProductsToCartRegUserTest(page);
+    });
+
 });
