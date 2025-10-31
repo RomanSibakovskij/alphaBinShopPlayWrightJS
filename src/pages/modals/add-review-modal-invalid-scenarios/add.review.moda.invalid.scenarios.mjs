@@ -32,6 +32,7 @@ class AddReviewModalInvalidScenarios extends BasePage{
         //invalid review input data - too long singular input
         this._tooLongReviewFullName = "Rsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Tsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //201 chars
         this._tooLongReviewEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); //100 chars -> name, domain
+        this._tooLongReviewTitle = "3sdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; //100 chars
 
     }
 
@@ -89,6 +90,11 @@ class AddReviewModalInvalidScenarios extends BasePage{
         const tooLongGuestReviewEmail = this._tooLongReviewEmail;
         Logger.info("Too long user (guest) review email: " + tooLongGuestReviewEmail);
         await this._addReviewModalYourEmailInputField.fill(tooLongGuestReviewEmail);
+    }
+    async inputTooLongGuestReviewTitleIntoReviewTitleInputField(){
+        const tooLongGuestReviewTitle = this._tooLongReviewTitle;
+        Logger.info("Too long user (guest) review title: " + tooLongGuestReviewTitle);
+        await this._addReviewModalReviewTitleInputField.fill(tooLongGuestReviewTitle);
     }
 
 }
