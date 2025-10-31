@@ -18,6 +18,7 @@ class AddReviewModalInvalidScenarios extends BasePage{
         this._noReviewFullName = "";
         this._noReviewEmail = "";
         this._noReviewTitle = "";
+        this._noReview = "";
 
     }
 
@@ -36,6 +37,11 @@ class AddReviewModalInvalidScenarios extends BasePage{
         const noGuestReviewTitle = this._noReviewTitle;
         Logger.info("No user (guest) review title: " + noGuestReviewTitle);
         await this._addReviewModalReviewTitleInputField.fill(noGuestReviewTitle);
+    }
+    async inputNoGuestReviewIntoReviewTextarea(){
+        const noGuestReview = this._noReview;
+        Logger.info("No user (guest) review: " + noGuestReview);
+        await this._addReviewModalOpinionTextarea.fill(noGuestReview);
     }
 
 }
