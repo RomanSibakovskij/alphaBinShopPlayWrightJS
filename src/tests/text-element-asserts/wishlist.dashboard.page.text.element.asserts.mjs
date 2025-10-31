@@ -1,6 +1,6 @@
 "use strict"
 
-import {WishlistDashboardPage} from "../../pages/wishlist.dashboard.page.js";
+import {WishlistDashboardPage} from "../../pages/wishlist.dashboard.page.mjs";
 import {expect} from "@playwright/test";
 
 class WishlistDashboardPageTextElementAsserts {

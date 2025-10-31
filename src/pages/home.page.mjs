@@ -80,6 +80,15 @@ class HomePage extends BasePage{
         await addToCartBtn.evaluate(button => button.click());
     }
 
+    //click set featured product "Add to Wishlist" button method
+    async clickAddSetFeaturedProductToWishlistBtn(index){
+        const addToWishlistBtn = this._homePageFeaturedProductAddToWishlistBtnElements.nth(index);
+        //wait for the button to be attached in the DOM
+        await addToWishlistBtn.waitFor({ state: 'attached' });
+        //click via JavaScript executor (common click causes a glitch loop, hover doesn't work)
+        await addToWishlistBtn.evaluate(button => button.click());
+    }
+
     //click set new arrivals product "Add to Cart" button method
     async clickAddSetNewArrivalsProductToCartBtn(index){
         const addToCartBtn = this._homePageNewArrivalsProductAddToCartBtnElements.nth(index);

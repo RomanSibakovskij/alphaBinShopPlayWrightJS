@@ -141,3 +141,17 @@ test.describe("Remove Single Product From Cart Modal Test", () => {
     });
 
 });
+
+test.describe("Add Single Featured Product To Wishlist Tests", () => {
+
+    // Test 012 -> add single featured product ("Dell XPS 13 (2021) Laptop") to wishlist test (as a guest)
+    test("Add Single Featured Product To Wishlist Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add single featured product ("Dell XPS 13 (2021) Laptop") to wishlist test (as a guest)
+        await testMethods.addSingleFeaturedProductToWishlistTest(page);
+        //close the page explicitly
+        await page.close();
+    });
+
+});

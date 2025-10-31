@@ -1,6 +1,6 @@
 "use strict"
 
-import {WishlistDashboardPage} from "../../pages/wishlist.dashboard.page.js";
+import {WishlistDashboardPage} from "../../pages/wishlist.dashboard.page.mjs";
 import {Logger} from "../../pages/utilities/logger.mjs";
 
 class WishlistDashboardPageDataLogger {

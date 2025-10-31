@@ -5,6 +5,7 @@ import {HomePage} from "../../pages/home.page.mjs";
 import {SignInPage} from "../../pages/signin.page.mjs";
 import {CreateAccountPage} from "../../pages/create.account.page.mjs";
 import {AccountDashboardPage} from "../../pages/account.dashboard.page.mjs";
+import {WishlistDashboardPage} from "../../pages/wishlist.dashboard.page.mjs";
 
 import {CreateAccountPageInvalidScenarios} from "../../pages/create-account-page-invalid-scenarios/create.account.page.invalid.scenarios.mjs";
 import {SignInPageInvalidScenarios} from "../../pages/signin-page-invalid-scenarios/signin.page.invalid.scenarios.mjs";
@@ -18,12 +19,14 @@ import {HomePageWebElementAssert} from "../web-element-asserts/home.page.web.ele
 import {SignInPageWebElementAssert} from "../web-element-asserts/signin.page.web.element.assert.mjs";
 import {CreateAccountPageWebElementAssert} from "../web-element-asserts/create.account.page.web.element.assert.mjs";
 import {AccountDashboardPageWebElementAssert} from "../web-element-asserts/account.dashboard.web.element.assert.mjs";
+import {WishlistDashboardPageWebElementAsserts} from "../web-element-asserts/wishlist.dashboard.page.web.element.asserts.mjs";
 
 import {GeneralPageTextElementAssert} from "../text-element-asserts/general.page.text.element.assert.mjs";
 import {HomePageTextElementAssert} from "../text-element-asserts/home.page.text.element.assert.mjs";
 import {SignInPageTextElementAssert} from "../text-element-asserts/signin.page.text.element.assert.mjs";
 import {CreateAccountPageTextElementAssert} from "../text-element-asserts/create.account.page.text.element.assert.mjs";
 import {AccountDashboardPageTextElementAssert} from "../text-element-asserts/account.dashboard.text.element.assert.mjs";
+import {WishlistDashboardPageTextElementAsserts} from "../text-element-asserts/wishlist.dashboard.page.text.element.asserts.mjs";
 
 import {PersonalInfoModal} from "../../pages/modals/personal.info.modal.mjs";
 import {PasswordModal} from "../../pages/modals/password.modal.mjs";
@@ -45,6 +48,7 @@ import {ShoppingCartModalTextElementAsserts} from "../text-element-asserts/modal
 
 import {HomePageDataLoggers} from "../data-loggers/home.page.data.loggers.mjs";
 import {AccountDashPageDataLogger} from "../data-loggers/account.dash.page.data.logger.mjs";
+import {WishlistDashboardPageDataLogger} from "../data-loggers/wishlist.dashboard.page.data.logger.mjs";
 
 import {AddressesDashboardModalDataLogger} from "../data-loggers/modals/addresses.dashboard.modal.data.logger.mjs";
 import {ShoppingCartModalDataLogger} from "../data-loggers/modals/shopping.cart.modal.data.logger.mjs";
@@ -6516,6 +6520,77 @@ class TestMethods{
         await shoppingCartModalTextElementAsserts.isEmptyShoppingCartModalTextElementAsExpected(page);
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Remove Single Featured Product From Cart Test Result.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //add single/multiple product(s) to wishlist tests
+
+    //add single featured product ("Dell XPS 13 (2021) Laptop") to wishlist test method (as a guest)
+    async addSingleFeaturedProductToWishlistTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePage = new HomePage(page);
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const wishlistDashboardPage = new WishlistDashboardPage(page);
+        const wishlistDashboardPageWebElementAsserts = new WishlistDashboardPageWebElementAsserts();
+        const wishlistDashboardPageTextElementAsserts = new WishlistDashboardPageTextElementAsserts();
+        const wishlistDashboardPageDataLogger = new WishlistDashboardPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click set featured product ("Dell XPS 13 (2021) Laptop") add to wishlist button
+        await homePage.clickAddSetFeaturedProductToWishlistBtn(0);
+        //click header "Wishlist" button
+        await generalPage.clickHeaderWishlistIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //wishlist dashboard page web element assert
+        await wishlistDashboardPageWebElementAsserts.isWishlistDashboardPageWebElementVisible(page);
+        //wishlist dashboard page text element assert
+        await wishlistDashboardPageTextElementAsserts.isWishlistDashboardPageTextElementAsExpected(page);
+        //log wishlist dashboard page product data
+        await wishlistDashboardPageDataLogger.logWishlistDashboardPageProductData(page);
+        //assert the user gets onto wishlist page
+        const expectedWishlistPageURL = "https://demo.alphabin.co/wishlist";
+        const actualWishlistPageURL = page.url();
+        expect(expectedWishlistPageURL).toBe(actualWishlistPageURL);
+        //assert the correct product has been added to wishlist
+        const wishlistProductNames = await wishlistDashboardPage.getWishlistDashPageProductName();
+        const actualWishlistProductName = wishlistProductNames[0];
+        expect(actualWishlistProductName).toBe("Dell XPS 13 (2021) Laptop");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Single Featured Product (single Dell XPS 13 (2021) Laptop) To Wishlist Test Result (guest).png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
