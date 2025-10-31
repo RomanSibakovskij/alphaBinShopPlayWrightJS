@@ -157,3 +157,17 @@ test.describe("Invalid Add Product Review Tests - Invalid Singular Input Format"
     });
 
 });
+
+test.describe("Update Product Review Test", () => {
+
+    // Test 017 -> update product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest)
+    test("Update Product Review Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest)
+        await testMethods.addProductReviewTest(page);
+        //update product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest)
+        await testMethods.updateProductReviewTest(page);
+    });
+
+});

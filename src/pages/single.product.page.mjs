@@ -66,6 +66,15 @@ class SingleProductPage extends BasePage{
         }
     }
 
+    //click set "Edit review" link method
+    async clickSetEditReviewLink(index){
+        const setEditReviewLink = this._singleProductPageReviewEditLinkElements.nth(index);
+        //wait for the link to be attached in the DOM
+        await setEditReviewLink.waitFor({ state: 'attached' });
+        //click via JavaScript executor (common click causes a glitch loop, hover doesn't work)
+        await setEditReviewLink.evaluate(button => button.click());
+    }
+
     //click "Add to Cart" button method
     async clickAddToCartButton(){await this._singleProductPageProductAddToCartButton.click();}
 

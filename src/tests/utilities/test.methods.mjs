@@ -10661,6 +10661,65 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Invalid Guest Review Format.png", fullPage: true });
     }
 
+    //update product review test
+
+    //update product review test method
+    async updateProductReviewTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page review section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageReviewWebElementVisible(page);
+        //single product page review section text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageReviewTextElementAsExpected(page);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //click set "Edit review" link
+        await singleProductPage.clickSetEditReviewLink(0);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before edited data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Edited Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section after valid edited review data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Valid Edited Review Data Input).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //single product page review section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageReviewWebElementVisible(page);
+        //single product page review section text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageReviewTextElementAsExpected(page);
+        //log single product page review data
+        await singleProductPageDataLoggers.logSingleProductPageReviewData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Update Product Review Test Result (guest).png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
