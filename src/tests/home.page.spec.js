@@ -168,5 +168,16 @@ test.describe("Add Single Featured Product To Wishlist Tests", () => {
         await testMethods.addSingleFeaturedProductToWishlistRegUserTest(page);
     });
 
+});
+
+test.describe("Add Multiple Featured Products To Wishlist Test", () => {
+
+    // Test 012b -> add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer", "Epson EF-100 Smart Portable Projector") to wishlist test (as a guest)
+    test("Add Multiple Featured Products To Wishlist Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer", "Epson EF-100 Smart Portable Projector") to wishlist test (as a guest)
+        await testMethods.addMultipleFeaturedProductToWishlistTest(page);
+    });
 
 });

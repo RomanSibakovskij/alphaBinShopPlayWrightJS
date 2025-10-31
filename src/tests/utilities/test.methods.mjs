@@ -6664,6 +6664,77 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Add Single Featured Product (single Dell XPS 13 (2021) Laptop) To Wishlist Test Result (registered user).png", fullPage: true });
     }
 
+    //add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer", "Epson EF-100 Smart Portable Projector") to wishlist test method (as a guest)
+    async addMultipleFeaturedProductToWishlistTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePage = new HomePage(page);
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const wishlistDashboardPage = new WishlistDashboardPage(page);
+        const wishlistDashboardPageWebElementAsserts = new WishlistDashboardPageWebElementAsserts();
+        const wishlistDashboardPageTextElementAsserts = new WishlistDashboardPageTextElementAsserts();
+        const wishlistDashboardPageDataLogger = new WishlistDashboardPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click featured products scroll left button
+        await homePage.clickFeaturedProductScrollLeftBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click set featured product ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader") add to wishlist button
+        await homePage.clickAddSetFeaturedProductToWishlistBtn(1);
+        //click set featured product ("HP LaserJet Pro MFP M428fdw Wireless Printer") add to wishlist button
+        await homePage.clickAddSetFeaturedProductToWishlistBtn(2);
+        //click set featured product ("Epson EF-100 Smart Portable Projector") add to wishlist button
+        await homePage.clickAddSetFeaturedProductToWishlistBtn(3);
+        //click header "Wishlist" button
+        await generalPage.clickHeaderWishlistIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //wishlist dashboard page web element assert
+        await wishlistDashboardPageWebElementAsserts.isWishlistDashboardPageWebElementVisible(page);
+        //wishlist dashboard page text element assert
+        await wishlistDashboardPageTextElementAsserts.isWishlistDashboardPageTextElementAsExpected(page);
+        //log wishlist dashboard page product data
+        await wishlistDashboardPageDataLogger.logWishlistDashboardPageProductData(page);
+        //assert the user gets onto wishlist page
+        const expectedWishlistPageURL = "https://demo.alphabin.co/wishlist";
+        const actualWishlistPageURL = page.url();
+        expect(expectedWishlistPageURL).toBe(actualWishlistPageURL);
+        //assert the correct product has been added to wishlist
+        const actualWishlistProductNames = await wishlistDashboardPage.getWishlistDashPageProductName();
+        const expectedWishlistProductNames = ["SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer", "Epson EF-100 Smart Portable Projector"];
+        expect(actualWishlistProductNames).toStrictEqual(expectedWishlistProductNames);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Multiple Featured Products (single SanDisk Extreme Pro 3.0 USB-C Memory Card Reader, HP LaserJet Pro MFP M428fdw Wireless Printer, Epson EF-100 Smart Portable Projector) To Wishlist Test Result (guest).png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
