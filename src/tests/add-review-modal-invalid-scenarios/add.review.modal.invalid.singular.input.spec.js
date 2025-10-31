@@ -148,4 +148,12 @@ test.describe("Invalid Add Product Review Tests - Invalid Singular Input Format"
         await testMethods.invalidAddProductReviewInvalidGuestReviewTitleFormatTest(page);
     });
 
+    // Test 016r -> invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - invalid guest review format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Add Product Review Test (as a guest) - Invalid Guest Review Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - invalid guest review format
+        await testMethods.invalidAddProductReviewInvalidGuestReviewFormatTest(page);
+    });
+
 });

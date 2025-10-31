@@ -39,6 +39,7 @@ class AddReviewModalInvalidScenarios extends BasePage{
         this._invalidReviewFullNameFormat = "@#$%^&^ #%$#^"; //special symbols only
         this._invalidReviewEmailFormat = "dfgfdhggfjfakemail.com"; //missing '@'
         this._invalidReviewTitleFormat = "!@$#%&^"; //special symbols only
+        this._invalidReviewFormat = "!@$#^%%&*^("; //special symbols only
 
     }
 
@@ -123,6 +124,11 @@ class AddReviewModalInvalidScenarios extends BasePage{
         const invalidGuestReviewTitleFormat = this._invalidReviewTitleFormat;
         Logger.info("Invalid user (guest) review title format: " + invalidGuestReviewTitleFormat);
         await this._addReviewModalReviewTitleInputField.fill(invalidGuestReviewTitleFormat);
+    }
+    async inputInvalidGuestReviewFormatIntoReviewTextarea(){
+        const invalidGuestReviewFormat = this._invalidReviewFormat;
+        Logger.info("Invalid user (guest) review format: " + invalidGuestReviewFormat);
+        await this._addReviewModalOpinionTextarea.fill(invalidGuestReviewFormat);
     }
 
 }
