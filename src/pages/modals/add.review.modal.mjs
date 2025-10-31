@@ -2,6 +2,7 @@
 
 import {BasePage} from "../utilities/base.page.mjs";
 import {TestDataGenerator} from "../utilities/test.data.generator.mjs";
+import {CreateAccountPage} from "../create.account.page.mjs";
 import {Logger} from "../utilities/logger.mjs";
 
 class AddReviewModal extends BasePage{
@@ -33,13 +34,16 @@ class AddReviewModal extends BasePage{
         this._addReviewModalNoReviewMessage = page.locator("//p[@data-testid='no-reviews-message']");
 
         const testDataGenerator = new TestDataGenerator(page);
+        const createAccountPage = new CreateAccountPage(page);
 
         //valid review input data
         const { firstName, lastName } = testDataGenerator.getRandomName();
         this._guestFirstName = firstName;
         this._guestLastName = lastName;
+        this._regUserReviewFullName = createAccountPage.validUserFullName;
         this._guestReviewFullName = this._guestFirstName + " " + this._guestLastName;
         this._guestReviewEmail = testDataGenerator.generateRandomEmailAddress(8);
+        this._regUserReviewEmail = createAccountPage.validUserEmail;
         this._guestReviewTitle = testDataGenerator.generateRandomCommentTitle();
         this._guestReview = testDataGenerator.generateRandomComment();
 
@@ -65,6 +69,18 @@ class AddReviewModal extends BasePage{
         const guestReview = this._guestReview;
         Logger.info("Valid user (guest) review: " + guestReview);
         await this._addReviewModalOpinionTextarea.fill(guestReview);
+    }
+
+    //valid registered user (review) related data input methods
+    async inputRegUserFullNameIntoYourNameInputField(){
+        const regUserReviewFullName = this._regUserReviewFullName;
+        Logger.info("Valid user (registered user) review full name: " + regUserReviewFullName);
+        await this._addReviewModalYourNameInputField.fill(regUserReviewFullName);
+    }
+    async inputRegUserEmailIntoYourEmailInputField(){
+        const regUserReviewEmail = this._regUserReviewEmail;
+        Logger.info("Valid user (registered user) review email: " + regUserReviewEmail);
+        await this._addReviewModalYourEmailInputField.fill(regUserReviewEmail);
     }
 
     //click set review stars method
