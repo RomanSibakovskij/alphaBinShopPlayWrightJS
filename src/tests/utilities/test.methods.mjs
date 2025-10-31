@@ -6332,6 +6332,102 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Add Multiple New Arrivals Products To Cart Test Result (guest).png", fullPage: true });
     }
 
+    //add multiple new arrivals products ("TP-Link Archer AX73 Wi-Fi 6 Router", "Apple iPad Air (2022, 5th Gen)") to cart test method (as a registered user)
+    async addMultipleNewArrivalsProductToCartRegUserTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePage = new HomePage(page);
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(0);
+        //wait for element to load
+        await page.waitForTimeout(2000);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click new arrival products scroll right button
+        await homePage.clickNewArrivalsProductScrollRightBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click new arrival products scroll right button
+        await homePage.clickNewArrivalsProductScrollRightBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click new arrival products scroll right button
+        await homePage.clickNewArrivalsProductScrollRightBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click new arrival products scroll right button
+        await homePage.clickNewArrivalsProductScrollRightBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click set new arrivals product ("TP-Link Archer AX73 Wi-Fi 6 Router") add to cart button
+        await homePage.clickAddSetNewArrivalsProductToCartBtn(10);
+        //click set new arrivals product ("Apple iPad Air (2022, 5th Gen)") add to cart button
+        await homePage.clickAddSetNewArrivalsProductToCartBtn(11);
+        //click header "hopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct products have been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const expectedProductNames = ["TP-Link Archer AX73 Wi-Fi 6 Router", "Apple iPad Air (2022, 5th Gen)"];
+        expect(productNames).toEqual(expectedProductNames);
+        //assert product quantity count stays constant
+        const productCounterCount = await shoppingCartModal.getShoppingCartModalProductCount();
+        const productQuantity = await shoppingCartModal.getShoppingCartModalProductQty();
+        const totalQty = productQuantity.reduce((sum, qty) => sum + Number(qty), 0)
+        expect(Number(productCounterCount)).toBe(totalQty);
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (single TP-Link Archer AX73 Wi-Fi 6 Router and Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //alter set product (Dell laptop) quantity
+        await shoppingCartModal.clickSetQtyIncreaseButton(1, 6);
+        //log shopping cart modal product data (to verify the product quantity has been altered)
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //capture screenshot of the shopping cart modal display (to verify the product quantity has been altered)
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (TP-Link Archer AX73 Wi-Fi 6 Router and multiple Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //assert the user gets onto shopping cart page after placing the products into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Multiple New Arrivals Products To Cart Test Result (registered user).png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
