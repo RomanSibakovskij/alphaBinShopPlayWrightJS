@@ -6844,5 +6844,41 @@ class TestMethods{
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //add single/multiple product(s) from wishlist to cart tests (registered user and guest share the same method)
+
+    //add single product from wishlist to cart test method
+    async addSingleWishlistProductToCartTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const wishlistDashboardPage = new WishlistDashboardPage(page);
+        const wishlistDashboardPageWebElementAsserts = new WishlistDashboardPageWebElementAsserts();
+        const wishlistDashboardPageTextElementAsserts = new WishlistDashboardPageTextElementAsserts();
+        const wishlistDashboardPageDataLogger = new WishlistDashboardPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //wishlist dashboard page web element assert
+        await wishlistDashboardPageWebElementAsserts.isWishlistDashboardPageWebElementVisible(page);
+        //wishlist dashboard page text element assert
+        await wishlistDashboardPageTextElementAsserts.isWishlistDashboardPageTextElementAsExpected(page);
+        //log wishlist dashboard page product data
+        await wishlistDashboardPageDataLogger.logWishlistDashboardPageProductData(page);
+        //click set "Add to Cart" button
+        await wishlistDashboardPage.clickSetAddToCartButton(0);
+        //click "View Cart" button
+        await wishlistDashboardPage.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Single Product From Wishlist To Cart Test Result.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }
 export {TestMethods};

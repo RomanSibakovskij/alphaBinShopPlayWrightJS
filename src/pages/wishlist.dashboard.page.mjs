@@ -39,6 +39,12 @@ class WishlistDashboardPage extends BasePage{
         await removeFromWishlistBtn.evaluate(button => button.click());
     }
 
+    //click set "Add to Cart" button method
+    async clickSetAddToCartButton(index){await this._wishlistDashPageProductAddToCartBtnElements.nth(index).click();}
+
+    //click "View Cart" button method
+    async clickViewCartButton(){await this._wishlistDashPageViewCartBtn.click();}
+
     //wishlist dashboard page product data getters
     //list elements
     async getWishlistDashPageProductName() {
