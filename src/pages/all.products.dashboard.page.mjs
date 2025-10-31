@@ -29,8 +29,8 @@ class AllProductsDashboardPage extends BasePage{
         this._allProductsDashboardPageProductListCardElements = page.locator("//a[@class='relative block group flex items-stretch border border-gray-200 rounded-lg overflow-hidden']"); //product list view only locators
         this._allProductsDashboardPageProductImgElements = page.locator("//img[@class='h-[220px] w-full object-contain mb-4']");
         this._allProductsDashboardPageProductListImgElements = page.locator("//img[@class='h-full w-full object-contain']"); //product list view only locators
-        this._allProductsDashboardPageProductAddToWishlistBtnElements = page.locator("//button[@data-testid='all-products-wishlist-button']"); //appear only after hovering over card
-        this._allProductsDashboardPageProductAddToCartBtnElements = page.locator("//button[@data-testid='all-products-cart-button']"); //appear only after hovering over card
+        //this._allProductsDashboardPageProductAddToWishlistBtnElements = page.locator("//button[@data-testid='all-products-wishlist-button']"); //appear only after hovering over card, not currently used
+        //this._allProductsDashboardPageProductAddToCartBtnElements = page.locator("//button[@data-testid='all-products-cart-button']"); //appear only after hovering over card, not currently used
         this._allProductsDashboardPageProductListAddToWishlistBtnElements = page.locator("//div[@class='p-4 flex flex-col justify-center gap-3 border-l']/button[2]"); //product list view only locators
         this._allProductsDashboardPageProductListAddToCartBtnElements = page.locator("//div[@class='p-4 flex flex-col justify-center gap-3 border-l']/button[2]"); //product list view only locators
         this._allProductsDashboardPageProductNameElements = page.locator("//h2[@data-testid='all-products-header']");
