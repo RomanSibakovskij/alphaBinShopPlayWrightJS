@@ -96,4 +96,12 @@ test.describe("Invalid Add Product Review Tests - Too Long Singular Input", () =
         await testMethods.invalidAddProductReviewTooLongGuestFullNameTest(page);
     });
 
+    // Test 016l -> invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - too long guest review email (100 chars -> name, domain) (the React error was triggered)
+    test("Invalid Add Product Review Test (as a guest) - Too Long Guest Email", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - too long guest review email
+        await testMethods.invalidAddProductReviewTooLongGuestEmailTest(page);
+    });
+
 });
