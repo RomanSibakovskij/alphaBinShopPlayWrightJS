@@ -35,5 +35,17 @@ class AddReviewModalTextElementAsserts{
         expect(addReviewModalSubmitBtnText).toBe("Submit");
     }
 
+    //add review modal (empty) text element assert test method
+    async isEmptyAddReviewModalTextElementAsExpected(page){
+        const addReviewModal = new AddReviewModal(page);
+        //assert the add review modal write review button text is as expected
+        const addReviewModalWriteReviewBtnText = await addReviewModal.getAddReviewModalWriteReviewBtnText();
+        expect(addReviewModalWriteReviewBtnText).toBe("Write a Review");
+        //input form
+        //assert the add review modal no reviews message is as expected
+        const addReviewModalNoReviewsMessage = await addReviewModal.getAddReviewModalNoReviewsMessage();
+        expect(addReviewModalNoReviewsMessage).toBe("No reviews yet. Be the first to review!");
+    }
+
 }
 export {AddReviewModalTextElementAsserts};

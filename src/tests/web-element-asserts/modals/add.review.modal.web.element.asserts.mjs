@@ -42,5 +42,14 @@ class AddReviewModalWebElementAsserts{
         await expect(addReviewModal.addReviewModalSubmitButton).toBeVisible();
     }
 
+    //add review modal (empty modal) web element assert test method
+    async isEmptyAddReviewModalWebElementVisible(page){
+        const addReviewModal = new AddReviewModal(page);
+        //assert the add review modal write review button is visible
+        await expect(addReviewModal.addReviewModalWriteReviewButton).toBeVisible();
+        //assert the add review modal no reviews message is visible
+        await expect(addReviewModal.addReviewModalNoReviewsMessage).toBeVisible();
+    }
+
 }
 export {AddReviewModalWebElementAsserts};
