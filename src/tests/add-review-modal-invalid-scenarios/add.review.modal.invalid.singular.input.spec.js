@@ -68,4 +68,12 @@ test.describe("Invalid Add Product Review Tests - Too Short Singular Input", () 
         await testMethods.invalidAddProductReviewTooShortGuestEmailTest(page);
     });
 
+    // Test 016i -> invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - too short guest review title (1 char) (the error wasn't triggered, test has failed)
+    test("Invalid Add Product Review Test (as a guest) - Too Short Guest Review Title", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test (as a guest) - too short guest review title
+        await testMethods.invalidAddProductReviewTooShortGuestReviewTitleTest(page);
+    });
+
 });
