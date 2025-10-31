@@ -6010,6 +6010,84 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Add Multiple Featured Products To Cart Test Result (guest).png", fullPage: true });
     }
 
+    //add multiple featured products ("Rode NT1-A Condenser Mic", "JBL Charge 4 Bluetooth Speaker") to cart test method (as a registered user)
+    async addMultipleFeaturedProductsToCartRegUserTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePage = new HomePage(page);
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(0);
+        //wait for element to load
+        await page.waitForTimeout(2000);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click set featured product ("Rode NT1-A Condenser Mic") add to cart button
+        await homePage.clickAddSetFeaturedProductToCartBtn(4);
+        //click set featured product ("JBL Charge 4 Bluetooth Speaker") add to cart button
+        await homePage.clickAddSetFeaturedProductToCartBtn(5);
+        //click header "hopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct products have been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const expectedProductNames = ["Rode NT1-A Condenser Mic", "JBL Charge 4 Bluetooth Speaker"];
+        expect(productNames).toEqual(expectedProductNames);
+        //assert product quantity count stays constant
+        const productCounterCount = await shoppingCartModal.getShoppingCartModalProductCount();
+        const productQuantity = await shoppingCartModal.getShoppingCartModalProductQty();
+        const totalQty = productQuantity.reduce((sum, qty) => sum + Number(qty), 0)
+        expect(Number(productCounterCount)).toBe(totalQty);
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (single Rode NT1-A Condenser Mic and JBL Charge 4 Bluetooth Speaker).png", fullPage: true });
+        //alter set product (Dell laptop) quantity
+        await shoppingCartModal.clickSetQtyIncreaseButton(1, 6);
+        //log shopping cart modal product data (to verify the product quantity has been altered)
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //capture screenshot of the shopping cart modal display (to verify the product quantity has been altered)
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (Rode NT1-A Condenser Mic and multiple  JBL Charge 4 Bluetooth Speakers).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Multiple Featured Products To Cart Test Result (registered user).png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

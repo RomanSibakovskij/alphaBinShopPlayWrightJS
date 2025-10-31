@@ -56,4 +56,20 @@ test.describe("Add Multiple Featured Products To Cart Tests", () => {
         await testMethods.addMultipleFeaturedProductsToCartTest(page);
     });
 
+    // Test 009c -> add multiple featured products ("Rode NT1-A Condenser Mic", "JBL Charge 4 Bluetooth Speaker") to cart test (as a registered user)
+    test("Add Multiple Featured Products To Cart Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add multiple featured products ("Rode NT1-A Condenser Mic", "JBL Charge 4 Bluetooth Speaker") to cart test (as a registered user)
+        await testMethods.addMultipleFeaturedProductsToCartRegUserTest(page);
+    });
+
 });
