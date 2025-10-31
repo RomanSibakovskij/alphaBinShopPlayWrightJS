@@ -27,6 +27,7 @@ class AddReviewModalInvalidScenarios extends BasePage{
         this._tooShortReviewFullName = "R T"; //3 chars
         this._tooShortReviewEmail = testDataGenerator.generateRandomTooShortEmailAddress(1); //1 char -> name, domain
         this._tooShortReviewTitle = "D"; //1 char
+        this._tooShortReview = "Csdsertyf"; //9 chars
 
     }
 
@@ -67,6 +68,11 @@ class AddReviewModalInvalidScenarios extends BasePage{
         const tooShortGuestReviewTitle = this._tooShortReviewTitle;
         Logger.info("Too short user (guest) review title: " + tooShortGuestReviewTitle);
         await this._addReviewModalReviewTitleInputField.fill(tooShortGuestReviewTitle);
+    }
+    async inputTooShortGuestReviewIntoReviewTextarea(){
+        const tooShortGuestReview = this._tooShortReview;
+        Logger.info("Too short user (guest) review: " + tooShortGuestReview);
+        await this._addReviewModalOpinionTextarea.fill(tooShortGuestReview);
     }
 
 }
