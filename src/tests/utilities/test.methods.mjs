@@ -6002,7 +6002,7 @@ class TestMethods{
         await shoppingCartModal.clickViewCartButton();
         //wait for element to load
         await page.waitForTimeout(2500);
-        //assert the user gets onto shopping cart page after placing the product into the cart
+        //assert the user gets onto shopping cart page after placing the products into the cart
         const expectedCartPageURL = "https://demo.alphabin.co/cart";
         const actualCartPageURL = page.url();
         expect(expectedCartPageURL).toBe(actualCartPageURL);
@@ -6080,7 +6080,7 @@ class TestMethods{
         await shoppingCartModal.clickViewCartButton();
         //wait for element to load
         await page.waitForTimeout(2500);
-        //assert the user gets onto shopping cart page after placing the product into the cart
+        //assert the user gets onto shopping cart page after placing the products into the cart
         const expectedCartPageURL = "https://demo.alphabin.co/cart";
         const actualCartPageURL = page.url();
         expect(expectedCartPageURL).toBe(actualCartPageURL);
@@ -6242,6 +6242,94 @@ class TestMethods{
         expect(expectedCartPageURL).toBe(actualCartPageURL);
         //capture screenshot of the the test result
         await page.screenshot({ path: "src/tests/screenshots/Add Single New Arrivals Product To Cart Test Result (registered user).png", fullPage: true });
+    }
+
+    //add multiple new arrivals products to cart tests
+
+    //add multiple new arrivals products ("GoPro HERO10 Black", "Logitech MX Master 3 Wireless Mouse") to cart test method (as a guest)
+    async addMultipleNewArrivalsProductsToCartTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePage = new HomePage(page);
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click new arrivals products scroll right button
+        await homePage.clickNewArrivalsProductScrollRightBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click new arrivals products scroll right button
+        await homePage.clickNewArrivalsProductScrollRightBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click new arrivals products scroll right button
+        await homePage.clickNewArrivalsProductScrollRightBtn();
+        //wait for element to load
+        await page.waitForTimeout(1000);
+        //click set new arrivals product ("GoPro HERO10 Black") add to cart button
+        await homePage.clickAddSetNewArrivalsProductToCartBtn(8);
+        //click set new arrivals product ("Logitech MX Master 3 Wireless Mouse") add to cart button
+        await homePage.clickAddSetNewArrivalsProductToCartBtn(9);
+        //click header "Shopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct products have been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const expectedProductNames = ["GoPro HERO10 Black", "Logitech MX Master 3 Wireless Mouse"];
+        expect(productNames).toEqual(expectedProductNames);
+        //assert product quantity count stays constant
+        const productCounterCount = await shoppingCartModal.getShoppingCartModalProductCount();
+        const productQuantity = await shoppingCartModal.getShoppingCartModalProductQty();
+        const totalQty = productQuantity.reduce((sum, qty) => sum + Number(qty), 0)
+        expect(Number(productCounterCount)).toBe(totalQty);
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (single GoPro HERO10 Black and Logitech MX Master 3 Wireless Mouse).png", fullPage: true });
+        //alter set product (Dell laptop) quantity
+        await shoppingCartModal.clickSetQtyIncreaseButton(0, 6);
+        //log shopping cart modal product data (to verify the product quantity has been altered)
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //capture screenshot of the shopping cart modal display (to verify the product quantity has been altered)
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (multiple GoPro HERO10 Blacks and Logitech MX Master 3 Wireless Mouse).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //assert the user gets onto shopping cart page after placing the products into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Multiple New Arrivals Products To Cart Test Result (guest).png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
