@@ -35,6 +35,7 @@ class CheckoutPageNoSingularInput extends BasePage{
         //invalid checkout credit card input data - no singular input
         this._noCheckoutCreditCardNumber = "";
         this._noCheckoutCreditCardName = "";
+        this._noCheckoutCreditCardExpMonth = "";
 
     }
 
@@ -85,6 +86,11 @@ class CheckoutPageNoSingularInput extends BasePage{
         const noCreditCardName = this._noCheckoutCreditCardName;
         Logger.info("No user credit card name: " + noCreditCardName);
         await this._checkoutPagePayMethodCardholderInputField.fill(noCreditCardName);
+    }
+    async inputNoCreditCardExpMonthIntoCreditCardExpMonthInputField(){
+        const noCreditCardExpMonth = this._noCheckoutCreditCardExpMonth;
+        Logger.info("No user credit card expiration month: " + noCreditCardExpMonth);
+        await this._checkoutPagePayMethodExpDateMonthInputField.fill(noCreditCardExpMonth);
     }
 
 }
