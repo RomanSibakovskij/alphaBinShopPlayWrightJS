@@ -10847,6 +10847,40 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Update Product Quantity In Shopping Cart Test Result.png", fullPage: true });
     }
 
+    //remove product from shopping cart test (the registered user and guest will share the same method, so only guest branch is being tested to avoid redundancy)
+
+    //remove product quantity from shopping cart test method
+    async removeProductFromShoppingCartPageTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const shoppingCartPage = new ShoppingCartPage(page);
+        const shoppingCartPageWebElementAsserts = new ShoppingCartPageWebElementAsserts();
+        const shoppingCartPageTextElementAsserts = new ShoppingCartPageTextElementAsserts();
+        const shoppingCartPageDataLogger = new ShoppingCartPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //shopping cart page web element
+        await shoppingCartPageWebElementAsserts.isShoppingCartPageWebElementVisible(page);
+        //shopping cart page text element
+        await shoppingCartPageTextElementAsserts.isShoppingCartPageTextElementAsExpected(page);
+        //log shopping cart page product data
+        await shoppingCartPageDataLogger.logShoppingCartPageProductData(page);
+        //capture screenshot of the shopping cart page display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Page Display.png", fullPage: true });
+        //click set product remove button
+        await shoppingCartPage.clickSetProductRemoveButton(0);
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //empty shopping cart page web element assert
+        await shoppingCartPageWebElementAsserts.isShoppingCartPageEmptyCartWebElementVisible(page);
+        //empty shopping cart page text element assert
+        await shoppingCartPageTextElementAsserts.isShoppingCartPageEmptyCartTextElementAsExpected(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Remove Product Quantity From Shopping Cart Test Result.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

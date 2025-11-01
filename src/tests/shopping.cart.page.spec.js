@@ -283,3 +283,17 @@ test.describe("Update Product Quantity In Shopping Cart Page Test", () => {
     });
 
 });
+
+test.describe("Remove Featured Product From Shopping Cart Page Test", () => {
+
+    // Test 024 -> remove featured product ("Dell XPS 13 (2021) Laptop") from shopping cart page test (as a guest)
+    test("Remove Featured Product From Shopping Cart Page Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add single featured product ("Dell XPS 13 (2021) Laptop") to cart test (as a guest)
+        await testMethods.addSingleFeaturedProductToCartTest(page);
+        //remove featured product ("Dell XPS 13 (2021) Laptop") from shopping cart page test (as a guest)
+        await testMethods.removeProductFromShoppingCartPageTest(page);
+    });
+
+});

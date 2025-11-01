@@ -90,5 +90,18 @@ class ShoppingCartPageWebElementAsserts {
         await expect(shoppingCartPage.shoppingCartPageCheckoutButton).toBeVisible();
     }
 
+    //shopping cart page (empty cart) web element assert test method
+    async isShoppingCartPageEmptyCartWebElementVisible(page){
+        const shoppingCartPage = new ShoppingCartPage(page);
+        //assert the empty shopping cart page icon is visible
+        await expect(shoppingCartPage.shoppingCartPageEmptyCartIcon).toBeVisible();
+        //assert the empty shopping cart page title is visible
+        await expect(shoppingCartPage.shoppingCartPageEmptyCartTitle).toBeVisible();
+        //assert the empty shopping cart page description is visible
+        await expect(shoppingCartPage.shoppingCartPageEmptyCartDesc).toBeVisible();
+        //assert the empty shopping cart page continue shopping button is visible
+        await expect(shoppingCartPage.shoppingCartPageEmptyCartContinueShoppingBtn).toBeVisible();
+    }
+
 }
 export {ShoppingCartPageWebElementAsserts};

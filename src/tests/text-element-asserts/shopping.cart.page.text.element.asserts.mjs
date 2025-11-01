@@ -43,5 +43,19 @@ class ShoppingCartPageTextElementAsserts {
         expect(shoppingCartPageCheckoutBtnText).toBe("Checkout");
     }
 
+    //shopping cart page (empty cart) text element assert test method
+    async isShoppingCartPageEmptyCartTextElementAsExpected(page){
+        const shoppingCartPage = new ShoppingCartPage(page);
+        //assert empty shopping cart page title is as expected
+        const shoppingCartPageEmptyCartTitle = await shoppingCartPage.getShoppingCartPageEmptyCartTitle();
+        expect(shoppingCartPageEmptyCartTitle).toBe("Your cart is empty");
+        //assert empty shopping cart page description is as expected
+        const shoppingCartPageEmptyCartDesc = await shoppingCartPage.getShoppingCartPageEmptyCartDesc();
+        expect(shoppingCartPageEmptyCartDesc).toBe("Looks like you haven't added any products to your cart yet.");
+        //assert empty shopping cart page continue shopping button text is as expected
+        const shoppingCartPageEmptyCartContinueShoppingBtnText = await shoppingCartPage.getShoppingCartPageEmptyCartContinueShoppingBtnText();
+        expect(shoppingCartPageEmptyCartContinueShoppingBtnText).toBe("Continue Shopping");
+    }
+
 }
 export {ShoppingCartPageTextElementAsserts};

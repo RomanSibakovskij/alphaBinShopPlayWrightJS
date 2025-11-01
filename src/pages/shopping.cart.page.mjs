@@ -34,6 +34,11 @@ class ShoppingCartPage extends BasePage{
         //buttons
         this._shoppingCartPageContinueShoppingButton = page.locator("//button[@data-testid='cart-continue-shopping-button']");
         this._shoppingCartPageCheckoutButton = page.locator("//button[@data-testid='cart-checkout-button']");
+        //empty shopping cart elements
+        this._shoppingCartPageEmptyCartIcon = page.locator("//span[@class='anticon anticon-shopping']");
+        this._shoppingCartPageEmptyCartTitle = page.locator("//h2[@data-testid='cart-empty-title']");
+        this._shoppingCartPageEmptyCartDesc = page.locator("//p[@data-testid='cart-empty-description']");
+        this._shoppingCartPageEmptyCartContinueShoppingBtn = page.locator("//button[@data-testid='cart-continue-shopping-button']");
 
     }
 
@@ -44,6 +49,9 @@ class ShoppingCartPage extends BasePage{
             await setProductQtyIncreaseBtn.click();
         }
     }
+
+    //click set product remove button method
+    async clickSetProductRemoveButton(index){await this._shoppingCartPageProductRemoveBtnElements.nth(index).click();}
 
     //click "Checkout" button method
     async clickCheckoutButton(){await this._shoppingCartPageCheckoutButton.click();}
@@ -108,6 +116,10 @@ class ShoppingCartPage extends BasePage{
         return text.replace(/\s+/g, ' ').trim();//trims out new spaces
     }
     async getShoppingCartPageCheckoutBtnText(){return await this._shoppingCartPageCheckoutButton.innerText();}
+    //empty shopping cart elements
+    async getShoppingCartPageEmptyCartTitle(){return await this._shoppingCartPageEmptyCartTitle.innerText();}
+    async getShoppingCartPageEmptyCartDesc(){return await this._shoppingCartPageEmptyCartDesc.innerText();}
+    async getShoppingCartPageEmptyCartContinueShoppingBtnText(){return await this._shoppingCartPageEmptyCartContinueShoppingBtn.innerText();}
 
     //shopping cart page web element getters
     get shoppingCartPageTitle(){return this._shoppingCartPageTitle;}
@@ -136,6 +148,11 @@ class ShoppingCartPage extends BasePage{
     //buttons
     get shoppingCartPageContinueShoppingButton(){return this._shoppingCartPageContinueShoppingButton;}
     get shoppingCartPageCheckoutButton(){return this._shoppingCartPageCheckoutButton;}
+    //empty shopping cart elements
+    get shoppingCartPageEmptyCartIcon(){return this._shoppingCartPageEmptyCartIcon;}
+    get shoppingCartPageEmptyCartTitle(){return this._shoppingCartPageEmptyCartTitle;}
+    get shoppingCartPageEmptyCartDesc(){return this._shoppingCartPageEmptyCartDesc;}
+    get shoppingCartPageEmptyCartContinueShoppingBtn(){return this._shoppingCartPageEmptyCartContinueShoppingBtn;}
 
 }
 export {ShoppingCartPage};
