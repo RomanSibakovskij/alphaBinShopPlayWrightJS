@@ -133,6 +133,9 @@ class CheckoutPage extends BasePage{
     //click set payment method button method
     async clickSetPayMethodButton(index){await this._checkoutPagePayMethodButtonElements.nth(index).click();}
 
+    //click set net banking bank button method
+    async clickSetNetBankingBankButton(index){await this._checkoutPageNetBankingBankBtnElements.nth(index).click();}
+
     //click "Place Order" button method
     async clickPlaceOrderButton(){await this._checkoutPagePlaceOrderButton.click();}
 
