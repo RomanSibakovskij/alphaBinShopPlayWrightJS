@@ -10946,6 +10946,71 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Confirmation (cash on delivery) Test Result.png", fullPage: true });
     }
 
+    //valid product checkout confirmation (debit method) test method
+    async validProductDebitCheckoutConfirmationTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPageWebElementAssert = new OrderDetailsPageWebElementAssert();
+        const orderDetailsPageTextElementAssert = new OrderDetailsPageTextElementAssert();
+        const orderDetailsPageDataLogger = new OrderDetailsPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click set payment method button (debit)
+        await checkoutPage.clickSetPayMethodButton(1);
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page credit/debit section web element assert (they're similar)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page credit/debit section text element assert (they're similar)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //capture screenshot of the checkout page display before debit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with debit card section) Before Data Input.png", fullPage: true });
+        //input valid debit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid debit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid debit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid debit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid debit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after valid credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with debit card section) After Valid Data Input.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //order details page web element assert
+        await orderDetailsPageWebElementAssert.isOrderDetailsPageWebElementVisible(page);
+        //order details page text element assert
+        await orderDetailsPageTextElementAssert.isOrderDetailsPageTextElementAsExpected(page);
+        //log order details page displayed data
+        await orderDetailsPageDataLogger.logOrderDetailsPageData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Confirmation (debit card method) Test Result.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

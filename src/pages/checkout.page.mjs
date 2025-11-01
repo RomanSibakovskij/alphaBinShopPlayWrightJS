@@ -1,6 +1,8 @@
 "use strict"
 
 import {BasePage} from "./utilities/base.page.mjs";
+import {TestDataGenerator} from "./utilities/test.data.generator.mjs";
+import {Logger} from "./utilities/logger.mjs";
 
 class CheckoutPage extends BasePage{
 
@@ -86,6 +88,46 @@ class CheckoutPage extends BasePage{
         //general invalid input error box element
         this._checkoutPageInputErrorBox = page.locator("//div[@id='_rht_toaster']");
 
+        const testDataGenerator = new TestDataGenerator(page);
+
+        //valid credit/debit card input data
+        const { firstName, lastName } = testDataGenerator.getRandomName();
+        const { month, year } = testDataGenerator.generateRandomExpiryDate();
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._validCreditCardNumber = "4111111111111111"; //Visa test number
+        this._validCreditCardName = this._firstName + " " + this._lastName; //change later to username
+        this._validCreditCardExpMonth = month;
+        this._validCreditCardExpYear = year;
+        this._validCreditCardCVV = testDataGenerator.generateRandomCVV();
+
+    }
+
+    //checkout page valid credit/debit card data input methods
+    async inputCreditCardNumberIntoCreditCardNumberInputField(){
+        const creditCardNumber = this._validCreditCardNumber;
+        Logger.info("Valid user credit card number: " + creditCardNumber);
+        await this._checkoutPagePayMethodCardNumberInputField.fill(creditCardNumber);
+    }
+    async inputCreditCardNameIntoCreditCardNameInputField(){
+        const creditCardName = this._validCreditCardName;
+        Logger.info("Valid user credit card name: " + creditCardName);
+        await this._checkoutPagePayMethodCardholderInputField.fill(creditCardName);
+    }
+    async inputCreditCardExpMonthIntoCreditCardExpMonthInputField(){
+        const creditCardExpMonth = this._validCreditCardExpMonth;
+        Logger.info("Valid user credit card expiration date month: " + creditCardExpMonth);
+        await this._checkoutPagePayMethodExpDateMonthInputField.fill(creditCardExpMonth);
+    }
+    async inputCreditCardExpYearIntoCreditCardExpYearInputField(){
+        const creditCardExpYear = this._validCreditCardExpYear;
+        Logger.info("Valid user credit card expiration date year: " + creditCardExpYear);
+        await this._checkoutPagePayMethodExpDateYearInputField.fill(creditCardExpYear);
+    }
+    async inputCreditCardCVVIntoCreditCardCVVInputField(){
+        const creditCardCVV = this._validCreditCardCVV;
+        Logger.info("Valid user credit card CVV: " + creditCardCVV);
+        await this._checkoutPagePayMethodCVVInputField.fill(creditCardCVV);
     }
 
     //click set payment method button method
