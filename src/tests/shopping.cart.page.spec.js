@@ -114,4 +114,22 @@ test.describe("Add Multiple New Arrivals Products To Checkout Tests", () => {
         await testMethods.addProductToCheckoutTest(page);
     });
 
+    // Test 020c -> add multiple new arrivals products ("TP-Link Archer AX73 Wi-Fi 6 Router", "Apple iPad Air (2022, 5th Gen)") to check out test (as a registered user)
+    test("Add Multiple New Arrivals Products To Checkout Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add multiple new arrivals products ("TP-Link Archer AX73 Wi-Fi 6 Router", "Apple iPad Air (2022, 5th Gen)") to cart test (as a registered user)
+        await testMethods.addMultipleNewArrivalsProductToCartRegUserTest(page);
+        //add multiple new arrivals products ("TP-Link Archer AX73 Wi-Fi 6 Router", "Apple iPad Air (2022, 5th Gen)") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+    });
+
 });
