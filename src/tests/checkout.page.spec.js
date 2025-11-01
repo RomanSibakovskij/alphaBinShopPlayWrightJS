@@ -125,3 +125,29 @@ test.describe("All Products Dashboard Page Single Product Checkout Confirmation 
     });
 
 });
+
+test.describe("All Products Dashboard Page Multiple Products Checkout Confirmation Test", () => {
+
+    // Test 027a -> all products dashboard page multiple products ("Samsung 32-inch UHD 4K Smart TV") check out confirmation test (cash on delivery) (as a registered user)
+    test("All Products Dashboard Page Multiple Products Checkout Confirmation Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add all products dashboard page multiple products ("Samsung 32-inch UHD 4K Smart TV") to cart test (as a registered user)
+        await testMethods.addMultipleAllProductsDashPageProductsToCartRegUserTest(page);
+        //add all products dashboard page multiple products ("Samsung 32-inch UHD 4K Smart TV") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //all products dashboard page multiple products ("Samsung 32-inch UHD 4K Smart TV") check out confirmation test (cash on delivery) (as a registered user)
+        await testMethods.validProductCashOnDeliveryCheckoutConfirmationTest(page);
+        //close the page explicitly
+        await page.close();
+    });
+
+});
