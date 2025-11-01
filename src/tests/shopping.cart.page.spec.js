@@ -197,3 +197,19 @@ test.describe("Add All Products Dashboard Page Multiple Products To Checkout Tes
     });
 
 });
+
+test.describe("Add Single Featured Product From Wishlist To Checkout Tests", () => {
+
+    // Test 022 -> add single featured product ("Dell XPS 13 (2021) Laptop") from wishlist to check out test (as a guest) (the user account is required, test has failed)
+    test("Add Single Featured Product From Wishlist To Checkout Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add single featured product ("Dell XPS 13 (2021) Laptop") from wishlist to cart test (as a guest)
+        await testMethods.addSingleFeaturedProductToWishlistTest(page);
+        //add single featured product ("Dell XPS 13 (2021) Laptop") from wishlist to cart test (as a guest)
+        await testMethods.addSingleWishlistProductToCartTest(page);
+        //add single featured product ("Dell XPS 13 (2021) Laptop") from wishlist to check out test (as a guest)
+        await testMethods.addProductToCheckoutTest(page);
+    });
+
+});
