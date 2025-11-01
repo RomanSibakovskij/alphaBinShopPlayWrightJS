@@ -146,8 +146,32 @@ test.describe("All Products Dashboard Page Multiple Products Checkout Confirmati
         await testMethods.addProductToCheckoutTest(page);
         //all products dashboard page multiple products ("Samsung 32-inch UHD 4K Smart TV") check out confirmation test (cash on delivery) (as a registered user)
         await testMethods.validProductCashOnDeliveryCheckoutConfirmationTest(page);
-        //close the page explicitly
-        await page.close();
+    });
+
+});
+
+test.describe("Single Featured Product From Wishlist Checkout Confirmation Test", () => {
+
+    // Test 028 -> single featured product ("Dell XPS 13 (2021) Laptop") from wishlist check out confirmation test (credit card method) (as a registered user)
+    test("Single Featured Product From Wishlist Checkout Confirmation Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Dell XPS 13 (2021) Laptop") to wishlist test (as a registered user)
+        await testMethods.addSingleFeaturedProductToWishlistRegUserTest(page);
+        //add single featured product ("Dell XPS 13 (2021) Laptop") from wishlist to cart test (as a registered user)
+        await testMethods.addSingleWishlistProductToCartTest(page);
+        //add single featured product ("Dell XPS 13 (2021) Laptop") from wishlist to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //single featured product ("Dell XPS 13 (2021) Laptop") from wishlist check out confirmation test (credit card method) (as a registered user)
+        await testMethods.validProductCreditCheckoutConfirmationTest(page);
     });
 
 });
