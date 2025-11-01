@@ -39,6 +39,7 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         this._tooShortCheckoutCreditCardNumber = "345654564556786"; // 15 digits
         this._tooShortCheckoutCreditCardName = "F D"; // 3 chars
         this._tooShortCheckoutCreditCardExpMonth = "1"; // 1 digit
+        this._tooShortCheckoutCreditCardExpYear = "2"; // 1 digit
 
     }
 
@@ -94,6 +95,11 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         const tooShortCreditCardExpMonth = this._tooShortCheckoutCreditCardExpMonth;
         Logger.info("Too short user credit card expiration month: " + tooShortCreditCardExpMonth);
         await this._checkoutPagePayMethodExpDateMonthInputField.fill(tooShortCreditCardExpMonth);
+    }
+    async inputTooShortCreditCardExpYearIntoCreditCardExpYearInputField(){
+        const tooShortCreditCardExpYear = this._tooShortCheckoutCreditCardExpYear;
+        Logger.info("Too short user credit card expiration year: " + tooShortCreditCardExpYear);
+        await this._checkoutPagePayMethodExpDateMonthInputField.fill(tooShortCreditCardExpYear);
     }
 
 }
