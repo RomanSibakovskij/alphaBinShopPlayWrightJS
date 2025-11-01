@@ -70,4 +70,25 @@ test.describe("Invalid Single Featured Product Checkout Confirmation Tests - Too
         await testMethods.invalidProductCheckoutConfirmationTooLongShipAddressCityTest(page);
     });
 
+    // Test 029ab -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - too long shipping address state (100 chars) (the error wasn't triggered, test has failed)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Too Long Ship Address State", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - too long shipping address state
+        await testMethods.invalidProductCheckoutConfirmationTooLongShipAddressStateTest(page);
+    });
+
+
 });
