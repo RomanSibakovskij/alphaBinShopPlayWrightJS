@@ -30,10 +30,10 @@ test.describe("Single Featured Product Checkout Confirmation Test", () => {
 
 });
 
-test.describe("Multiple Featured Product Checkout Confirmation Test", () => {
+test.describe("Multiple Featured Products Checkout Confirmation Test", () => {
 
     // Test 025a -> multiple featured products ("Rode NT1-A Condenser Mic", "JBL Charge 4 Bluetooth Speaker") (credit card method) check out confirmation test (as a registered user)
-    test("Multiple Featured Product Checkout Confirmation Test (as a registered user)", async ({page}) => {
+    test("Multiple Featured Products Checkout Confirmation Test (as a registered user)", async ({page}) => {
         //launch the page
         await page.goto('/');
         //navigate to signup page test
