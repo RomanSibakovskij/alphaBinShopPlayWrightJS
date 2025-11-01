@@ -1,6 +1,7 @@
 "use strict"
 
 import {BasePage} from "../utilities/base.page.mjs";
+import {TestDataGenerator} from "../utilities/test.data.generator.mjs";
 import {Logger} from "../utilities/logger.mjs";
 
 class CheckoutPageTooLongSingularInput extends BasePage{
@@ -23,8 +24,11 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         this._checkoutPagePayMethodExpDateYearInputField = page.locator("//input[@data-testid='checkout-expiration-date-year-input']");
         this._checkoutPagePayMethodCVVInputField = page.locator("//input[@data-testid='checkout-cvv-input']");
 
+        const testDataGenerator = new TestDataGenerator(page);
+
         //invalid checkout shipping address input data - too long singular input
         this._tooLongCheckoutShipAddressFullName = "Dsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Csdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 201 chars
+        this._tooLongCheckoutShipAddressEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); // 100 chars -> name, domain
 
     }
 
@@ -33,6 +37,11 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         const tooLongShipAddressFullName = this._tooLongCheckoutShipAddressFullName;
         Logger.info("Too long user shipping address full name: " + tooLongShipAddressFullName);
         await this._checkoutPageShipAddressFullNameInputField.fill(tooLongShipAddressFullName);
+    }
+    async inputTooLongShipAddressEmailIntoShipAddressEmailInputField(){
+        const tooLongShipAddressEmail = this._tooLongCheckoutShipAddressEmail;
+        Logger.info("Too long user shipping address email: " + tooLongShipAddressEmail);
+        await this._checkoutPageShipAddressEmailInputField.fill(tooLongShipAddressEmail);
     }
 
 }
