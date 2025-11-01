@@ -9,6 +9,8 @@ import {WishlistDashboardPage} from "../../pages/wishlist.dashboard.page.mjs";
 import {AllProductsDashboardPage} from "../../pages/all.products.dashboard.page.mjs";
 import {SingleProductPage} from "../../pages/single.product.page.mjs";
 import {ShoppingCartPage} from "../../pages/shopping.cart.page.mjs";
+import {CheckoutPage} from "../../pages/checkout.page.mjs";
+import {OrderDetailsPage} from "../../pages/order.details.page.mjs";
 
 import {CreateAccountPageInvalidScenarios} from "../../pages/create-account-page-invalid-scenarios/create.account.page.invalid.scenarios.mjs";
 import {SignInPageInvalidScenarios} from "../../pages/signin-page-invalid-scenarios/signin.page.invalid.scenarios.mjs";
@@ -27,6 +29,8 @@ import {WishlistDashboardPageWebElementAsserts} from "../web-element-asserts/wis
 import {AllProductsDashPageWebElementAsserts} from "../web-element-asserts/all.products.dash.page.web.element.asserts.mjs";
 import {SingleProductPageWebElementAsserts} from "../web-element-asserts/single.product.page.web.element.asserts.mjs";
 import {ShoppingCartPageWebElementAsserts} from "../web-element-asserts/shopping.cart.page.web.element.asserts.mjs";
+import {CheckoutPageWebElementAsserts} from "../web-element-asserts/checkout.page.web.element.asserts.mjs";
+import {OrderDetailsPageWebElementAssert} from "../web-element-asserts/order.details.page.web.element.assert.mjs";
 
 import {GeneralPageTextElementAssert} from "../text-element-asserts/general.page.text.element.assert.mjs";
 import {HomePageTextElementAssert} from "../text-element-asserts/home.page.text.element.assert.mjs";
@@ -37,6 +41,8 @@ import {WishlistDashboardPageTextElementAsserts} from "../text-element-asserts/w
 import {AllProductsDashPageTextElementAsserts} from "../text-element-asserts/all.products.dash.page.text.element.asserts.mjs";
 import {SingleProductPageTextElementAsserts} from "../text-element-asserts/single.product.page.text.element.asserts.mjs";
 import {ShoppingCartPageTextElementAsserts} from "../text-element-asserts/shopping.cart.page.text.element.asserts.mjs";
+import {CheckoutPageTextElementAsserts} from "../text-element-asserts/checkout.page.text.element.asserts.mjs";
+import {OrderDetailsPageTextElementAssert} from "../text-element-asserts/order.details.page.text.element.assert.mjs";
 
 import {PersonalInfoModal} from "../../pages/modals/personal.info.modal.mjs";
 import {PasswordModal} from "../../pages/modals/password.modal.mjs";
@@ -65,6 +71,8 @@ import {WishlistDashboardPageDataLogger} from "../data-loggers/wishlist.dashboar
 import {AllProductsDashPageDataLoggers} from "../data-loggers/all.products.dash.page.data.loggers.mjs";
 import {SingleProductPageDataLoggers} from "../data-loggers/single.product.page.data.loggers.mjs";
 import {ShoppingCartPageDataLogger} from "../data-loggers/shopping.cart.page.data.logger.mjs";
+import {CheckoutPageDataLoggers} from "../data-loggers/checkout.page.data.loggers.mjs";
+import {OrderDetailsPageDataLogger} from "../data-loggers/order.details.page.data.logger.mjs";
 
 import {AddressesDashboardModalDataLogger} from "../data-loggers/modals/addresses.dashboard.modal.data.logger.mjs";
 import {ShoppingCartModalDataLogger} from "../data-loggers/modals/shopping.cart.modal.data.logger.mjs";
@@ -10879,6 +10887,63 @@ class TestMethods{
         await shoppingCartPageTextElementAsserts.isShoppingCartPageEmptyCartTextElementAsExpected(page);
         //capture screenshot of the checkout page display
         await page.screenshot({ path: "src/tests/screenshots/Remove Product Quantity From Shopping Cart Test Result.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //valid product checkout confirmation tests (only registered users have this feature)
+
+    //valid product checkout confirmation (cash on delivery method) test method
+    async validProductCashOnDeliveryCheckoutConfirmationTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPageWebElementAssert = new OrderDetailsPageWebElementAssert();
+        const orderDetailsPageTextElementAssert = new OrderDetailsPageTextElementAssert();
+        const orderDetailsPageDataLogger = new OrderDetailsPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click set payment method button
+        await checkoutPage.clickSetPayMethodButton(3);
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page cash on delivery section web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageCashDeliveryWebElementVisible(page);
+        //checkout page cash on delivery section text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageCashDeliveryTextAsExpected(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with cash on delivery section).png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //order details page web element assert
+        await orderDetailsPageWebElementAssert.isOrderDetailsPageWebElementVisible(page);
+        //order details page text element assert
+        await orderDetailsPageTextElementAssert.isOrderDetailsPageTextElementAsExpected(page);
+        //log order details page displayed data
+        await orderDetailsPageDataLogger.logOrderDetailsPageData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Confirmation (cash on delivery) Test Result.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

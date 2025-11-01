@@ -88,6 +88,12 @@ class CheckoutPage extends BasePage{
 
     }
 
+    //click set payment method button method
+    async clickSetPayMethodButton(index){await this._checkoutPagePayMethodButtonElements.nth(index).click();}
+
+    //click "Place Order" button method
+    async clickPlaceOrderButton(){await this._checkoutPagePlaceOrderButton.click();}
+
     //checkout page data getters
     //shipping address
     async getCheckoutPageShipAddress(){return await this._checkoutPageShipAddressData.innerText();}
