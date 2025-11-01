@@ -29,6 +29,7 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         //invalid checkout shipping address input data - too long singular input
         this._tooLongCheckoutShipAddressFullName = "Dsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Csdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 201 chars
         this._tooLongCheckoutShipAddressEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); // 100 chars -> name, domain
+        this._tooLongCheckoutShipAddressCity = "4Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfh"; // 100 chars
 
     }
 
@@ -42,6 +43,11 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         const tooLongShipAddressEmail = this._tooLongCheckoutShipAddressEmail;
         Logger.info("Too long user shipping address email: " + tooLongShipAddressEmail);
         await this._checkoutPageShipAddressEmailInputField.fill(tooLongShipAddressEmail);
+    }
+    async inputTooLongShipAddressCityIntoShipAddressCityInputField(){
+        const tooLongShipAddressCity = this._tooLongCheckoutShipAddressCity;
+        Logger.info("Too long user shipping address city: " + tooLongShipAddressCity);
+        await this._checkoutPageShipAddressCityInputField.fill(tooLongShipAddressCity);
     }
 
 }
