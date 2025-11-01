@@ -14,6 +14,7 @@ import {OrderDetailsPage} from "../../pages/order.details.page.mjs";
 
 import {CreateAccountPageInvalidScenarios} from "../../pages/create-account-page-invalid-scenarios/create.account.page.invalid.scenarios.mjs";
 import {SignInPageInvalidScenarios} from "../../pages/signin-page-invalid-scenarios/signin.page.invalid.scenarios.mjs";
+import {CheckoutPageNoSingularInput} from "../../pages/checkout-page-invalid-scenarios/checkout.page.no.singular.input.mjs";
 
 import {PersonalInfoModalInvalidScenarios} from "../../pages/modals/personal-info-modal-invalid-scenarios/personal.info.modal.invalid.scenarios.mjs";
 import {PasswordModalInvalidScenarios} from "../../pages/modals/password-modal-invalid-scenarios/password.modal.invalid.scenarios.mjs";
@@ -50,6 +51,7 @@ import {AddressesDashboardModal} from "../../pages/modals/addresses.dashboard.mo
 import {AddNewAddressModal} from "../../pages/modals/add.new.address.modal.mjs";
 import {ShoppingCartModal} from "../../pages/modals/shopping.cart.modal.mjs";
 import {AddReviewModal} from "../../pages/modals/add.review.modal.mjs";
+import {CheckoutPageShipAddressModal} from "../../pages/modals/checkout.page.ship.address.modal.mjs";
 
 import {PersonalInfoModalWebElementAssert} from "../web-element-asserts/modals/personal.info.modal.web.element.assert.mjs";
 import {PasswordModalWebElementAssert} from "../web-element-asserts/modals/password.modal.web.element.assert.mjs";
@@ -57,6 +59,7 @@ import {AddressesDashboardModalWebElementAsserts} from "../web-element-asserts/m
 import {AddNewAddressModalWebElementAssert} from "../web-element-asserts/modals/add.new.address.modal.web.element.assert.mjs";
 import {ShoppingCartModalWebElementAsserts} from "../web-element-asserts/modals/shopping.cart.modal.web.element.asserts.mjs";
 import {AddReviewModalWebElementAsserts} from "../web-element-asserts/modals/add.review.modal.web.element.asserts.mjs";
+import {CheckoutPageShipAddressModalWebElementAssert} from "../web-element-asserts/modals/checkout.page.ship.address.modal.web.element.assert.mjs";
 
 import {PersonalInfoModalTextElementAssert} from "../text-element-asserts/modals/personal.info.modal.text.element.assert.mjs";
 import {PasswordModalTextElementAssert} from "../text-element-asserts/modals/password.modal.text.element.assert.mjs";
@@ -64,6 +67,7 @@ import {AddressesDashboardModalTextElementAsserts} from "../text-element-asserts
 import {AddNewAddressModalTextElementAsserts} from "../text-element-asserts/modals/add.new.address.modal.text.element.asserts.mjs";
 import {ShoppingCartModalTextElementAsserts} from "../text-element-asserts/modals/shopping.cart.modal.text.element.asserts.mjs";
 import {AddReviewModalTextElementAsserts} from "../text-element-asserts/modals/add.review.modal.text.element.asserts.mjs";
+import {CheckoutPageShipAddressModalTextElementAssert} from "../text-element-asserts/modals/checkout.page.ship.address.modal.text.element.assert.mjs";
 
 import {HomePageDataLoggers} from "../data-loggers/home.page.data.loggers.mjs";
 import {AccountDashPageDataLogger} from "../data-loggers/account.dash.page.data.logger.mjs";
@@ -76,6 +80,7 @@ import {OrderDetailsPageDataLogger} from "../data-loggers/order.details.page.dat
 
 import {AddressesDashboardModalDataLogger} from "../data-loggers/modals/addresses.dashboard.modal.data.logger.mjs";
 import {ShoppingCartModalDataLogger} from "../data-loggers/modals/shopping.cart.modal.data.logger.mjs";
+import {CheckoutPageShipAddressModalDataLogger} from "../data-loggers/modals/checkout.page.ship.address.modal.data.logger.mjs";
 
 import {expect} from "@playwright/test";
 import {Logger} from "../../pages/utilities/logger.mjs";
@@ -11119,6 +11124,90 @@ class TestMethods{
         await orderDetailsPageDataLogger.logOrderDetailsPageData(page);
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Confirmation (net banking (AXIS) method) Test Result.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation tests
+
+    //no singular input
+
+    //invalid product checkout confirmation test method - no shipping address full name
+    async invalidProductCheckoutConfirmationNoShipAddressFullNameTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //don't input checkout shipping address full name into shipping address full name input field
+        await checkoutPageNoSingularInput.inputNoShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - no shipping full name
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - No Shipping Full Name.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets an expected error
+        const noShipAddressFullNameInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noShipAddressFullNameInputError).toBe("First Name is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping Full Name.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,8 @@
 "use strict"
 
 import {BasePage} from "./utilities/base.page.mjs";
+import {CreateAccountPage} from "./create.account.page.mjs";
+import {AddNewAddressModal} from "./modals/add.new.address.modal.mjs";
 import {TestDataGenerator} from "./utilities/test.data.generator.mjs";
 import {Logger} from "./utilities/logger.mjs";
 
@@ -89,6 +91,17 @@ class CheckoutPage extends BasePage{
         this._checkoutPageInputErrorBox = page.locator("//div[@id='_rht_toaster']");
 
         const testDataGenerator = new TestDataGenerator(page);
+        const createAccountPage = new CreateAccountPage(page);
+        const addNewAddressModal = new AddNewAddressModal(page);
+
+        //valid checkout shipping address input data
+        this._validCheckoutShipAddressFullName = createAccountPage.validUserFullName;
+        this._validCheckoutShipAddressEmail = createAccountPage.validUserEmail;
+        this._validCheckoutShipAddressCity = addNewAddressModal.validAddressCity;
+        this._validCheckoutShipAddressState = addNewAddressModal.validAddressState;
+        this._validCheckoutShipAddress = addNewAddressModal.validAddressStreet;
+        this._validCheckoutShipAddressPostCode = addNewAddressModal.validAddressPostCode;
+        this._validCheckoutShipAddressCountry = addNewAddressModal.validAddressCountry;
 
         //valid credit/debit card input data
         const { firstName, lastName } = testDataGenerator.getRandomName();
@@ -102,6 +115,49 @@ class CheckoutPage extends BasePage{
         this._validCreditCardCVV = testDataGenerator.generateRandomCVV();
 
     }
+
+    //checkout page valid shipping address data input methods
+    async inputShipAddressFullNameIntoShipAddressFullNameInputField(){
+        const shipAddressFullName = this._validCheckoutShipAddressFullName;
+        Logger.info("Valid user shipping address full name: " + shipAddressFullName);
+        await this._checkoutPageShipAddressFullNameInputField.fill(shipAddressFullName);
+    }
+    async inputShipAddressEmailIntoShipAddressEmailInputField(){
+        const shipAddressEmail = this._validCheckoutShipAddressEmail;
+        Logger.info("Valid user shipping address email: " + shipAddressEmail);
+        await this._checkoutPageShipAddressEmailInputField.fill(shipAddressEmail);
+    }
+    async inputShipAddressCityIntoShipAddressCityInputField(){
+        const shipAddressCity = this._validCheckoutShipAddressCity;
+        Logger.info("Valid user shipping address city: " + shipAddressCity);
+        await this._checkoutPageShipAddressCityInputField.fill(shipAddressCity);
+    }
+    async inputShipAddressStateIntoShipAddressStateInputField(){
+        const shipAddressState = this._validCheckoutShipAddressState;
+        Logger.info("Valid user shipping address state: " + shipAddressState);
+        await this._checkoutPageShipAddressStateInputField.fill(shipAddressState);
+    }
+    async inputShipAddressIntoShipAddressInputField(){
+        const shipAddress = this._validCheckoutShipAddress;
+        Logger.info("Valid user shipping address: " + shipAddress);
+        await this._checkoutPageShipAddressInputField.fill(shipAddress);
+    }
+    async inputShipAddressPostCodeIntoShipAddressPostCodeInputField(){
+        const shipAddressPostCode = this._validCheckoutShipAddressPostCode;
+        Logger.info("Valid user shipping address post code: " + shipAddressPostCode);
+        await this._checkoutPageShipAddressPostCodeInputField.fill(shipAddressPostCode);
+    }
+    async inputShipAddressCountryIntoShipAddressCountryInputField(){
+        const shipAddressCountry = this._validCheckoutShipAddressCountry;
+        Logger.info("Valid user shipping address country: " + shipAddressCountry);
+        await this._checkoutPageShipAddressCountryInputField.fill(shipAddressCountry);
+    }
+
+    //click "Change" shipping address link method
+    async clickChangeShippingAddressLink(){await this._checkoutPageShipAddressChangeLink.click();}
+
+    //click "Save address" button method
+    async clickSaveAddressBtn(){await this._checkoutPageShipAddressSaveAddressBtn.click();}
 
     //checkout page valid credit/debit card data input methods
     async inputCreditCardNumberIntoCreditCardNumberInputField(){

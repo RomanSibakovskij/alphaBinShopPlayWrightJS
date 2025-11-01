@@ -1,6 +1,7 @@
 "use strict"
 
 import {BasePage} from "../utilities/base.page.mjs";
+import {Logger} from "../utilities/logger.mjs";
 
 class CheckoutPageNoSingularInput extends BasePage{
 
@@ -22,6 +23,16 @@ class CheckoutPageNoSingularInput extends BasePage{
         this._checkoutPagePayMethodExpDateYearInputField = page.locator("//input[@data-testid='checkout-expiration-date-year-input']");
         this._checkoutPagePayMethodCVVInputField = page.locator("//input[@data-testid='checkout-cvv-input']");
 
+        //invalid checkout shipping address input data - no singular input
+        this._noCheckoutShipAddressFullName = "";
+
+    }
+
+    //invalid checkout page shipping address data input methods - no singular input
+    async inputNoShipAddressFullNameIntoShipAddressFullNameInputField(){
+        const noShipAddressFullName = this._noCheckoutShipAddressFullName;
+        Logger.info("No user shipping address full name: " + noShipAddressFullName);
+        await this._checkoutPageShipAddressFullNameInputField.fill(noShipAddressFullName);
     }
 
 }
