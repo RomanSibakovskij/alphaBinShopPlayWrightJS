@@ -1,6 +1,7 @@
 "use strict"
 
 import {BasePage} from "../utilities/base.page.mjs";
+import {TestDataGenerator} from "../utilities/test.data.generator.mjs";
 import {Logger} from "../utilities/logger.mjs";
 
 class CheckoutPageTooShortSingularInput extends BasePage{
@@ -23,8 +24,11 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         this._checkoutPagePayMethodExpDateYearInputField = page.locator("//input[@data-testid='checkout-expiration-date-year-input']");
         this._checkoutPagePayMethodCVVInputField = page.locator("//input[@data-testid='checkout-cvv-input']");
 
+        const testDataGenerator = new TestDataGenerator(page);
+
         //invalid checkout shipping address input data - too short singular input
         this._tooShortCheckoutShipAddressFullName = "D C"; // 3 chars
+        this._tooShortCheckoutShipAddressEmail = testDataGenerator.generateRandomTooShortEmailAddress(1); // 1 char -> name, domain
 
     }
 
@@ -33,6 +37,11 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         const tooShortShipAddressFullName = this._tooShortCheckoutShipAddressFullName;
         Logger.info("Too short user shipping address full name: " + tooShortShipAddressFullName);
         await this._checkoutPageShipAddressFullNameInputField.fill(tooShortShipAddressFullName);
+    }
+    async inputTooShortShipAddressEmailIntoShipAddressEmailInputField(){
+        const tooShortShipAddressEmail = this._tooShortCheckoutShipAddressEmail;
+        Logger.info("Too short user shipping address email: " + tooShortShipAddressEmail);
+        await this._checkoutPageShipAddressEmailInputField.fill(tooShortShipAddressEmail);
     }
 
 }
