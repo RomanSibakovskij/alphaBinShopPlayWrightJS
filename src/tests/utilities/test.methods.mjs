@@ -10804,6 +10804,49 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Add Product(s) To Checkout Page Test Result (registered user).png", fullPage: true });
     }
 
+    //update product quantity in shopping cart test (the registered user and guest will share the same method, so only guest branch is being tested to avoid redundancy)
+
+    //update product quantity in shopping cart test method
+    async updateProductQtyInShoppingCartPageTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const shoppingCartPage = new ShoppingCartPage(page);
+        const shoppingCartPageWebElementAsserts = new ShoppingCartPageWebElementAsserts();
+        const shoppingCartPageTextElementAsserts = new ShoppingCartPageTextElementAsserts();
+        const shoppingCartPageDataLogger = new ShoppingCartPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //shopping cart page web element
+        await shoppingCartPageWebElementAsserts.isShoppingCartPageWebElementVisible(page);
+        //shopping cart page text element
+        await shoppingCartPageTextElementAsserts.isShoppingCartPageTextElementAsExpected(page);
+        //log shopping cart page product data
+        await shoppingCartPageDataLogger.logShoppingCartPageProductData(page);
+        //capture screenshot of the shopping cart page display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Page Display.png", fullPage: true });
+        //click set product quantity increase button
+        await shoppingCartPage.clickSetProductQtyIncreaseBtn(0, 4)
+        //log shopping cart page product data (to verify the quantity has been updated)
+        await shoppingCartPageDataLogger.logShoppingCartPageProductData(page);
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4500);
+        //assert the user receives the updated product count
+        const expectedProductCount = '5'; //since it returns a char, not an int
+        const productCount = await shoppingCartPage.getShopCartPageProductQty();
+        const actualProductCount = productCount[0];
+        //if the user fails to receive the updated product count, throw an error
+        try {
+            expect(actualProductCount).toBe(expectedProductCount);
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Update Product Quantity In Shopping Cart Test Result (qty update failure).png", fullPage: true });
+            throw new Error("The product quantity fails to be updated, test has failed.");
+        }
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Update Product Quantity In Shopping Cart Test Result.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

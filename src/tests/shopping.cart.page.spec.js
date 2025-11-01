@@ -269,3 +269,17 @@ test.describe("Add Multiple Featured Products From Wishlist To Checkout Tests", 
     });
 
 });
+
+test.describe("Update Product Quantity In Shopping Cart Page Test", () => {
+
+    // Test 023 -> update featured product ("Dell XPS 13 (2021) Laptop") quantity in shopping cart page test (as a guest)
+    test("Update Product Quantity In Shopping Cart Page Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add single featured product ("Dell XPS 13 (2021) Laptop") to cart test (as a guest)
+        await testMethods.addSingleFeaturedProductToCartTest(page);
+        //update featured product ("Dell XPS 13 (2021) Laptop") quantity in shopping cart page test (as a guest)
+        await testMethods.updateProductQtyInShoppingCartPageTest(page);
+    });
+
+});

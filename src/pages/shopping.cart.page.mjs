@@ -37,6 +37,14 @@ class ShoppingCartPage extends BasePage{
 
     }
 
+    //click set product quantity increase button method
+    async clickSetProductQtyIncreaseBtn(index, times){
+        const setProductQtyIncreaseBtn = this._shoppingCartPageProductQtyIncreaseBtnElements.nth(index);
+        for (let i = 0; i < times; i++) {
+            await setProductQtyIncreaseBtn.click();
+        }
+    }
+
     //click "Checkout" button method
     async clickCheckoutButton(){await this._shoppingCartPageCheckoutButton.click();}
 
