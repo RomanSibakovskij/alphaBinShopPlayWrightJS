@@ -36,6 +36,7 @@ class CheckoutPageNoSingularInput extends BasePage{
         this._noCheckoutCreditCardNumber = "";
         this._noCheckoutCreditCardName = "";
         this._noCheckoutCreditCardExpMonth = "";
+        this._noCheckoutCreditCardExpYear = "";
 
     }
 
@@ -91,6 +92,11 @@ class CheckoutPageNoSingularInput extends BasePage{
         const noCreditCardExpMonth = this._noCheckoutCreditCardExpMonth;
         Logger.info("No user credit card expiration month: " + noCreditCardExpMonth);
         await this._checkoutPagePayMethodExpDateMonthInputField.fill(noCreditCardExpMonth);
+    }
+    async inputNoCreditCardExpYearIntoCreditCardExpYearInputField(){
+        const noCreditCardExpYear = this._noCheckoutCreditCardExpYear;
+        Logger.info("No user credit card expiration year: " + noCreditCardExpYear);
+        await this._checkoutPagePayMethodExpDateYearInputField.fill(noCreditCardExpYear);
     }
 
 }
