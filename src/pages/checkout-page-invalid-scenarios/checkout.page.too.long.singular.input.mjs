@@ -31,6 +31,7 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         this._tooLongCheckoutShipAddressEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); // 100 chars -> name, domain
         this._tooLongCheckoutShipAddressCity = "4Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfh"; // 100 chars
         this._tooLongCheckoutShipAddressState = "Dsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
+        this._tooLongCheckoutShipAddress = testDataGenerator.generateRandomAddress(97); // 100 chars
 
     }
 
@@ -54,6 +55,11 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         const tooLongShipAddressState = this._tooLongCheckoutShipAddressState;
         Logger.info("Too long user shipping address state: " + tooLongShipAddressState);
         await this._checkoutPageShipAddressStateInputField.fill(tooLongShipAddressState);
+    }
+    async inputTooLongShipAddressIntoShipAddressInputField(){
+        const tooLongShipAddress = this._tooLongCheckoutShipAddress;
+        Logger.info("Too long user shipping address: " + tooLongShipAddress);
+        await this._checkoutPageShipAddressInputField.fill(tooLongShipAddress);
     }
 
 }
