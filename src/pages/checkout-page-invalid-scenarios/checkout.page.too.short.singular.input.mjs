@@ -37,6 +37,7 @@ class CheckoutPageTooShortSingularInput extends BasePage{
 
         //invalid checkout credit card input data - too short singular input
         this._tooShortCheckoutCreditCardNumber = "345654564556786"; // 15 digits
+        this._tooShortCheckoutCreditCardName = "F D"; // 3 chars
 
     }
 
@@ -82,6 +83,11 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         const tooShortCreditCardNumber = this._tooShortCheckoutCreditCardNumber;
         Logger.info("Too short user credit card number: " + tooShortCreditCardNumber);
         await this._checkoutPagePayMethodCardNumberInputField.fill(tooShortCreditCardNumber);
+    }
+    async inputTooShortCreditCardNameIntoCreditCardNameInputField(){
+        const tooShortCreditCardName = this._tooShortCheckoutCreditCardName;
+        Logger.info("Too short user credit card name: " + tooShortCreditCardName);
+        await this._checkoutPagePayMethodCardholderInputField.fill(tooShortCreditCardName);
     }
 
 }
