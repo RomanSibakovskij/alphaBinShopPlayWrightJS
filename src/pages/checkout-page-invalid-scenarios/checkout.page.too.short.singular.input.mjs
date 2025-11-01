@@ -1,6 +1,7 @@
 "use strict"
 
 import {BasePage} from "../utilities/base.page.mjs";
+import {Logger} from "../utilities/logger.mjs";
 
 class CheckoutPageTooShortSingularInput extends BasePage{
 
@@ -22,6 +23,16 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         this._checkoutPagePayMethodExpDateYearInputField = page.locator("//input[@data-testid='checkout-expiration-date-year-input']");
         this._checkoutPagePayMethodCVVInputField = page.locator("//input[@data-testid='checkout-cvv-input']");
 
+        //invalid checkout shipping address input data - too short singular input
+        this._tooShortCheckoutShipAddressFullName = "D C"; // 3 chars
+
+    }
+
+    //invalid checkout page shipping address data input methods - too short singular input
+    async inputTooShortShipAddressFullNameIntoShipAddressFullNameInputField(){
+        const tooShortShipAddressFullName = this._tooShortCheckoutShipAddressFullName;
+        Logger.info("Too short user shipping address full name: " + tooShortShipAddressFullName);
+        await this._checkoutPageShipAddressFullNameInputField.fill(tooShortShipAddressFullName);
     }
 
 }
