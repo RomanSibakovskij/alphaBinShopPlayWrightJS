@@ -32,6 +32,7 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         this._tooShortCheckoutShipAddressCity = "4F"; // 2 chars
         this._tooShortCheckoutShipAddressState = "D"; // 1 char
         this._tooShortCheckoutShipAddress = "3.M"; // 3 chars
+        this._tooShortCheckoutShipAddressPostCode = "6754"; // 4 digits
 
     }
 
@@ -60,6 +61,11 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         const tooShortShipAddress = this._tooShortCheckoutShipAddress;
         Logger.info("Too short user shipping address: " + tooShortShipAddress);
         await this._checkoutPageShipAddressInputField.fill(tooShortShipAddress);
+    }
+    async inputTooShortShipAddressPostCodeIntoShipAddressPostCodeInputField(){
+        const tooShortShipAddressPostCode = this._tooShortCheckoutShipAddressPostCode;
+        Logger.info("Too short user shipping address post code: " + tooShortShipAddressPostCode);
+        await this._checkoutPageShipAddressPostCodeInputField.fill(tooShortShipAddressPostCode);
     }
 
 }
