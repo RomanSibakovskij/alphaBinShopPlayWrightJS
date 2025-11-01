@@ -34,6 +34,7 @@ class CheckoutPageNoSingularInput extends BasePage{
 
         //invalid checkout credit card input data - no singular input
         this._noCheckoutCreditCardNumber = "";
+        this._noCheckoutCreditCardName = "";
 
     }
 
@@ -79,6 +80,11 @@ class CheckoutPageNoSingularInput extends BasePage{
         const noCreditCardNumber = this._noCheckoutCreditCardNumber;
         Logger.info("No user credit card number: " + noCreditCardNumber);
         await this._checkoutPagePayMethodCardNumberInputField.fill(noCreditCardNumber);
+    }
+    async inputNoCreditCardNameIntoCreditCardNameInputField(){
+        const noCreditCardName = this._noCheckoutCreditCardName;
+        Logger.info("No user credit card name: " + noCreditCardName);
+        await this._checkoutPagePayMethodCardholderInputField.fill(noCreditCardName);
     }
 
 }

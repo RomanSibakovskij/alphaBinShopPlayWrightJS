@@ -11750,6 +11750,60 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card Number.png", fullPage: true });
     }
 
+    //invalid product checkout confirmation test method - no credit card name
+    async invalidProductCheckoutConfirmationNoCreditCardNameTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPage = new OrderDetailsPage(page);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //don't input valid credit card name into credit card name input field
+        await checkoutPageNoSingularInput.inputNoCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - no credit card name
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - No Credit Card Name.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the order is getting placed
+        const orderDetailsPageTitle = orderDetailsPage.orderDetailsPageTitle;
+        if(orderDetailsPageTitle){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card Name.png", fullPage: true });
+            throw new Error("The missing credit card name input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card Name.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
