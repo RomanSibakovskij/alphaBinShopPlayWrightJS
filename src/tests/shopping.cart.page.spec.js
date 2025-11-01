@@ -133,3 +133,17 @@ test.describe("Add Multiple New Arrivals Products To Checkout Tests", () => {
     });
 
 });
+
+test.describe("Add All Products Dashboard Page Single Product To Checkout Tests", () => {
+
+    // Test 021 -> add all products dashboard page single product ("Rode NT1-A Condenser Mic") to check out test (as a guest) (the user account is required, test has failed)
+    test("Add All Products Dashboard Page Single Product To Checkout Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add all products dashboard page single product ("Rode NT1-A Condenser Mic") to cart test (as a guest)
+        await testMethods.addSingleAllProductsDashPageProductToCartTest(page);
+        //add all products dashboard page single product ("Rode NT1-A Condenser Mic") to check out test (as a guest) (the user account is required, test has failed)
+        await testMethods.addProductToCheckoutTest(page);
+    });
+
+});
