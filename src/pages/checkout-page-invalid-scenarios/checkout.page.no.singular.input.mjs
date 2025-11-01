@@ -32,6 +32,9 @@ class CheckoutPageNoSingularInput extends BasePage{
         this._noCheckoutShipAddressPostCode = "";
         this._noCheckoutShipAddressCountry = "";
 
+        //invalid checkout credit card input data - no singular input
+        this._noCheckoutCreditCardNumber = "";
+
     }
 
     //invalid checkout page shipping address data input methods - no singular input
@@ -69,6 +72,13 @@ class CheckoutPageNoSingularInput extends BasePage{
         const noShipAddressCountry = this._noCheckoutShipAddressCountry;
         Logger.info("No user shipping address country: " + noShipAddressCountry);
         await this._checkoutPageShipAddressCountryInputField.fill(noShipAddressCountry);
+    }
+
+    //invalid checkout credit card input data methods - no singular input
+    async inputNoCreditCardNumberIntoCreditCardNumberInputField(){
+        const noCreditCardNumber = this._noCheckoutCreditCardNumber;
+        Logger.info("No user credit card number: " + noCreditCardNumber);
+        await this._checkoutPagePayMethodCardNumberInputField.fill(noCreditCardNumber);
     }
 
 }

@@ -11700,6 +11700,56 @@ class TestMethods{
         await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping Country.png", fullPage: true });
     }
 
+    //invalid product checkout confirmation test method - no credit card number
+    async invalidProductCheckoutConfirmationNoCreditCardNumberTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //don't input credit card number into credit card number input field
+        await checkoutPageNoSingularInput.inputNoCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - no credit card number
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - No Credit Card Number.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        const noCredCardNumberInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noCredCardNumberInputError).toBe("Card number is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card Number.png", fullPage: true });
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
