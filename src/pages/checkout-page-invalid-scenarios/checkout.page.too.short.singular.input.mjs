@@ -35,6 +35,9 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         this._tooShortCheckoutShipAddressPostCode = "6754"; // 4 digits
         this._tooShortCheckoutShipAddressCountry = "F"; // 1 char
 
+        //invalid checkout credit card input data - too short singular input
+        this._tooShortCheckoutCreditCardNumber = "345654564556786"; // 15 digits
+
     }
 
     //invalid checkout page shipping address data input methods - too short singular input
@@ -72,6 +75,13 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         const tooShortShipAddressCountry = this._tooShortCheckoutShipAddressCountry;
         Logger.info("Too short user shipping address country: " + tooShortShipAddressCountry);
         await this._checkoutPageShipAddressCountryInputField.fill(tooShortShipAddressCountry);
+    }
+
+    //invalid checkout credit card input data methods - too short singular input
+    async inputTooShortCreditCardNumberIntoCreditCardNumberInputField(){
+        const tooShortCreditCardNumber = this._tooShortCheckoutCreditCardNumber;
+        Logger.info("Too short user credit card number: " + tooShortCreditCardNumber);
+        await this._checkoutPagePayMethodCardNumberInputField.fill(tooShortCreditCardNumber);
     }
 
 }
