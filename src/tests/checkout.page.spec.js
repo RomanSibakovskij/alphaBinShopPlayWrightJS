@@ -175,3 +175,29 @@ test.describe("Single Featured Product From Wishlist Checkout Confirmation Test"
     });
 
 });
+
+test.describe("Multiple Featured Products From Wishlist Checkout Confirmation Test", () => {
+
+    // Test 028a -> multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer", "Epson EF-100 Smart Portable Projector") from wishlist check out confirmation test (debit card method) (as a registered user)
+    test("Multiple Featured Products From Wishlist Checkout Confirmation Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer", "Epson EF-100 Smart Portable Projector") to wishlist test (as a registered user)
+        await testMethods.addMultipleFeaturedProductToWishlistRegUserTest(page);
+        //add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer", "Epson EF-100 Smart Portable Projector") from wishlist to cart test (as a registered user)
+        await testMethods.addMultipleWishlistProductsToCartTest(page);
+        //add multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer", "Epson EF-100 Smart Portable Projector") from wishlist to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //multiple featured products ("SanDisk Extreme Pro 3.0 USB-C Memory Card Reader", "HP LaserJet Pro MFP M428fdw Wireless Printer", "Epson EF-100 Smart Portable Projector") from wishlist check out confirmation test (debit card method) (as a registered user)
+        await testMethods.validProductDebitCheckoutConfirmationTest(page);
+    });
+
+});
