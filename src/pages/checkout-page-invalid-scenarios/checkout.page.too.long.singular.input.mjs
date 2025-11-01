@@ -35,6 +35,9 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         this._tooLongCheckoutShipAddressPostCode = "675478"; // 6 digits
         this._tooLongCheckoutShipAddressCountry = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
 
+        //invalid checkout credit card input data - too long singular input
+        this._tooLongCheckoutCreditCardNumber = "34565456455678645"; // 17 digits
+
     }
 
     //invalid checkout page shipping address data input methods - too long singular input
@@ -72,6 +75,13 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         const tooLongShipAddressCountry = this._tooLongCheckoutShipAddressCountry;
         Logger.info("Too long user shipping address country: " + tooLongShipAddressCountry);
         await this._checkoutPageShipAddressCountryInputField.fill(tooLongShipAddressCountry);
+    }
+
+    //invalid checkout credit card input data methods - too long singular input
+    async inputTooLongCreditCardNumberIntoCreditCardNumberInputField(){
+        const tooLongCreditCardNumber = this._tooLongCheckoutCreditCardNumber;
+        Logger.info("Too long user credit card number: " + tooLongCreditCardNumber);
+        await this._checkoutPagePayMethodCardNumberInputField.fill(tooLongCreditCardNumber);
     }
 
 }
