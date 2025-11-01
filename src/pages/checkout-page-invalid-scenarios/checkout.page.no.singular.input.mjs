@@ -28,6 +28,7 @@ class CheckoutPageNoSingularInput extends BasePage{
         this._noCheckoutShipAddressEmail = "";
         this._noCheckoutShipAddressCity = "";
         this._noCheckoutShipAddressState = "";
+        this._noCheckoutShipAddress = "";
 
     }
 
@@ -51,6 +52,11 @@ class CheckoutPageNoSingularInput extends BasePage{
         const noShipAddressState = this._noCheckoutShipAddressState;
         Logger.info("No user shipping address state: " + noShipAddressState);
         await this._checkoutPageShipAddressStateInputField.fill(noShipAddressState);
+    }
+    async inputNoShipAddressIntoShipAddressInputField(){
+        const noShipAddress = this._noCheckoutShipAddress;
+        Logger.info("No user shipping address: " + noShipAddress);
+        await this._checkoutPageShipAddressInputField.fill(noShipAddress);
     }
 
 }
