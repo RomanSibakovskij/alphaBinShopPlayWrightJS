@@ -31,6 +31,7 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         this._tooShortCheckoutShipAddressEmail = testDataGenerator.generateRandomTooShortEmailAddress(1); // 1 char -> name, domain
         this._tooShortCheckoutShipAddressCity = "4F"; // 2 chars
         this._tooShortCheckoutShipAddressState = "D"; // 1 char
+        this._tooShortCheckoutShipAddress = "3.M"; // 3 chars
 
     }
 
@@ -54,6 +55,11 @@ class CheckoutPageTooShortSingularInput extends BasePage{
         const tooShortShipAddressState = this._tooShortCheckoutShipAddressState;
         Logger.info("Too short user shipping address state: " + tooShortShipAddressState);
         await this._checkoutPageShipAddressStateInputField.fill(tooShortShipAddressState);
+    }
+    async inputTooShortShipAddressIntoShipAddressInputField(){
+        const tooShortShipAddress = this._tooShortCheckoutShipAddress;
+        Logger.info("Too short user shipping address: " + tooShortShipAddress);
+        await this._checkoutPageShipAddressInputField.fill(tooShortShipAddress);
     }
 
 }
