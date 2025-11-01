@@ -102,6 +102,26 @@ test.describe("Multiple New Arrivals Products Checkout Confirmation Test", () =>
 
 });
 
+test.describe("All Products Dashboard Page Single Product Checkout Confirmation Test", () => {
 
+    // Test 027 -> all products dashboard page single product ("Apple iPad Air (2022, 5th Gen)") check out confirmation test (cash on delivery method) (as a registered user)
+    test("All Products Dashboard Page Single Product Checkout Confirmation Test (as a registered user)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add all products dashboard page single product ("Apple iPad Air (2022, 5th Gen)") to cart test (as a registered user)
+        await testMethods.addSingleAllProductsDashPageProductToCartRegUserTest(page);
+        //add all products dashboard page single product ("Apple iPad Air (2022, 5th Gen)") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //all products dashboard page single product ("Apple iPad Air (2022, 5th Gen)") check out confirmation test (cash on delivery method) (as a registered user)
+        await testMethods.validProductCashOnDeliveryCheckoutConfirmationTest(page);
+    });
 
-
+});
