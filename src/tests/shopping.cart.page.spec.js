@@ -101,3 +101,17 @@ test.describe("Add Single New Arrivals Product To Checkout Tests", () => {
     });
 
 });
+
+test.describe("Add Multiple New Arrivals Products To Checkout Tests", () => {
+
+    // Test 020b -> add multiple new arrivals products ("GoPro HERO10 Black", "Logitech MX Master 3 Wireless Mouse") to check out test (as a guest) (the user account is required, test has failed)
+    test("Add Multiple New Arrivals Products To Checkout Test (as a guest)", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //add multiple new arrivals products ("GoPro HERO10 Black", "Logitech MX Master 3 Wireless Mouse") to cart test (as a guest)
+        await testMethods.addMultipleNewArrivalsProductsToCartTest(page);
+        //add multiple new arrivals products ("GoPro HERO10 Black", "Logitech MX Master 3 Wireless Mouse") to check out test (as a guest)
+        await testMethods.addProductToCheckoutTest(page);
+    });
+
+});
