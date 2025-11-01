@@ -25,6 +25,7 @@ class CheckoutPageNoSingularInput extends BasePage{
 
         //invalid checkout shipping address input data - no singular input
         this._noCheckoutShipAddressFullName = "";
+        this._noCheckoutShipAddressEmail = "";
 
     }
 
@@ -33,6 +34,11 @@ class CheckoutPageNoSingularInput extends BasePage{
         const noShipAddressFullName = this._noCheckoutShipAddressFullName;
         Logger.info("No user shipping address full name: " + noShipAddressFullName);
         await this._checkoutPageShipAddressFullNameInputField.fill(noShipAddressFullName);
+    }
+    async inputNoShipAddressEmailIntoShipAddressEmailInputField(){
+        const noShipAddressEmail = this._noCheckoutShipAddressEmail;
+        Logger.info("No user shipping address email: " + noShipAddressEmail);
+        await this._checkoutPageShipAddressEmailInputField.fill(noShipAddressEmail);
     }
 
 }
