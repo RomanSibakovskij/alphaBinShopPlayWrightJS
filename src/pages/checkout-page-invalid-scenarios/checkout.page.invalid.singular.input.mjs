@@ -1,6 +1,7 @@
 "use strict"
 
 import {BasePage} from "../utilities/base.page.mjs";
+import {Logger} from "../utilities/logger.mjs";
 
 class CheckoutPageInvalidSingularInput extends BasePage{
 
@@ -22,6 +23,16 @@ class CheckoutPageInvalidSingularInput extends BasePage{
         this._checkoutPagePayMethodExpDateYearInputField = page.locator("//input[@data-testid='checkout-expiration-date-year-input']");
         this._checkoutPagePayMethodCVVInputField = page.locator("//input[@data-testid='checkout-cvv-input']");
 
+        //invalid checkout shipping address input data - invalid singular input format
+        this._invalidCheckoutShipAddressFullNameFormat = "!@# @%"; // special symbols only
+
+    }
+
+    //invalid checkout page shipping address data input methods - invalid singular input
+    async inputInvalidShipAddressFullNameFormatIntoShipAddressFullNameInputField(){
+        const invalidShipAddressFullNameFormat = this._invalidCheckoutShipAddressFullNameFormat;
+        Logger.info("Invalid user shipping address full name format: " + invalidShipAddressFullNameFormat);
+        await this._checkoutPageShipAddressFullNameInputField.fill(invalidShipAddressFullNameFormat);
     }
 
 }

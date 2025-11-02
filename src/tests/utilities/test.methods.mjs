@@ -17,6 +17,7 @@ import {SignInPageInvalidScenarios} from "../../pages/signin-page-invalid-scenar
 import {CheckoutPageNoSingularInput} from "../../pages/checkout-page-invalid-scenarios/checkout.page.no.singular.input.mjs";
 import {CheckoutPageTooShortSingularInput} from "../../pages/checkout-page-invalid-scenarios/checkout.page.too.short.singular.input.mjs";
 import {CheckoutPageTooLongSingularInput} from "../../pages/checkout-page-invalid-scenarios/checkout.page.too.long.singular.input.mjs";
+import {CheckoutPageInvalidSingularInput} from "../../pages/checkout-page-invalid-scenarios/checkout.page.invalid.singular.input.mjs";
 
 import {PersonalInfoModalInvalidScenarios} from "../../pages/modals/personal-info-modal-invalid-scenarios/personal.info.modal.invalid.scenarios.mjs";
 import {PasswordModalInvalidScenarios} from "../../pages/modals/password-modal-invalid-scenarios/password.modal.invalid.scenarios.mjs";
@@ -13657,6 +13658,92 @@ class TestMethods{
         expect(tooLongCardCVVInputError).toBe("Please check your card details");
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Credit Card CVV Number.png", fullPage: true });
+    }
+
+    //invalid singular input
+
+    //invalid product checkout confirmation test method - invalid shipping address full name format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidShipAddressFullNameFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input invalid checkout shipping address full name format into shipping address full name input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidShipAddressFullNameFormatIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - invalid shipping full name format
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Invalid Shipping Full Name Format.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Full Name Format.png", fullPage: true });
+            throw new Error("The invalid shipping full name input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Full Name Format.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
