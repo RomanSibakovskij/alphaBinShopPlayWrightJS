@@ -170,7 +170,7 @@ test.describe("Invalid Single Featured Product Checkout Confirmation Tests - Too
         await testMethods.invalidProductCheckoutConfirmationTooLongCreditCardNumberTest(page);
     });
 
-    // Test 028ag -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - too long credit card name (201 chars) (the error wasn't triggered, test has failed)
+    // Test 029ag -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - too long credit card name (201 chars) (the error wasn't triggered, test has failed)
     test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Too Long Credit Card Name", async ({page}) => {
         //launch the page
         await page.goto('/');
@@ -190,7 +190,7 @@ test.describe("Invalid Single Featured Product Checkout Confirmation Tests - Too
         await testMethods.invalidProductCheckoutConfirmationTooLongCreditCardNameTest(page);
     });
 
-    // Test 028ah -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - too long credit card expiration month (3 digits) (the error was triggered but the input form doesn't allow 3-digit input)
+    // Test 029ah -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - too long credit card expiration month (3 digits) (the error was triggered but the input form doesn't allow 3-digit input)
     test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Too Long Credit Card Exp Month", async ({page}) => {
         //launch the page
         await page.goto('/');
@@ -210,5 +210,24 @@ test.describe("Invalid Single Featured Product Checkout Confirmation Tests - Too
         await testMethods.invalidProductCheckoutConfirmationTooLongCreditCardExpMonthTest(page);
     });
 
+    // Test 029ai -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - too long credit card expiration year (3 digits) (the error was triggered but the input form doesn't allow 3-digit input)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Too Long Credit Card Exp Year", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - too long credit card expiration year
+        await testMethods.invalidProductCheckoutConfirmationTooLongCreditCardExpYearTest(page);
+    });
 
 });

@@ -39,6 +39,7 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         this._tooLongCheckoutCreditCardNumber = "34565456455678645"; // 17 digits
         this._tooLongCheckoutCreditCardName = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Dsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 201 chars
         this._tooLongCheckoutCreditCardExpMonth = "145"; // 3 digits
+        this._tooLongCheckoutCreditCardExpYear = "203"; // 3 digits
 
     }
 
@@ -94,6 +95,11 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         const tooLongCreditCardExpMonth = this._tooLongCheckoutCreditCardExpMonth;
         Logger.info("Too long user credit card expiration month: " + tooLongCreditCardExpMonth);
         await this._checkoutPagePayMethodExpDateMonthInputField.fill(tooLongCreditCardExpMonth);
+    }
+    async inputTooLongCreditCardExpYearIntoCreditCardExpYearInputField(){
+        const tooLongCreditCardExpYear = this._tooLongCheckoutCreditCardExpYear;
+        Logger.info("Too long user credit card expiration year: " + tooLongCreditCardExpYear);
+        await this._checkoutPagePayMethodExpDateMonthInputField.fill(tooLongCreditCardExpYear);
     }
 
 }
