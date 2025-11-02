@@ -32,6 +32,9 @@ class CheckoutPageInvalidSingularInput extends BasePage{
         this._invalidCheckoutShipAddressPostCodeFormat = "&^*^%"; // special symbols only
         this._invalidCheckoutShipAddressCountryFormat = "@#$%"; // special symbols only
 
+        //invalid checkout credit card input data - invalid singular input format
+        this._invalidCheckoutCreditCardNumberFormat = "%^$%^&*^%$#$%^&*"; // special symbols only
+
     }
 
     //invalid checkout page shipping address data input methods - invalid singular input
@@ -69,6 +72,13 @@ class CheckoutPageInvalidSingularInput extends BasePage{
         const invalidShipAddressCountryFormat = this._invalidCheckoutShipAddressCountryFormat;
         Logger.info("Invalid user shipping address country format: " + invalidShipAddressCountryFormat);
         await this._checkoutPageShipAddressCountryInputField.fill(invalidShipAddressCountryFormat);
+    }
+
+    //invalid checkout credit card input data methods - invalid singular input
+    async inputInvalidCreditCardNumberFormatIntoCreditCardNumberInputField(){
+        const invalidCreditCardNumberFormat = this._invalidCheckoutCreditCardNumberFormat;
+        Logger.info("Invalid user credit card number format: " + invalidCreditCardNumberFormat);
+        await this._checkoutPagePayMethodCardNumberInputField.fill(String(invalidCreditCardNumberFormat));
     }
 
 }
