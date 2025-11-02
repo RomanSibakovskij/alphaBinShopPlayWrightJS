@@ -1,0 +1,254 @@
+import { test } from '@playwright/test';
+
+import {TestMethods} from "../utilities/test.methods.mjs";
+
+const testMethods = new TestMethods();
+
+test.setTimeout(125000);
+
+test.describe("Invalid Single Featured Product Checkout Confirmation Tests - Invalid Singular Input", () => {
+
+    //important note: even though the errors weren't triggered, changes don't apply to shipping address
+
+    // Test 029ak -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address full name format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Ship Address Full Name Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address full name format
+        await testMethods.invalidProductCheckoutConfirmationInvalidShipAddressFullNameFormatTest(page);
+    });
+
+    // Test 029al -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address email format (missing '@')
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Ship Address Email Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address email format
+        await testMethods.invalidProductCheckoutConfirmationInvalidShipAddressEmailFormatTest(page);
+    });
+
+    // Test 029am -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address city format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Ship Address City Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address city format
+        await testMethods.invalidProductCheckoutConfirmationInvalidShipAddressCityFormatTest(page);
+    });
+
+    // Test 029an -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address state format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Ship Address State Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address state format
+        await testMethods.invalidProductCheckoutConfirmationInvalidShipAddressStateFormatTest(page);
+    });
+
+    // Test 029ao -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Ship Address Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping address format
+        await testMethods.invalidProductCheckoutConfirmationInvalidShipAddressFormatTest(page);
+    });
+
+    // Test 029ap -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping post code format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Ship Post Code Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping post code format
+        await testMethods.invalidProductCheckoutConfirmationInvalidShipPostCodeFormatTest(page);
+    });
+
+    // Test 029aq -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping country format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Ship Country Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid shipping country format
+        await testMethods.invalidProductCheckoutConfirmationInvalidShipCountryFormatTest(page);
+    });
+
+    // Test 029ar -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card number format (special symbols only) (the input field doesn't allow invalid input)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Credit Card Number Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card number format
+        await testMethods.invalidProductCheckoutConfirmationInvalidCreditCardNumberFormatTest(page);
+    });
+
+    // Test 029as -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card name format (special symbols only) (the error wasn't triggered, test has failed)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Credit Card Name Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card name format
+        await testMethods.invalidProductCheckoutConfirmationInvalidCreditCardNameFormatTest(page);
+    });
+
+    // Test 029at -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card expiration month format (special symbols only) (the input field doesn't allow invalid input)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Credit Card Exp Month Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card expiration month format
+        await testMethods.invalidProductCheckoutConfirmationInvalidCreditCardExpMonthFormatTest(page);
+    });
+
+    // Test 029au -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card expiration year format (special symbols only) (the input field doesn't allow invalid input)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Credit Card Exp Year Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card expiration year format
+        await testMethods.invalidProductCheckoutConfirmationInvalidCreditCardExpYearFormatTest(page);
+    });
+
+    // Test 029av -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card CVV number format (special symbols only) (the input field doesn't allow invalid input)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Credit Card CVV Number Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card CVV number format
+        await testMethods.invalidProductCheckoutConfirmationInvalidCreditCardCVVNumberFormatTest(page);
+    });
+
+
+});

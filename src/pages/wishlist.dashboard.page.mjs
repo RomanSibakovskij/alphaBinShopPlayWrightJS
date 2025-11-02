@@ -17,7 +17,7 @@ class WishlistDashboardPage extends BasePage{
         this._wishlistDashPageProductImgElements = page.locator("//img[@data-testid='wishlist-product-image']");
         this._wishlistDashPageProductNameElements = page.locator("//h3[@data-testid='wishlist-product-name']");
         this._wishlistDashPageProductRemoveFromWishlistBtnElements = page.locator("//button[@data-testid='wishlist-remove-button']"); //appear only after hover over card
-        this._wishlistDashPageProductUpperAddToCartBtnElements = page.locator("//button[@title='Add to cart']"); //appear only after hover over card
+        //this._wishlistDashPageProductUpperAddToCartBtnElements = page.locator("//button[@title='Add to cart']"); //appear only after hover over card, not currently used
         this._wishlistDashPageProductReviewStarElements = page.locator("//div[@data-testid='wishlist-rating']/span");
         this._wishlistDashPageProductReviewCountElements = page.locator("//span[@data-testid='wishlist-review-count']");
         this._wishlistDashPageProductUnitPriceElements = page.locator("//span[@data-testid='wishlist-product-price']");

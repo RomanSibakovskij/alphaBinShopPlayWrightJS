@@ -1,0 +1,112 @@
+"use strict"
+
+import {BasePage} from "../utilities/base.page.mjs";
+import {TestDataGenerator} from "../utilities/test.data.generator.mjs";
+import {Logger} from "../utilities/logger.mjs";
+
+class CheckoutPageTooLongSingularInput extends BasePage{
+
+    constructor(page) {
+        super(page);
+
+        //relevant web elements
+        this._checkoutPageShipAddressFullNameInputField = page.locator("//input[@data-testid='checkout-first-name-input']");
+        this._checkoutPageShipAddressEmailInputField = page.locator("//input[@data-testid='checkout-email-input']");
+        this._checkoutPageShipAddressCityInputField = page.locator("//input[@data-testid='checkout-city-input']");
+        this._checkoutPageShipAddressStateInputField = page.locator("//input[@data-testid='checkout-state-input']");
+        this._checkoutPageShipAddressInputField = page.locator("//input[@data-testid='checkout-street-input']");
+        this._checkoutPageShipAddressPostCodeInputField = page.locator("//input[@data-testid='checkout-zip-code-input']");
+        this._checkoutPageShipAddressCountryInputField = page.locator("//input[@data-testid='checkout-country-input']");
+
+        this._checkoutPagePayMethodCardNumberInputField = page.locator("//input[@data-testid='checkout-card-number-input']");
+        this._checkoutPagePayMethodCardholderInputField = page.locator("//input[@data-testid='checkout-cardholder-name-input']");
+        this._checkoutPagePayMethodExpDateMonthInputField = page.locator("//input[@data-testid='checkout-expiration-date-month-input']");
+        this._checkoutPagePayMethodExpDateYearInputField = page.locator("//input[@data-testid='checkout-expiration-date-year-input']");
+        this._checkoutPagePayMethodCVVInputField = page.locator("//input[@data-testid='checkout-cvv-input']");
+
+        const testDataGenerator = new TestDataGenerator(page);
+
+        //invalid checkout shipping address input data - too long singular input
+        this._tooLongCheckoutShipAddressFullName = "Dsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Csdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 201 chars
+        this._tooLongCheckoutShipAddressEmail = testDataGenerator.generateRandomTooLongEmailAddress(100); // 100 chars -> name, domain
+        this._tooLongCheckoutShipAddressCity = "4Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfh"; // 100 chars
+        this._tooLongCheckoutShipAddressState = "Dsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
+        this._tooLongCheckoutShipAddress = testDataGenerator.generateRandomAddress(97); // 100 chars
+        this._tooLongCheckoutShipAddressPostCode = "675478"; // 6 digits
+        this._tooLongCheckoutShipAddressCountry = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 100 chars
+
+        //invalid checkout credit card input data - too long singular input
+        this._tooLongCheckoutCreditCardNumber = "34565456455678645"; // 17 digits
+        this._tooLongCheckoutCreditCardName = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Dsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 201 chars
+        this._tooLongCheckoutCreditCardExpMonth = "145"; // 3 digits
+        this._tooLongCheckoutCreditCardExpYear = "203"; // 3 digits
+        this._tooLongCheckoutCreditCardCVV = "3467"; // 4 digits
+
+    }
+
+    //invalid checkout page shipping address data input methods - too long singular input
+    async inputTooLongShipAddressFullNameIntoShipAddressFullNameInputField(){
+        const tooLongShipAddressFullName = this._tooLongCheckoutShipAddressFullName;
+        Logger.info("Too long user shipping address full name: " + tooLongShipAddressFullName);
+        await this._checkoutPageShipAddressFullNameInputField.fill(tooLongShipAddressFullName);
+    }
+    async inputTooLongShipAddressEmailIntoShipAddressEmailInputField(){
+        const tooLongShipAddressEmail = this._tooLongCheckoutShipAddressEmail;
+        Logger.info("Too long user shipping address email: " + tooLongShipAddressEmail);
+        await this._checkoutPageShipAddressEmailInputField.fill(tooLongShipAddressEmail);
+    }
+    async inputTooLongShipAddressCityIntoShipAddressCityInputField(){
+        const tooLongShipAddressCity = this._tooLongCheckoutShipAddressCity;
+        Logger.info("Too long user shipping address city: " + tooLongShipAddressCity);
+        await this._checkoutPageShipAddressCityInputField.fill(tooLongShipAddressCity);
+    }
+    async inputTooLongShipAddressStateIntoShipAddressStateInputField(){
+        const tooLongShipAddressState = this._tooLongCheckoutShipAddressState;
+        Logger.info("Too long user shipping address state: " + tooLongShipAddressState);
+        await this._checkoutPageShipAddressStateInputField.fill(tooLongShipAddressState);
+    }
+    async inputTooLongShipAddressIntoShipAddressInputField(){
+        const tooLongShipAddress = this._tooLongCheckoutShipAddress;
+        Logger.info("Too long user shipping address: " + tooLongShipAddress);
+        await this._checkoutPageShipAddressInputField.fill(tooLongShipAddress);
+    }
+    async inputTooLongShipAddressPostCodeIntoShipAddressPostCodeInputField(){
+        const tooLongShipAddressPostCode = this._tooLongCheckoutShipAddressPostCode;
+        Logger.info("Too long user shipping address post code: " + tooLongShipAddressPostCode);
+        await this._checkoutPageShipAddressPostCodeInputField.fill(tooLongShipAddressPostCode);
+    }
+    async inputTooLongAddressCountryIntoShipAddressCountryInputField(){
+        const tooLongShipAddressCountry = this._tooLongCheckoutShipAddressCountry;
+        Logger.info("Too long user shipping address country: " + tooLongShipAddressCountry);
+        await this._checkoutPageShipAddressCountryInputField.fill(tooLongShipAddressCountry);
+    }
+
+    //invalid checkout credit card input data methods - too long singular input
+    async inputTooLongCreditCardNumberIntoCreditCardNumberInputField(){
+        const tooLongCreditCardNumber = this._tooLongCheckoutCreditCardNumber;
+        Logger.info("Too long user credit card number: " + tooLongCreditCardNumber);
+        await this._checkoutPagePayMethodCardNumberInputField.fill(tooLongCreditCardNumber);
+    }
+    async inputTooLongCreditCardNameIntoCreditCardNameInputField(){
+        const tooLongCreditCardName = this._tooLongCheckoutCreditCardName;
+        Logger.info("Too long user credit card name: " + tooLongCreditCardName);
+        await this._checkoutPagePayMethodCardholderInputField.fill(tooLongCreditCardName);
+    }
+    async inputTooLongCreditCardExpMonthIntoCreditCardExpMonthInputField(){
+        const tooLongCreditCardExpMonth = this._tooLongCheckoutCreditCardExpMonth;
+        Logger.info("Too long user credit card expiration month: " + tooLongCreditCardExpMonth);
+        await this._checkoutPagePayMethodExpDateMonthInputField.fill(tooLongCreditCardExpMonth);
+    }
+    async inputTooLongCreditCardExpYearIntoCreditCardExpYearInputField(){
+        const tooLongCreditCardExpYear = this._tooLongCheckoutCreditCardExpYear;
+        Logger.info("Too long user credit card expiration year: " + tooLongCreditCardExpYear);
+        await this._checkoutPagePayMethodExpDateMonthInputField.fill(tooLongCreditCardExpYear);
+    }
+    async inputTooLongCreditCardCVVIntoCreditCardCVVInputField(){
+        const tooLongCreditCardCVV = this._tooLongCheckoutCreditCardCVV;
+        Logger.info("Too long user credit card CVV number: " + tooLongCreditCardCVV);
+        await this._checkoutPagePayMethodExpDateMonthInputField.fill(tooLongCreditCardCVV);
+    }
+
+}
+export {CheckoutPageTooLongSingularInput};

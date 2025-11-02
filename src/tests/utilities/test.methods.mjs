@@ -6,13 +6,23 @@ import {SignInPage} from "../../pages/signin.page.mjs";
 import {CreateAccountPage} from "../../pages/create.account.page.mjs";
 import {AccountDashboardPage} from "../../pages/account.dashboard.page.mjs";
 import {WishlistDashboardPage} from "../../pages/wishlist.dashboard.page.mjs";
+import {AllProductsDashboardPage} from "../../pages/all.products.dashboard.page.mjs";
+import {SingleProductPage} from "../../pages/single.product.page.mjs";
+import {ShoppingCartPage} from "../../pages/shopping.cart.page.mjs";
+import {CheckoutPage} from "../../pages/checkout.page.mjs";
+import {OrderDetailsPage} from "../../pages/order.details.page.mjs";
 
 import {CreateAccountPageInvalidScenarios} from "../../pages/create-account-page-invalid-scenarios/create.account.page.invalid.scenarios.mjs";
 import {SignInPageInvalidScenarios} from "../../pages/signin-page-invalid-scenarios/signin.page.invalid.scenarios.mjs";
+import {CheckoutPageNoSingularInput} from "../../pages/checkout-page-invalid-scenarios/checkout.page.no.singular.input.mjs";
+import {CheckoutPageTooShortSingularInput} from "../../pages/checkout-page-invalid-scenarios/checkout.page.too.short.singular.input.mjs";
+import {CheckoutPageTooLongSingularInput} from "../../pages/checkout-page-invalid-scenarios/checkout.page.too.long.singular.input.mjs";
+import {CheckoutPageInvalidSingularInput} from "../../pages/checkout-page-invalid-scenarios/checkout.page.invalid.singular.input.mjs";
 
 import {PersonalInfoModalInvalidScenarios} from "../../pages/modals/personal-info-modal-invalid-scenarios/personal.info.modal.invalid.scenarios.mjs";
 import {PasswordModalInvalidScenarios} from "../../pages/modals/password-modal-invalid-scenarios/password.modal.invalid.scenarios.mjs";
 import {AddNewAddressModalInvalidScenarios} from "../../pages/modals/add-new-address-modal-invalid-scenarios/add.new.address.modal.invalid.scenarios.mjs";
+import {AddReviewModalInvalidScenarios} from "../../pages/modals/add-review-modal-invalid-scenarios/add.review.moda.invalid.scenarios.mjs";
 
 import {GeneralPageWebElementAssert} from "../web-element-asserts/general.page.web.element.assert.mjs";
 import {HomePageWebElementAssert} from "../web-element-asserts/home.page.web.element.assert.mjs";
@@ -20,6 +30,11 @@ import {SignInPageWebElementAssert} from "../web-element-asserts/signin.page.web
 import {CreateAccountPageWebElementAssert} from "../web-element-asserts/create.account.page.web.element.assert.mjs";
 import {AccountDashboardPageWebElementAssert} from "../web-element-asserts/account.dashboard.web.element.assert.mjs";
 import {WishlistDashboardPageWebElementAsserts} from "../web-element-asserts/wishlist.dashboard.page.web.element.asserts.mjs";
+import {AllProductsDashPageWebElementAsserts} from "../web-element-asserts/all.products.dash.page.web.element.asserts.mjs";
+import {SingleProductPageWebElementAsserts} from "../web-element-asserts/single.product.page.web.element.asserts.mjs";
+import {ShoppingCartPageWebElementAsserts} from "../web-element-asserts/shopping.cart.page.web.element.asserts.mjs";
+import {CheckoutPageWebElementAsserts} from "../web-element-asserts/checkout.page.web.element.asserts.mjs";
+import {OrderDetailsPageWebElementAssert} from "../web-element-asserts/order.details.page.web.element.assert.mjs";
 
 import {GeneralPageTextElementAssert} from "../text-element-asserts/general.page.text.element.assert.mjs";
 import {HomePageTextElementAssert} from "../text-element-asserts/home.page.text.element.assert.mjs";
@@ -27,31 +42,52 @@ import {SignInPageTextElementAssert} from "../text-element-asserts/signin.page.t
 import {CreateAccountPageTextElementAssert} from "../text-element-asserts/create.account.page.text.element.assert.mjs";
 import {AccountDashboardPageTextElementAssert} from "../text-element-asserts/account.dashboard.text.element.assert.mjs";
 import {WishlistDashboardPageTextElementAsserts} from "../text-element-asserts/wishlist.dashboard.page.text.element.asserts.mjs";
+import {AllProductsDashPageTextElementAsserts} from "../text-element-asserts/all.products.dash.page.text.element.asserts.mjs";
+import {SingleProductPageTextElementAsserts} from "../text-element-asserts/single.product.page.text.element.asserts.mjs";
+import {ShoppingCartPageTextElementAsserts} from "../text-element-asserts/shopping.cart.page.text.element.asserts.mjs";
+import {CheckoutPageTextElementAsserts} from "../text-element-asserts/checkout.page.text.element.asserts.mjs";
+import {OrderDetailsPageTextElementAssert} from "../text-element-asserts/order.details.page.text.element.assert.mjs";
 
 import {PersonalInfoModal} from "../../pages/modals/personal.info.modal.mjs";
 import {PasswordModal} from "../../pages/modals/password.modal.mjs";
 import {AddressesDashboardModal} from "../../pages/modals/addresses.dashboard.modal.mjs";
 import {AddNewAddressModal} from "../../pages/modals/add.new.address.modal.mjs";
 import {ShoppingCartModal} from "../../pages/modals/shopping.cart.modal.mjs";
+import {AddReviewModal} from "../../pages/modals/add.review.modal.mjs";
+import {CheckoutPageShipAddressModal} from "../../pages/modals/checkout.page.ship.address.modal.mjs";
+import {MyOrdersModal} from "../../pages/modals/my.orders.modal.mjs";
 
 import {PersonalInfoModalWebElementAssert} from "../web-element-asserts/modals/personal.info.modal.web.element.assert.mjs";
 import {PasswordModalWebElementAssert} from "../web-element-asserts/modals/password.modal.web.element.assert.mjs";
 import {AddressesDashboardModalWebElementAsserts} from "../web-element-asserts/modals/addresses.dashboard.modal.web.element.asserts.mjs";
 import {AddNewAddressModalWebElementAssert} from "../web-element-asserts/modals/add.new.address.modal.web.element.assert.mjs";
 import {ShoppingCartModalWebElementAsserts} from "../web-element-asserts/modals/shopping.cart.modal.web.element.asserts.mjs";
+import {AddReviewModalWebElementAsserts} from "../web-element-asserts/modals/add.review.modal.web.element.asserts.mjs";
+import {CheckoutPageShipAddressModalWebElementAssert} from "../web-element-asserts/modals/checkout.page.ship.address.modal.web.element.assert.mjs";
+import {MyOrdersModalWebElementAsserts} from "../web-element-asserts/modals/my.orders.modal.web.element.asserts.mjs";
 
 import {PersonalInfoModalTextElementAssert} from "../text-element-asserts/modals/personal.info.modal.text.element.assert.mjs";
 import {PasswordModalTextElementAssert} from "../text-element-asserts/modals/password.modal.text.element.assert.mjs";
 import {AddressesDashboardModalTextElementAsserts} from "../text-element-asserts/modals/addresses.dashboard.modal.text.element.asserts.mjs";
 import {AddNewAddressModalTextElementAsserts} from "../text-element-asserts/modals/add.new.address.modal.text.element.asserts.mjs";
 import {ShoppingCartModalTextElementAsserts} from "../text-element-asserts/modals/shopping.cart.modal.text.element.asserts.mjs";
+import {AddReviewModalTextElementAsserts} from "../text-element-asserts/modals/add.review.modal.text.element.asserts.mjs";
+import {CheckoutPageShipAddressModalTextElementAssert} from "../text-element-asserts/modals/checkout.page.ship.address.modal.text.element.assert.mjs";
+import {MyOrdersModalTextElementAsserts} from "../text-element-asserts/modals/my.orders.modal.text.element.asserts.mjs";
 
 import {HomePageDataLoggers} from "../data-loggers/home.page.data.loggers.mjs";
 import {AccountDashPageDataLogger} from "../data-loggers/account.dash.page.data.logger.mjs";
 import {WishlistDashboardPageDataLogger} from "../data-loggers/wishlist.dashboard.page.data.logger.mjs";
+import {AllProductsDashPageDataLoggers} from "../data-loggers/all.products.dash.page.data.loggers.mjs";
+import {SingleProductPageDataLoggers} from "../data-loggers/single.product.page.data.loggers.mjs";
+import {ShoppingCartPageDataLogger} from "../data-loggers/shopping.cart.page.data.logger.mjs";
+import {CheckoutPageDataLoggers} from "../data-loggers/checkout.page.data.loggers.mjs";
+import {OrderDetailsPageDataLogger} from "../data-loggers/order.details.page.data.logger.mjs";
 
 import {AddressesDashboardModalDataLogger} from "../data-loggers/modals/addresses.dashboard.modal.data.logger.mjs";
 import {ShoppingCartModalDataLogger} from "../data-loggers/modals/shopping.cart.modal.data.logger.mjs";
+import {CheckoutPageShipAddressModalDataLogger} from "../data-loggers/modals/checkout.page.ship.address.modal.data.logger.mjs";
+import {MyOrdersModalDataLogger} from "../data-loggers/modals/my.orders.modal.data.logger.mjs";
 
 import {expect} from "@playwright/test";
 import {Logger} from "../../pages/utilities/logger.mjs";
@@ -141,7 +177,7 @@ class TestMethods{
         //click "Create Account" button
         await createAccountPage.clickSignUpButton();
         //wait for element to load (due to network issues, time is extended)
-        await page.waitForTimeout(5500);
+        await page.waitForTimeout(7000);
         //assert the user gets onto sign in page after account creation (since the popup is outside of DOM)
         const expectedURL = "https://demo.alphabin.co/login"
         const actualURL = page.url();
@@ -6876,6 +6912,7687 @@ class TestMethods{
         expect(expectedCartPageURL).toBe(actualCartPageURL);
         //capture screenshot of the test result
         await page.screenshot({ path: "src/tests/screenshots/Add Single Product From Wishlist To Cart Test Result.png", fullPage: true });
+    }
+
+    //add multiple products from wishlist to cart test method
+    async addMultipleWishlistProductsToCartTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const wishlistDashboardPage = new WishlistDashboardPage(page);
+        const wishlistDashboardPageWebElementAsserts = new WishlistDashboardPageWebElementAsserts();
+        const wishlistDashboardPageTextElementAsserts = new WishlistDashboardPageTextElementAsserts();
+        const wishlistDashboardPageDataLogger = new WishlistDashboardPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //wishlist dashboard page web element assert
+        await wishlistDashboardPageWebElementAsserts.isWishlistDashboardPageWebElementVisible(page);
+        //wishlist dashboard page text element assert
+        await wishlistDashboardPageTextElementAsserts.isWishlistDashboardPageTextElementAsExpected(page);
+        //log wishlist dashboard page product data
+        await wishlistDashboardPageDataLogger.logWishlistDashboardPageProductData(page);
+        //click set "Add to Cart" button
+        await wishlistDashboardPage.clickSetAddToCartButton(0);
+        //click set "Add to Cart" button
+        await wishlistDashboardPage.clickSetAddToCartButton(1);
+        //click set "Add to Cart" button
+        await wishlistDashboardPage.clickSetAddToCartButton(2);
+        //click "View Cart" button
+        await wishlistDashboardPage.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto shopping cart page after placing the products into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Multiple Products From Wishlist To Cart Test Result.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //add single all products category dashboard page product to cart tests
+
+    //add single all products category dashboard page product ("Rode NT1-A Condenser Mic") to cart test method (as a guest)
+    async addSingleAllProductsDashPageProductToCartTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "List view" button
+        await allProductsDashboardPage.clickListViewButton();
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (list view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageListWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (list view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (list view).png", fullPage: true });
+        //set price range from (to a set value) -> 10000
+        await allProductsDashboardPage.setPriceRangeFrom(0.11);
+        //set price range to (to a set value) -> 25000
+        await allProductsDashboardPage.setPriceRangeTo(0.27);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (list view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (list view with set price range).png", fullPage: true });
+        //click set product ("Rode NT1-A Condenser Mic") card (list view)
+        await allProductsDashboardPage.clickSetProductCardListMethod(0);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //capture screenshot of the single product page ("Rode NT1-A Condenser Mic") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Rode NT1-A Condenser Mic).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Rode NT1-A Condenser Mic";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Rode NT1-A Condenser Mic") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Rode NT1-A Condenser Mic Additional Info Section).png", fullPage: true });
+        //click "Add to Cart" button
+        await singleProductPage.clickAddToCartButton();
+        //click header "hopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct product has been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const actualSingleProductName = productNames[0];
+        await expect(actualSingleProductName).toBe("Rode NT1-A Condenser Mic");
+        //assert product quantity count stays constant
+        const productCounterCount = await shoppingCartModal.getShoppingCartModalProductCount();
+        const productQuantity = await shoppingCartModal.getShoppingCartModalProductQty();
+        const totalQty = productQuantity.reduce((sum, qty) => sum + Number(qty), 0)
+        expect(Number(productCounterCount)).toBe(totalQty);
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (single Rode NT1-A Condenser Mic).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add All Products Dashboard Page Single Product To Cart Test Result (guest).png", fullPage: true });
+    }
+
+    //add single all products category dashboard page product ("Apple iPad Air (2022, 5th Gen)") to cart test method (as a registered user)
+    async addSingleAllProductsDashPageProductToCartRegUserTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(0);
+        //wait for element to load
+        await page.waitForTimeout(2000);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Add to Cart" button
+        await singleProductPage.clickAddToCartButton();
+        //click header "hopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct product has been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const actualSingleProductName = productNames[0];
+        expect(actualSingleProductName).toBe("Apple iPad Air (2022, 5th Gen)");
+        //assert product quantity count stays constant
+        const productCounterCount = await shoppingCartModal.getShoppingCartModalProductCount();
+        const productQuantity = await shoppingCartModal.getShoppingCartModalProductQty();
+        const totalQty = productQuantity.reduce((sum, qty) => sum + Number(qty), 0)
+        expect(Number(productCounterCount)).toBe(totalQty);
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (single Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add All Products Dashboard Page Single Product To Cart Test Result (registered user).png", fullPage: true });
+    }
+
+    //add multiple all products category dashboard page products to cart tests
+
+    //add multiple all products category dashboard page products ("Seagate 4TB External Hard Drive") to cart test method (as a guest)
+    async addMultipleAllProductsDashPageProductsToCartTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click set product ("Seagate 4TB External Hard Drive") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(2);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Seagate 4TB External Hard Drive") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Seagate 4TB External Hard Drive).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Seagate 4TB External Hard Drive";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Seagate 4TB External Hard Drive") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Seagate 4TB External Hard Drive Additional Info Section).png", fullPage: true });
+        //click product increase button
+        await singleProductPage.clickProductQtyIncreaseButton(4);
+        //wait for element to load
+        await page.waitForTimeout(1300);
+        //capture screenshot of the single product page ("Seagate 4TB External Hard Drive" -> multiple products) display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (multiple Seagate 4TB External Hard Drive Products).png", fullPage: true });
+        //click "Add to Cart" button
+        await singleProductPage.clickAddToCartButton();
+        //click header "Shopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(4000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct product has been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const actualSingleProductName = productNames[0];
+        expect(actualSingleProductName).toBe("Seagate 4TB External Hard Drive");
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (multiple Seagate 4TB External Hard Drives).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add All Products Dashboard Page Multiple Products To Cart Test Result (guest).png", fullPage: true });
+    }
+
+    //add multiple all products category dashboard page products ("Samsung 32-inch UHD 4K Smart TV") to cart test method (as a registered user)
+    async addMultipleAllProductsDashPageProductsToCartRegUserTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const shoppingCartModal = new ShoppingCartModal(page);
+        const shoppingCartModalWebElementAsserts = new ShoppingCartModalWebElementAsserts();
+        const shoppingCartModalTextElementAsserts = new ShoppingCartModalTextElementAsserts();
+        const shoppingCartModalDataLogger = new ShoppingCartModalDataLogger();
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(0);
+        //wait for element to load
+        await page.waitForTimeout(2000);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Samsung 32-inch UHD 4K Smart TV") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(2);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Samsung 32-inch UHD 4K Smart TV") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Samsung 32-inch UHD 4K Smart TV).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Samsung 32-inch UHD 4K Smart TV";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Samsung 32-inch UHD 4K Smart TV") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Samsung 32-inch UHD 4K Smart TV Additional Info Section).png", fullPage: true });
+        //click product increase button
+        await singleProductPage.clickProductQtyIncreaseButton(4);
+        //wait for element to load
+        await page.waitForTimeout(1300);
+        //capture screenshot of the single product page ("Samsung 32-inch UHD 4K Smart TV" -> multiple products) display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (multiple Samsung 32-inch UHD 4K Smart TV).png", fullPage: true });
+        //click "Add to Cart" button
+        await singleProductPage.clickAddToCartButton();
+        //click header "hopping Cart" button
+        await generalPage.clickHeaderShoppingCartIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //shopping cart modal header web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalHeaderWebElementVisible(page);
+        //shopping cart modal web element assert
+        await shoppingCartModalWebElementAsserts.isShoppingCartModalWebElementVisible(page);
+        //shopping cart modal header text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalHeaderTextElementAsExpected(page);
+        //shopping cart modal text element assert
+        await shoppingCartModalTextElementAsserts.isShoppingCartModalTextElementAsExpected(page);
+        //log shopping cart modal product data
+        await shoppingCartModalDataLogger.logShoppingCartModalData(page);
+        //assert the correct product has been added
+        const productNames = await shoppingCartModal.getShoppingCartModalProductName();
+        const actualSingleProductName = productNames[0];
+        expect(actualSingleProductName).toBe("Samsung 32-inch UHD 4K Smart TV");
+        //capture screenshot of the shopping cart modal display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Modal Display (multiple Samsung 32-inch UHD 4K Smart TVs).png", fullPage: true });
+        //click "View Cart" button
+        await shoppingCartModal.clickViewCartButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto shopping cart page after placing the product into the cart
+        const expectedCartPageURL = "https://demo.alphabin.co/cart";
+        const actualCartPageURL = page.url();
+        expect(expectedCartPageURL).toBe(actualCartPageURL);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add All Products Dashboard Page Multiple Products To Cart Test Result (registered user).png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //add product review tests
+
+    //add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest)
+    async addProductReviewTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section after valid review data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Valid Review Data Input).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //single product page review section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageReviewWebElementVisible(page);
+        //single product page review section text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageReviewTextElementAsExpected(page);
+        //log single product page review data
+        await singleProductPageDataLoggers.logSingleProductPageReviewData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Product Review Test Result (guest).png", fullPage: true });
+    }
+
+    //add product ("Samsung 32-inch UHD 4K Smart TV") review test method (as a registered user)
+    async addProductReviewRegUserTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(0);
+        //wait for element to load
+        await page.waitForTimeout(2000);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Samsung 32-inch UHD 4K Smart TV") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(2);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Samsung 32-inch UHD 4K Smart TV") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Samsung 32-inch UHD 4K Smart TV).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Samsung 32-inch UHD 4K Smart TV";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Samsung 32-inch UHD 4K Smart TV") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Samsung 32-inch UHD 4K Smart TV) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page);
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Samsung 32-inch UHD 4K Smart TV") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Samsung 32-inch UHD 4K Smart TV) Review Section Before Data Input).png", fullPage: true });
+        //input valid registered user full name into your name input field
+        await addReviewModal.inputRegUserFullNameIntoYourNameInputField();
+        //input valid registered user email into your email input field
+        await addReviewModal.inputRegUserEmailIntoYourEmailInputField();
+        //input valid registered user review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid registered user review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Samsung 32-inch UHD 4K Smart TV") review section after valid review data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Samsung 32-inch UHD 4K Smart TV) Review Section After Valid Review Data Input).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //single product page review section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageReviewWebElementVisible(page);
+        //single product page review section text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageReviewTextElementAsExpected(page);
+        //log single product page review data
+        await singleProductPageDataLoggers.logSingleProductPageReviewData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Add Product Review Test Result (guest).png", fullPage: true });
+    }
+
+    //invalid add product review tests (since the registered user will have the same output, only guest branch is being tested to avoid redundancy)
+
+    //no singular input
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - no guest full name
+    async invalidAddProductReviewNoGuestFullNameTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //don't input guest full name into your name input field
+        await addReviewModalInvalidScenarios.inputNoGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - no guest full name
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - No Guest Full Name).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - No Guest Full Name.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - no guest email
+    async invalidAddProductReviewNoGuestEmailTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //don't input guest email into your email input field
+        await addReviewModalInvalidScenarios.inputNoGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - no guest email
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - No Guest Email).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review email has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - No Guest Email.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - no guest review stars
+    async invalidAddProductReviewNoGuestReviewStarsTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - no guest review stars
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - No Guest Review Stars).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review stars have no error message, there's nothing to assert)
+        await page.waitForTimeout(3000);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - No Guest Review Stars.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - no guest review title
+    async invalidAddProductReviewNoGuestReviewTitleTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //don't input guest review title into review title input field
+        await addReviewModalInvalidScenarios.inputNoGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - no guest review title
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - No Guest Review Title).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review title has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - No Guest Review Title.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - no guest review
+    async invalidAddProductReviewNoGuestReviewTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //don't input guest review into review (opinion) text area
+        await addReviewModalInvalidScenarios.inputNoGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - no guest review
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - No Guest Review).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - No Guest Review.png", fullPage: true });
+    }
+
+    //too short singular input
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - too short guest full name (3 chars)
+    async invalidAddProductReviewTooShortGuestFullNameTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input too short guest full name into your name input field (3 chars)
+        await addReviewModalInvalidScenarios.inputTooShortGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too short guest full name
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Short Guest Full Name).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Short Guest Full Name.png", fullPage: true});
+            throw new Error("The too short review full name input error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Short Guest Full Name.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - too short guest email (1 char -> name, domain)
+    async invalidAddProductReviewTooShortGuestEmailTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input too short guest email into your email input field (1 char -> name, domain)
+        await addReviewModalInvalidScenarios.inputTooShortGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too short guest email
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Short Guest Email).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Short Guest Email.png", fullPage: true});
+            throw new Error("The too short review email input error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Short Guest Email.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - too short guest review title (1 char)
+    async invalidAddProductReviewTooShortGuestReviewTitleTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input too short guest review title into review title input field (1 char)
+        await addReviewModalInvalidScenarios.inputTooShortGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too short guest review title
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Short Guest Review Title).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Short Guest Review Title.png", fullPage: true});
+            throw new Error("The too short review title input error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Short Guest Review Title.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - too short guest review (9 chars)
+    async invalidAddProductReviewTooShortGuestReviewTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(2);
+        //input too short guest review into review (opinion) text area (9 chars)
+        await addReviewModalInvalidScenarios.inputTooShortGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too short guest review
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Short Guest Review).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //assert the user receives an expected error, otherwise, throw an error
+        const tooShortReviewInputErrorMsg = await addReviewModal.getAddReviewInvalidSingularInputErrorMsg();
+        expect(tooShortReviewInputErrorMsg).toBe("Review must be at least 10 characters");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Short Guest Review.png", fullPage: true });
+    }
+
+    //too long singular input
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - too long guest full name (201 chars)
+    async invalidAddProductReviewTooLongGuestFullNameTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input too long guest full name into your name input field (201 chars)
+        await addReviewModalInvalidScenarios.inputTooLongGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too long guest full name
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Long Guest Full Name).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Full Name.png", fullPage: true});
+            throw new Error("The too long review full name input error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Full Name.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - too long guest email (100 chars -> name, domain)
+    async invalidAddProductReviewTooLongGuestEmailTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input too short guest email into your email input field (100 chars -> name, domain)
+        await addReviewModalInvalidScenarios.inputTooLongGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too long guest email
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Long Guest Email.png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Email.png", fullPage: true});
+            throw new Error("The too long review email input error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Email.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - too long guest review title (100 chars)
+    async invalidAddProductReviewTooLongGuestReviewTitleTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input.png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input too short guest review title into review title input field (100 chars)
+        await addReviewModalInvalidScenarios.inputTooLongGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too long guest review title
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Long Guest Review Title.png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Review Title.png", fullPage: true});
+            throw new Error("The too long review title input error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Review Title.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - too long guest review (10001 chars)
+    async invalidAddProductReviewTooLongGuestReviewTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAssert = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAssert.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAssert.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(2);
+        //input too short guest review into review (opinion) text area (10001 chars)
+        await addReviewModalInvalidScenarios.inputTooLongGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - too long guest review
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Too Long Guest Review).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Review.png", fullPage: true});
+            throw new Error("The too long review input error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Too Long Guest Review.png", fullPage: true });
+    }
+
+    //invalid singular input format
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - invalid guest full name format (special symbols only)
+    async invalidAddProductReviewInvalidGuestFullNameFormatTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input invalid guest full name format into your name input field (special symbols only)
+        await addReviewModalInvalidScenarios.inputInvalidGuestFullNameFormatIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - invalid guest full name format
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Invalid Guest Full Name Format).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Invalid Guest Full Name Format.png", fullPage: true});
+            throw new Error("The invalid review full name format input error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Invalid Guest Full Name Format.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - invalid guest email format (missing '@')
+    async invalidAddProductReviewInvalidGuestEmailFormatTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input invalid guest email format into your email input field (missing '@')
+        await addReviewModalInvalidScenarios.inputInvalidGuestEmailFormatIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - invalid guest email format
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Invalid Guest Email Format).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Invalid Guest Email Format.png", fullPage: true});
+            throw new Error("The invalid review email input format error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Invalid Guest Email Format.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - invalid guest review title format (special symbols only)
+    async invalidAddProductReviewInvalidGuestReviewTitleFormatTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input invalid guest review title format into review title input field (special symbols only)
+        await addReviewModalInvalidScenarios.inputInvalidGuestReviewTitleFormatIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(4);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - invalid guest review title format
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Invalid Guest Review Title Format).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Invalid Guest Review Title Format.png", fullPage: true});
+            throw new Error("The invalid review title input format error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Invalid Guest Review Title Format.png", fullPage: true });
+    }
+
+    //invalid add product ("Apple iPad Air (2022, 5th Gen)") review test method (as a guest) - invalid guest review format (special symbols only)
+    async invalidAddProductReviewInvalidGuestReviewFormatTest(page){
+        const generalPage = new GeneralPage(page);
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const homePageWebElementAssert = new HomePageWebElementAssert();
+        const homePageTextElementAssert = new HomePageTextElementAssert();
+        const homePageDataLoggers = new HomePageDataLoggers();
+        const allProductsDashboardPage = new AllProductsDashboardPage(page);
+        const allProductsDashboardPageWebElementAsserts = new AllProductsDashPageWebElementAsserts();
+        const allProductsDashboardPageTextElementAsserts = new AllProductsDashPageTextElementAsserts();
+        const allProductsDashPageDataLoggers = new AllProductsDashPageDataLoggers();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalInvalidScenarios = new AddReviewModalInvalidScenarios(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //home page web element assert
+        await homePageWebElementAssert.isHomePageWebElementVisible(page);
+        //home page text element assert
+        await homePageTextElementAssert.isHomePageTextElementAsExpected(page);
+        //log home page featured product data
+        await homePageDataLoggers.logHomePageFeaturedProductData(page);
+        //log home page new arrivals product data
+        await homePageDataLoggers.logHomePageNewArrivalsProductData(page);
+        //capture screenshot of the home page display
+        await page.screenshot({ path: "src/tests/screenshots/Home Page Display.png", fullPage: true });
+        //click header navbar "Home" link
+        await generalPage.clickSetHeaderNavbarLink(3);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view).png", fullPage: true });
+        //click "Filters" button
+        await allProductsDashboardPage.clickFiltersButton();
+        //wait for element to load
+        await page.waitForTimeout(2700);
+        //all products dashboard page header web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageHeaderWebElementVisible(page);
+        //all products dashboard page (filters dropdown section) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageFiltersWebElementVisible(page);
+        //all products dashboard page (grid view) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageGridWebElementVisible(page);
+        //all products dashboard page (product table) web element assert
+        await allProductsDashboardPageWebElementAsserts.isAllProductsDashboardPageProductTableWebElementVisible(page);
+        //all product dashboard page header text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageHeaderTextElementAsExpected(page);
+        //all product dashboard page (filters dropdown section) text element assert
+        await allProductsDashboardPageTextElementAsserts.isAllProductsDashboardPageFiltersTextElementAsExpected(page);
+        //log all products dashboard page product data
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (with filters view) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with filters).png", fullPage: true });
+        //set price range from (to a set value) -> 20000
+        await allProductsDashboardPage.setPriceRangeFrom(0.21);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //log all products dashboard page product data (to verify price range has been applied)
+        await allProductsDashPageDataLoggers.logAllProductsDashPageProductData(page);
+        //capture screenshot of the all products dashboard page (grid view - set price range) display
+        await page.screenshot({ path: "src/tests/screenshots/All Products Dashboard Page Display (grid view with set price range).png", fullPage: true });
+        //click set product ("Apple iPad Air (2022, 5th Gen)") card (grid view)
+        await allProductsDashboardPage.clickSetProductCardMethod(1);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageWebElementVisible(page);
+        //single product page (you may also like) web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageYouMayAlsoLikeWebElementVisible(page);
+        //single product page text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageTextElementAsExpected(page);
+        //log single product page product data
+        await singleProductPageDataLoggers.logSingleProductPageProductData(page);
+        //log single product page (you may also like) product data
+        await singleProductPageDataLoggers.logSingleProductPageYouMayAlsoLikeProductData(page);
+        //single product page description section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageDescriptionWebElementVisible(page);
+        //log single product page product description section data
+        await singleProductPageDataLoggers.logSingleProductPageProductDescriptionData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen)).png", fullPage: true });
+        //assert the user is on the correct product page
+        const actualProductPage = await singleProductPage.getSingleProductPageTitle();
+        const expectedProductPage = "Apple iPad Air (2022, 5th Gen)";
+        expect(actualProductPage).toBe(expectedProductPage);
+        //click "Additional Information" navbar button
+        await singleProductPage.clickSetNavbarButton(1);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //single product page additional information web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageAdditionalInfoWebElementVisible(page);
+        //log single product page additional information data
+        await singleProductPageDataLoggers.logSingleProductPageAdditionalInfoData(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") additional info section display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section).png", fullPage: true });
+        //click "Reviews" navbar button
+        await singleProductPage.clickSetNavbarButton(2);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //add review modal (empty) web element assert
+        await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+        //add review modal (empty) text element assert
+        await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page)
+        //click "Write a Review" button
+        await addReviewModal.clickWriteReviewButton();
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(1);
+        //input invalid guest review format into review (opinion) text area (special symbols only)
+        await addReviewModalInvalidScenarios.inputInvalidGuestReviewFormatIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section display after invalid review data input - invalid guest review input format
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Invalid Review Data Input - Invalid Guest Review Format).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load (since the review full name has no error message that can be located with a locator, wait for react error message to be triggered)
+        await page.waitForTimeout(3000);
+        //if the review has been input (the review elements appear), throw an error
+        const reviewSectionWebElements = singleProductPage.singleProductPageReviewNameElement;
+        const reviewSectionWebElementCount = await reviewSectionWebElements.count();
+        if (reviewSectionWebElementCount > 0) {
+            await page.screenshot({path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Invalid Guest Review Format.png", fullPage: true});
+            throw new Error("The invalid review input format error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Add Product Review Test Result (guest) - Invalid Guest Review Format.png", fullPage: true });
+    }
+
+    //update product review test
+
+    //update product review test method
+    async updateProductReviewTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const singleProductPageDataLoggers = new SingleProductPageDataLoggers();
+        const addReviewModal = new AddReviewModal(page);
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page review section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageReviewWebElementVisible(page);
+        //single product page review section text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageReviewTextElementAsExpected(page);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //click set "Edit review" link
+        await singleProductPage.clickSetEditReviewLink(0);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+        //add review modal web element assert
+        await addReviewModalWebElementAsserts.isAddReviewModalWebElementVisible(page);
+        //add review modal text element assert
+        await addReviewModalTextElementAsserts.isAddReviewModalTextElementAsExpected(page);
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section before edited data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section Before Edited Data Input).png", fullPage: true });
+        //input valid guest full name into your name input field
+        await addReviewModal.inputGuestFullNameIntoYourNameInputField();
+        //input valid guest email into your email input field
+        await addReviewModal.inputGuestEmailIntoYourEmailInputField();
+        //input valid guest review title into review title input field
+        await addReviewModal.inputGuestReviewTitleIntoReviewTitleInputField();
+        //click set review stars
+        await addReviewModal.clickSetReviewStars(3);
+        //input valid guest review into review (opinion) text area
+        await addReviewModal.inputGuestReviewIntoReviewTextarea();
+        //capture screenshot of the single product page ("Apple iPad Air (2022, 5th Gen)") review section after valid edited review data input display
+        await page.screenshot({ path: "src/tests/screenshots/Single Product Page Display (Apple iPad Air (2022, 5th Gen) Additional Info Section After Valid Edited Review Data Input).png", fullPage: true });
+        //click "Submit" button
+        await addReviewModal.clickSubmitButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //single product page review section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageReviewWebElementVisible(page);
+        //single product page review section text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageReviewTextElementAsExpected(page);
+        //log single product page review data
+        await singleProductPageDataLoggers.logSingleProductPageReviewData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Update Product Review Test Result (guest).png", fullPage: true });
+    }
+
+    //remove product review test
+
+    //remove product review test method
+    async removeProductReviewTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const singleProductPage = new SingleProductPage(page);
+        const singleProductPageWebElementAsserts = new SingleProductPageWebElementAsserts();
+        const singleProductPageTextElementAsserts = new SingleProductPageTextElementAsserts();
+        const addReviewModalWebElementAsserts = new AddReviewModalWebElementAsserts();
+        const addReviewModalTextElementAsserts = new AddReviewModalTextElementAsserts();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //single product page review section web element assert
+        await singleProductPageWebElementAsserts.isSingleProductPageReviewWebElementVisible(page);
+        //single product page review section text element assert
+        await singleProductPageTextElementAsserts.isSingleProductPageReviewTextElementAsExpected(page);
+        //wait for element to load
+        await page.waitForTimeout(1100);
+        //click set "Delete review" link
+        await singleProductPage.clickSetDeleteReviewLink(0);
+        //wait for element to load
+        await page.waitForTimeout(1700);
+
+        //assert the empty review modal section elements appear, otherwise, throw an error
+        try {
+            await addReviewModalWebElementAsserts.isEmptyAddReviewModalWebElementVisible(page);
+            await addReviewModalTextElementAsserts.isEmptyAddReviewModalTextElementAsExpected(page);
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Remove Product Review Test Result (guest).png", fullPage: true });
+            throw new Error("The set 'Delete' review link click doesn't seem to have any effect, test has failed.");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Remove Product Review Test Result (guest).png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //add product(s) to checkout test (the registered user and guest will share the same method)
+
+    //add product(s) to checkout test method
+    async addProductToCheckoutTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const shoppingCartPage = new ShoppingCartPage(page);
+        const shoppingCartPageWebElementAsserts = new ShoppingCartPageWebElementAsserts();
+        const shoppingCartPageTextElementAsserts = new ShoppingCartPageTextElementAsserts();
+        const shoppingCartPageDataLogger = new ShoppingCartPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //shopping cart page web element
+        await shoppingCartPageWebElementAsserts.isShoppingCartPageWebElementVisible(page);
+        //shopping cart page text element
+        await shoppingCartPageTextElementAsserts.isShoppingCartPageTextElementAsExpected(page);
+        //log shopping cart page product data
+        await shoppingCartPageDataLogger.logShoppingCartPageProductData(page);
+        //capture screenshot of the shopping cart page display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Page Display.png", fullPage: true });
+        //click "Checkout" button
+        await shoppingCartPage.clickCheckoutButton();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets onto checkout page after "Checkout" button click
+        const expectedURL = "https://demo.alphabin.co/checkout"
+        const actualURL = page.url();
+        //if the user fails to get onto checkout page, log the issue (it may be intended that way for a guest user)
+        try {
+            await expect(actualURL).toEqual(expectedURL);
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Add Product(s) To Checkout Page Test Result (guest).png", fullPage: true });
+            throw new Error(`The 'guest' level user fails to checkout the product, the user account must be registered beforehand for checking out.`);
+        }
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Add Product(s) To Checkout Page Test Result (registered user).png", fullPage: true });
+    }
+
+    //update product quantity in shopping cart test (the registered user and guest will share the same method, so only guest branch is being tested to avoid redundancy)
+
+    //update product quantity in shopping cart test method
+    async updateProductQtyInShoppingCartPageTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const shoppingCartPage = new ShoppingCartPage(page);
+        const shoppingCartPageWebElementAsserts = new ShoppingCartPageWebElementAsserts();
+        const shoppingCartPageTextElementAsserts = new ShoppingCartPageTextElementAsserts();
+        const shoppingCartPageDataLogger = new ShoppingCartPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //shopping cart page web element
+        await shoppingCartPageWebElementAsserts.isShoppingCartPageWebElementVisible(page);
+        //shopping cart page text element
+        await shoppingCartPageTextElementAsserts.isShoppingCartPageTextElementAsExpected(page);
+        //log shopping cart page product data
+        await shoppingCartPageDataLogger.logShoppingCartPageProductData(page);
+        //capture screenshot of the shopping cart page display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Page Display.png", fullPage: true });
+        //click set product quantity increase button
+        await shoppingCartPage.clickSetProductQtyIncreaseBtn(0, 4)
+        //log shopping cart page product data (to verify the quantity has been updated)
+        await shoppingCartPageDataLogger.logShoppingCartPageProductData(page);
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4500);
+        //assert the user receives the updated product count
+        const expectedProductCount = '5'; //since it returns a char, not an int
+        const productCount = await shoppingCartPage.getShopCartPageProductQty();
+        const actualProductCount = productCount[0];
+        //if the user fails to receive the updated product count, throw an error
+        try {
+            expect(actualProductCount).toBe(expectedProductCount);
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Update Product Quantity In Shopping Cart Test Result (qty update failure).png", fullPage: true });
+            throw new Error("The product quantity fails to be updated, test has failed.");
+        }
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Update Product Quantity In Shopping Cart Test Result.png", fullPage: true });
+    }
+
+    //remove product from shopping cart test (the registered user and guest will share the same method, so only guest branch is being tested to avoid redundancy)
+
+    //remove product quantity from shopping cart test method
+    async removeProductFromShoppingCartPageTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const shoppingCartPage = new ShoppingCartPage(page);
+        const shoppingCartPageWebElementAsserts = new ShoppingCartPageWebElementAsserts();
+        const shoppingCartPageTextElementAsserts = new ShoppingCartPageTextElementAsserts();
+        const shoppingCartPageDataLogger = new ShoppingCartPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //shopping cart page web element
+        await shoppingCartPageWebElementAsserts.isShoppingCartPageWebElementVisible(page);
+        //shopping cart page text element
+        await shoppingCartPageTextElementAsserts.isShoppingCartPageTextElementAsExpected(page);
+        //log shopping cart page product data
+        await shoppingCartPageDataLogger.logShoppingCartPageProductData(page);
+        //capture screenshot of the shopping cart page display
+        await page.screenshot({ path: "src/tests/screenshots/Shopping Cart Page Display.png", fullPage: true });
+        //click set product remove button
+        await shoppingCartPage.clickSetProductRemoveButton(0);
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //empty shopping cart page web element assert
+        await shoppingCartPageWebElementAsserts.isShoppingCartPageEmptyCartWebElementVisible(page);
+        //empty shopping cart page text element assert
+        await shoppingCartPageTextElementAsserts.isShoppingCartPageEmptyCartTextElementAsExpected(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Remove Product Quantity From Shopping Cart Test Result.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //valid product checkout confirmation tests (only registered users have this feature)
+
+    //valid product checkout confirmation (cash on delivery method) test method
+    async validProductCashOnDeliveryCheckoutConfirmationTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPageWebElementAssert = new OrderDetailsPageWebElementAssert();
+        const orderDetailsPageTextElementAssert = new OrderDetailsPageTextElementAssert();
+        const orderDetailsPageDataLogger = new OrderDetailsPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click set payment method button
+        await checkoutPage.clickSetPayMethodButton(3);
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page cash on delivery section web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageCashDeliveryWebElementVisible(page);
+        //checkout page cash on delivery section text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageCashDeliveryTextAsExpected(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with cash on delivery section).png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //order details page web element assert
+        await orderDetailsPageWebElementAssert.isOrderDetailsPageWebElementVisible(page);
+        //order details page text element assert
+        await orderDetailsPageTextElementAssert.isOrderDetailsPageTextElementAsExpected(page);
+        //log order details page displayed data
+        await orderDetailsPageDataLogger.logOrderDetailsPageData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Confirmation (cash on delivery) Test Result.png", fullPage: true });
+    }
+
+    //valid product checkout confirmation (debit method) test method
+    async validProductDebitCheckoutConfirmationTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPageWebElementAssert = new OrderDetailsPageWebElementAssert();
+        const orderDetailsPageTextElementAssert = new OrderDetailsPageTextElementAssert();
+        const orderDetailsPageDataLogger = new OrderDetailsPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click set payment method button (debit)
+        await checkoutPage.clickSetPayMethodButton(1);
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page credit/debit section web element assert (they're similar)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page credit/debit section text element assert (they're similar)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //capture screenshot of the checkout page display before debit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with debit card section) Before Data Input.png", fullPage: true });
+        //input valid debit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid debit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid debit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid debit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid debit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after valid credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with debit card section) After Valid Data Input.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //order details page web element assert
+        await orderDetailsPageWebElementAssert.isOrderDetailsPageWebElementVisible(page);
+        //order details page text element assert
+        await orderDetailsPageTextElementAssert.isOrderDetailsPageTextElementAsExpected(page);
+        //log order details page displayed data
+        await orderDetailsPageDataLogger.logOrderDetailsPageData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Confirmation (debit card method) Test Result.png", fullPage: true });
+    }
+
+    //valid product checkout confirmation (credit method) test method
+    async validProductCreditCheckoutConfirmationTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPageWebElementAssert = new OrderDetailsPageWebElementAssert();
+        const orderDetailsPageTextElementAssert = new OrderDetailsPageTextElementAssert();
+        const orderDetailsPageDataLogger = new OrderDetailsPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after valid credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Valid Data Input.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //order details page web element assert
+        await orderDetailsPageWebElementAssert.isOrderDetailsPageWebElementVisible(page);
+        //order details page text element assert
+        await orderDetailsPageTextElementAssert.isOrderDetailsPageTextElementAsExpected(page);
+        //log order details page displayed data
+        await orderDetailsPageDataLogger.logOrderDetailsPageData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Confirmation (credit card method) Test Result.png", fullPage: true });
+    }
+
+    //valid product checkout confirmation (net banking - AXIS method) test method
+    async validProductNetBankAxisCheckoutConfirmationTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPageWebElementAssert = new OrderDetailsPageWebElementAssert();
+        const orderDetailsPageTextElementAssert = new OrderDetailsPageTextElementAssert();
+        const orderDetailsPageDataLogger = new OrderDetailsPageDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click set payment method button (net banking)
+        await checkoutPage.clickSetPayMethodButton(2);
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page net banking section web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageNetBankingWebElementVisible(page);
+        //checkout page net banking section text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageNetBankingTextAsExpected(page);
+        //capture screenshot of the checkout page display before debit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with net banking section).png", fullPage: true });
+        //click set net banking (AXIS) bank button
+        await checkoutPage.clickSetNetBankingBankButton(0);
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //order details page web element assert
+        await orderDetailsPageWebElementAssert.isOrderDetailsPageWebElementVisible(page);
+        //order details page text element assert
+        await orderDetailsPageTextElementAssert.isOrderDetailsPageTextElementAsExpected(page);
+        //log order details page displayed data
+        await orderDetailsPageDataLogger.logOrderDetailsPageData(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Confirmation (net banking (AXIS) method) Test Result.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation tests
+
+    //no singular input
+
+    //invalid product checkout confirmation test method - no shipping address full name
+    async invalidProductCheckoutConfirmationNoShipAddressFullNameTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //don't input checkout shipping address full name into shipping address full name input field
+        await checkoutPageNoSingularInput.inputNoShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - no shipping full name
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - No Shipping Full Name.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets an expected error
+        const noShipAddressFullNameInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noShipAddressFullNameInputError).toBe("First Name is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping Full Name.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no shipping address email
+    async invalidProductCheckoutConfirmationNoShipAddressEmailTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //don't input checkout shipping address email into shipping address email input field
+        await checkoutPageNoSingularInput.inputNoShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - no shipping email
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - No Shipping Email.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets an expected error
+        const noShipAddressEmailInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noShipAddressEmailInputError).toBe("Email is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping Email.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no shipping address city
+    async invalidProductCheckoutConfirmationNoShipAddressCityTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //don't input checkout shipping address city into shipping address city input field
+        await checkoutPageNoSingularInput.inputNoShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - no shipping city
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - No Shipping City.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets an expected error
+        const noShipAddressCityInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noShipAddressCityInputError).toBe("City is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping City.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no shipping address state
+    async invalidProductCheckoutConfirmationNoShipAddressStateTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //don't input checkout shipping address state into shipping address state input field
+        await checkoutPageNoSingularInput.inputNoShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - no shipping state
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - No Shipping State.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets an expected error, throw an error otherwise
+        try {
+            const noShipAddressStateInputError = await checkoutPage.getCheckoutPageInputErrorBoxMsg();
+            expect(noShipAddressStateInputError).toBe("State is required");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping State.png", fullPage: true });
+            throw new Error("The missing shipping address state input error wasn't triggered, test has failed")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping State.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no shipping address
+    async invalidProductCheckoutConfirmationNoShipAddressTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //don't input checkout shipping address into shipping address input field
+        await checkoutPageNoSingularInput.inputNoShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - no shipping address
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - No Shipping Address.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets an expected error
+        const noShipAddressInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noShipAddressInputError).toBe("Street is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping Address.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no shipping address post code
+    async invalidProductCheckoutConfirmationNoShipAddressPostCodeTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //don't input checkout shipping address post code into shipping address post code input field
+        await checkoutPageNoSingularInput.inputNoShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - no shipping post code
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - No Shipping Post Code.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets an expected error
+        const noShipAddressPostCodeInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noShipAddressPostCodeInputError).toBe("Zip code is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping Post Code.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no shipping address country
+    async invalidProductCheckoutConfirmationNoShipAddressCountryTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //don't input checkout shipping address country into shipping address country input field
+        await checkoutPageNoSingularInput.inputNoShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - no shipping country
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - No Shipping Country.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets an expected error, throw an error otherwise
+        try {
+            const noShipAddressStateInputError = await checkoutPage.getCheckoutPageInputErrorBoxMsg();
+            expect(noShipAddressStateInputError).toBe("Country is required");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping Country.png.png", fullPage: true });
+            throw new Error("The missing country input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Shipping Country.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no credit card number
+    async invalidProductCheckoutConfirmationNoCreditCardNumberTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //don't input credit card number into credit card number input field
+        await checkoutPageNoSingularInput.inputNoCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - no credit card number
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - No Credit Card Number.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        const noCredCardNumberInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noCredCardNumberInputError).toBe("Card number is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card Number.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no credit card name
+    async invalidProductCheckoutConfirmationNoCreditCardNameTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPage = new OrderDetailsPage(page);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //don't input valid credit card name into credit card name input field
+        await checkoutPageNoSingularInput.inputNoCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - no credit card name
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - No Credit Card Name.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the order is getting placed
+        const orderDetailsPageTitle = orderDetailsPage.orderDetailsPageTitle;
+        if(orderDetailsPageTitle){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card Name.png", fullPage: true });
+            throw new Error("The missing credit card name input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card Name.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no credit card expiration month
+    async invalidProductCheckoutConfirmationNoCreditCardExpMonthTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //don't input credit card expiration month into credit card expiration month input field
+        await checkoutPageNoSingularInput.inputNoCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - no credit card exp month
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - No Credit Card Exp Month.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        const noCredCardExpMonthInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noCredCardExpMonthInputError).toBe("Expiry month is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card Exp Month.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no credit card expiration year
+    async invalidProductCheckoutConfirmationNoCreditCardExpYearTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //don't input credit card expiration year into credit card expiration year input field
+        await checkoutPageNoSingularInput.inputNoCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - no credit card exp year
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - No Credit Card Exp Year.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        const noCredCardExpYearInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(noCredCardExpYearInputError).toBe("Expiry year is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card Exp Year.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - no credit card CVV number
+    async invalidProductCheckoutConfirmationNoCreditCardCVVTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageNoSingularInput = new CheckoutPageNoSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //don't input valid credit card CVV into credit card CVV input field
+        await checkoutPageNoSingularInput.inputNoCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - no credit card CVV number
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - No Credit Card CVV Number.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error (assert by the input error box since the exp month gets removed after clicking "Place order" button)
+        const noCardCVVInputError = await checkoutPage.getCheckoutPageInputErrorBoxMsg();
+        expect(noCardCVVInputError).toBe("Please check your card details");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - No Credit Card CVV Number.png", fullPage: true });
+    }
+
+    //too short singular input
+
+    //invalid product checkout confirmation test method - too short shipping address full name (3 chars)
+    async invalidProductCheckoutConfirmationTooShortShipAddressFullNameTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input too short checkout shipping address full name into shipping address full name input field (3 chars)
+        await checkoutPageTooShortSingularInput.inputTooShortShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too short shipping full name
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Short Shipping Full Name.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Full Name.png", fullPage: true });
+            throw new Error("The too short shipping full name input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Full Name.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short shipping address email (1 char -> name, domain)
+    async invalidProductCheckoutConfirmationTooShortShipAddressEmailTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input too short checkout shipping address email into shipping address email input field (1 char -> name, domain)
+        await checkoutPageTooShortSingularInput.inputTooShortShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too short shipping email
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Short Shipping Email.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Email.png", fullPage: true });
+            throw new Error("The too short shipping email input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Email.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short shipping address city (2 chars)
+    async invalidProductCheckoutConfirmationTooShortShipAddressCityTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input too short checkout shipping address city into shipping address city input field (2 chars)
+        await checkoutPageTooShortSingularInput.inputTooShortShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too short shipping address
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Short Shipping Address.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address City.png", fullPage: true });
+            throw new Error("The too short shipping city input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address City.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short shipping address state (1 char)
+    async invalidProductCheckoutConfirmationTooShortShipAddressStateTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input too short checkout shipping address state into shipping address state input field (1 char)
+        await checkoutPageTooShortSingularInput.inputTooShortShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too short shipping address state
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Short Shipping Address State.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address State.png", fullPage: true });
+            throw new Error("The too short shipping state input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address State.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short shipping address (3 chars)
+    async invalidProductCheckoutConfirmationTooShortShipAddressTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input too short checkout shipping address into shipping address input field (3 chars)
+        await checkoutPageTooShortSingularInput.inputTooShortShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too short shipping address
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Short Shipping Address.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address.png", fullPage: true });
+            throw new Error("The too short shipping address input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short shipping address post code (4 digits)
+    async invalidProductCheckoutConfirmationTooShortShipAddressPostCodeTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field (3 chars)
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input too short checkout shipping address post code into shipping address post code input field (4 digits)
+        await checkoutPageTooShortSingularInput.inputTooShortShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too short shipping address post code
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Short Shipping Address Post Code.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address Post Code.png", fullPage: true });
+            throw new Error("The too short shipping post code input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address Post Code.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short shipping address country (1 char)
+    async invalidProductCheckoutConfirmationTooShortShipAddressCountryTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field (3 chars)
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input too short checkout shipping address country into shipping address country input field (1 char)
+        await checkoutPageTooShortSingularInput.inputTooShortAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too short shipping address country
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Short Shipping Address Country.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address Country.png", fullPage: true });
+            throw new Error("The too short shipping country input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Shipping Address Country.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short credit card number (15 digits)
+    async invalidProductCheckoutConfirmationTooShortCreditCardNumberTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input too short credit card number into credit card number input field (15 digits)
+        await checkoutPageTooShortSingularInput.inputTooShortCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too short credit card number
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Short Credit Card Number.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        const tooShortCredCardNumberInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(tooShortCredCardNumberInputError).toBe("Card number must be 16 digits");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Credit Card Number.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short credit card name (3 chars)
+    async invalidProductCheckoutConfirmationTooShortCreditCardNameTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPage = new OrderDetailsPage(page);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input too short credit card name into credit card name input field (3 chars)
+        await checkoutPageTooShortSingularInput.inputTooShortCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too short credit card name
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Short Credit Card Name.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the order is getting placed
+        const orderDetailsPageTitle = orderDetailsPage.orderDetailsPageTitle; // your locator
+        if(orderDetailsPageTitle){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Credit Card Name.png", fullPage: true });
+            throw new Error("The too short credit card name input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Credit Card Name.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short credit card expiration month (1 digit)
+    async invalidProductCheckoutConfirmationTooShortCreditCardExpMonthTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input too short credit card expiration month into credit card expiration month input field (1 digit0
+        await checkoutPageTooShortSingularInput.inputTooShortCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too short credit card expiration month
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Short Credit Card Exp Month.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        try {
+            const tooShortCardExpMonthInputError = await checkoutPage.getCheckoutPageInputErrorBoxMsg();
+            expect(tooShortCardExpMonthInputError).toBe("Please check your card details");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Credit Card Exp Month.png", fullPage: true });
+            throw new Error("The too short credit card expiration month error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Credit Card Exp Month.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short credit card expiration year (1 digit)
+    async invalidProductCheckoutConfirmationTooShortCreditCardExpYearTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input too short credit card expiration year into credit card expiration year input field (1 digit)
+        await checkoutPageTooShortSingularInput.inputTooShortCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too short credit card expiration year
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Short Credit Card Exp Year.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        try {
+            const tooShortCardExpYearInputError = await checkoutPage.getCheckoutPageInputErrorBoxMsg();
+            expect(tooShortCardExpYearInputError).toBe("Please check your card details");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Credit Card Exp Year.png", fullPage: true });
+            throw new Error("The too short credit card expiration year error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Credit Card Exp Year.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too short credit card CVV number (2 digits)
+    async invalidProductCheckoutConfirmationTooShortCreditCardCVVNumberTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooShortSingularInput = new CheckoutPageTooShortSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input too short credit card CVV into credit card CVV input field (2 digits)
+        await checkoutPageTooShortSingularInput.inputTooShortCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too short credit card CVV number
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Short Credit Card CVV Number.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        try {
+            const tooShortCardCVVInputError = await checkoutPage.getCheckoutPageInputErrorBoxMsg();
+            expect(tooShortCardCVVInputError).toBe("Please check your card details");
+        } catch {
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Credit Card CVV Number.png", fullPage: true });
+            throw new Error("The too short credit card CVV number error wasn't triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Short Credit Card CVV Number.png", fullPage: true });
+    }
+
+    //too long singular input
+
+    //invalid product checkout confirmation test method - too long shipping address full name (201 chars)
+    async invalidProductCheckoutConfirmationTooLongShipAddressFullNameTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input too long checkout shipping address full name into shipping address full name input field (201 chars)
+        await checkoutPageTooLongSingularInput.inputTooLongShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too long shipping full name
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Long Shipping Full Name.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Full Name.png", fullPage: true });
+            throw new Error("The too long shipping full name input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Full Name.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long shipping address email (100 chars -> name, domain)
+    async invalidProductCheckoutConfirmationTooLongShipAddressEmailTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input too long checkout shipping address email into shipping address email input field (100 chars -> name, domain)
+        await checkoutPageTooLongSingularInput.inputTooLongShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too long shipping email
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Long Shipping Email.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Email.png", fullPage: true });
+            throw new Error("The too long shipping email input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Email.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long shipping address city (100 chars)
+    async invalidProductCheckoutConfirmationTooLongShipAddressCityTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input too long checkout shipping address city into shipping address city input field (100 chars)
+        await checkoutPageTooLongSingularInput.inputTooLongShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too long shipping city
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Long Shipping City.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3800);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping City.png", fullPage: true });
+            throw new Error("The too long shipping city input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping City.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long shipping address state (100 chars)
+    async invalidProductCheckoutConfirmationTooLongShipAddressStateTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input too long checkout shipping address state into shipping address state input field (100 chars)
+        await checkoutPageTooLongSingularInput.inputTooLongShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too long shipping address state
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Long Shipping Address State.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3800);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Address State.png", fullPage: true });
+            throw new Error("The too long shipping address state input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Address State.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long shipping address (100 chars)
+    async invalidProductCheckoutConfirmationTooLongShipAddressTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input too long checkout shipping address into shipping address input field (100 chars)
+        await checkoutPageTooLongSingularInput.inputTooLongShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too long shipping address
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Long Shipping Address.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3800);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Address.png", fullPage: true });
+            throw new Error("The too long shipping address input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Address.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long shipping address post code (6 digits)
+    async invalidProductCheckoutConfirmationTooLongShipAddressPostCodeTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input too long checkout shipping address post code into shipping address post code input field (6 digits)
+        await checkoutPageTooLongSingularInput.inputTooLongShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too long shipping post code
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Long Shipping Post Code.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3800);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Post Code.png", fullPage: true });
+            throw new Error("The too long shipping post code input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Post Code.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long shipping address country (6 digits)
+    async invalidProductCheckoutConfirmationTooLongShipAddressCountryTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input too long checkout shipping address country into shipping address country input field (100 chars)
+        await checkoutPageTooLongSingularInput.inputTooLongAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - too long shipping country
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Too Long Shipping Country.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3800);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Country.png", fullPage: true });
+            throw new Error("The too long shipping country input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Shipping Country.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long credit card number (17 digits)
+    async invalidProductCheckoutConfirmationTooLongCreditCardNumberTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input too long credit card number into credit card number input field (17 digits)
+        await checkoutPageTooLongSingularInput.inputTooLongCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too long credit card number
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Long Credit Card Number.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        const tooShortCredCardNumberInputError = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(tooShortCredCardNumberInputError).toBe("Card number is required");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Credit Card Number.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long credit card name (201 chars)
+    async invalidProductCheckoutConfirmationTooLongCreditCardNameTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPage = new OrderDetailsPage(page);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input too long credit card name into credit card name input field (201 chars)
+        await checkoutPageTooLongSingularInput.inputTooLongCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too long credit card name
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Long Credit Card Name.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the order is getting placed
+        const orderDetailsPageTitle = orderDetailsPage.orderDetailsPageTitle;
+        if(orderDetailsPageTitle){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Credit Card Name.png", fullPage: true });
+            throw new Error("The too long credit card name input error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Credit Card Name.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long credit card expiration month (3 digits)
+    async invalidProductCheckoutConfirmationTooLongCreditCardExpMonthTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input too long credit card expiration month into credit card expiration month input field (3 digits)
+        await checkoutPageTooLongSingularInput.inputTooLongCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too long credit card expiration month
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Long Credit Card Exp Month.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        const tooLongCardExpMonthInputError = await checkoutPage.getCheckoutPageInputErrorBoxMsg();
+        expect(tooLongCardExpMonthInputError).toBe("Please check your card details");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Credit Card Exp Month.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long credit card expiration year (3 digits)
+    async invalidProductCheckoutConfirmationTooLongCreditCardExpYearTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input too long credit card expiration year into credit card expiration year input field
+        await checkoutPageTooLongSingularInput.inputTooLongCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too long credit card expiration year
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Long Credit Card Exp Year.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        const tooLongCardExpYearInputError = await checkoutPage.getCheckoutPageInputErrorBoxMsg();
+        expect(tooLongCardExpYearInputError).toBe("Please check your card details");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Credit Card Exp Year.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - too long credit card CVV number (4 digits)
+    async invalidProductCheckoutConfirmationTooLongCreditCardCVVNumberTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageTooLongSingularInput = new CheckoutPageTooLongSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input too long credit card CVV into credit card CVV input field (4 digits)
+        await checkoutPageTooLongSingularInput.inputTooLongCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - too long credit card CVV number
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Too Long Credit Card CVV Number.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //assert the user gets an expected error
+        const tooLongCardCVVInputError = await checkoutPage.getCheckoutPageInputErrorBoxMsg();
+        expect(tooLongCardCVVInputError).toBe("Please check your card details");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Too Long Credit Card CVV Number.png", fullPage: true });
+    }
+
+    //invalid singular input
+
+    //invalid product checkout confirmation test method - invalid shipping address full name format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidShipAddressFullNameFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input invalid checkout shipping address full name format into shipping address full name input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidShipAddressFullNameFormatIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - invalid shipping full name format
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Invalid Shipping Full Name Format.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Full Name Format.png", fullPage: true });
+            throw new Error("The invalid shipping full name input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Full Name Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid shipping address email format (missing '@')
+    async invalidProductCheckoutConfirmationInvalidShipAddressEmailFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input invalid checkout shipping address email format into shipping address email input field (missing '@')
+        await checkoutPageInvalidSingularInput.inputInvalidShipAddressEmailFormatIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - invalid shipping email format
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Invalid Shipping Email Format.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //assert the user gets an expected error
+        const invalidShipAddressEmailInputErrorFormat = await checkoutPage.getCheckoutPageInvalidSingularInputError();
+        expect(invalidShipAddressEmailInputErrorFormat).toBe("Invalid email address");
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Email Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid shipping address city format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidShipAddressCityFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input invalid checkout shipping address city format into shipping address city input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidShipAddressCityFormatIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - invalid shipping city format
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Invalid Shipping City Format.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping City Format.png", fullPage: true });
+            throw new Error("The invalid shipping city input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping City Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid shipping address state format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidShipAddressStateFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input invalid checkout shipping address state format into shipping address state input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidShipAddressStateFormatIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - invalid shipping state format
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Invalid Shipping State Format.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping State Format.png", fullPage: true });
+            throw new Error("The invalid shipping state input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping State Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid shipping address format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidShipAddressFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input invalid checkout shipping address format into shipping address input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidShipAddressFormatIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - invalid shipping address format
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Invalid Shipping Address Format.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Address Format.png", fullPage: true });
+            throw new Error("The invalid shipping address input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Address Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid shipping post code format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidShipPostCodeFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input invalid checkout shipping address post code format into shipping address post code input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidShipAddressPostCodeFormatIntoShipAddressPostCodeInputField();
+        //input valid checkout shipping address country into shipping address country input field
+        await checkoutPage.inputShipAddressCountryIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - invalid shipping post code format
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Invalid Shipping Post Code Format.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Post Code Format.png", fullPage: true });
+            throw new Error("The invalid shipping post code input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Post Code Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid shipping country format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidShipCountryFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const checkoutPageShipAddressModal = new CheckoutPageShipAddressModal(page);
+        const checkoutPageShipAddressModalWebElementAssert = new CheckoutPageShipAddressModalWebElementAssert();
+        const checkoutPageShipAddressModalTextElementAssert = new CheckoutPageShipAddressModalTextElementAssert();
+        const checkoutPageShipAddressModalDataLogger = new CheckoutPageShipAddressModalDataLogger();
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section).png", fullPage: true });
+        //click "Change" shipping address link
+        await checkoutPage.clickChangeShippingAddressLink();
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(3500);
+        //checkout page shipping address modal web element assert
+        await checkoutPageShipAddressModalWebElementAssert.isCheckoutPageShipAddressModalWebElementVisible(page);
+        //checkout page shipping address modal text element assert
+        await checkoutPageShipAddressModalTextElementAssert.isCheckoutPageShipAddressModalTextElementAsExpected(page);
+        //log checkout shipping address modal data
+        await checkoutPageShipAddressModalDataLogger.logCheckoutPageShipAddressModalData(page);
+        //capture screenshot of the checkout page shipping address modal display
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Modal Display.png", fullPage: true });
+        //click "Add new address" button
+        await checkoutPageShipAddressModal.clickAddNewAddressBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //checkout shipping address input form web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageShipAddressInputFormWebElementVisible(page);
+        //checkout shipping address input form text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageShipAddressInputFormTextAsExpected(page);
+        //capture screenshot of the checkout page shipping address section before data input
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display Before Data Input.png", fullPage: true });
+        //input valid checkout shipping address full name into shipping address full name input field
+        await checkoutPage.inputShipAddressFullNameIntoShipAddressFullNameInputField();
+        //input valid checkout shipping address email into shipping address email input field
+        await checkoutPage.inputShipAddressEmailIntoShipAddressEmailInputField();
+        //input valid checkout shipping address city into shipping address city input field
+        await checkoutPage.inputShipAddressCityIntoShipAddressCityInputField();
+        //input valid checkout shipping address state into shipping address state input field
+        await checkoutPage.inputShipAddressStateIntoShipAddressStateInputField();
+        //input valid checkout shipping address into shipping address input field
+        await checkoutPage.inputShipAddressIntoShipAddressInputField();
+        //input valid checkout shipping address post code into shipping address post code input field
+        await checkoutPage.inputShipAddressPostCodeIntoShipAddressPostCodeInputField();
+        //input invalid checkout shipping address country format into shipping address country input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidShipAddressCountryFormatIntoShipAddressCountryInputField();
+        //capture screenshot of the checkout page shipping address section after invalid data input - invalid shipping country format
+        await page.screenshot({ path: "src/tests/screenshots/Product(s) Checkout Page Shipping Address Input Form Display After Invalid Data Input - Invalid Shipping Country Format.png", fullPage: true });
+        //click "Save address" button
+        await checkoutPage.clickSaveAddressBtn();
+        //wait for element to load (due to network issues, timeout is extended)
+        await page.waitForTimeout(3500);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the shipping address gets updated
+        const shipAddressElements = checkoutPage.checkoutPageShipAddressData;
+        const elementCount = await shipAddressElements.count();
+        if(elementCount > 0){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Country Format.png", fullPage: true });
+            throw new Error("The invalid shipping country input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Shipping Country Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid credit card number format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidCreditCardNumberFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPage = new OrderDetailsPage(page);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input invalid credit card number format into credit card number input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidCreditCardNumberFormatIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - invalid credit card number format
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Invalid Credit Card Number Format.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the order is getting placed
+        const orderDetailsPageTitle = orderDetailsPage.orderDetailsPageTitle;
+        if(orderDetailsPageTitle){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card Number Format.png", fullPage: true });
+            throw new Error("The invalid credit card name input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card Number Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid credit card name format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidCreditCardNameFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPage = new OrderDetailsPage(page);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input invalid credit card name format into credit card name input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidCreditCardNameFormatIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - invalid credit card name format
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Invalid Credit Card Name Format.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the order is getting placed
+        const orderDetailsPageTitle = orderDetailsPage.orderDetailsPageTitle;
+        if(orderDetailsPageTitle){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card Name Format.png", fullPage: true });
+            throw new Error("The invalid credit card name input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card Name Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid credit card expiration month format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidCreditCardExpMonthFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPage = new OrderDetailsPage(page);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input invalid credit card expiration month format into credit card expiration month input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidCreditCardExpMonthFormatIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - invalid credit card expiration month format
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Invalid Credit Card Exp Month Format.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the order is getting placed
+        const orderDetailsPageTitle = orderDetailsPage.orderDetailsPageTitle;
+        if(orderDetailsPageTitle){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card Exp Month Format.png", fullPage: true });
+            throw new Error("The invalid credit card expiration month input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card Exp Month Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid credit card expiration year format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidCreditCardExpYearFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPage = new OrderDetailsPage(page);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input invalid credit card expiration year format into credit card expiration year input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidCreditCardExpYearFormatIntoCreditCardExpYearInputField();
+        //input valid credit card CVV into credit card CVV input field
+        await checkoutPage.inputCreditCardCVVIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - invalid credit card expiration year format
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Invalid Credit Card Exp Year Format.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the order is getting placed
+        const orderDetailsPageTitle = orderDetailsPage.orderDetailsPageTitle;
+        if(orderDetailsPageTitle){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card Exp Year Format.png", fullPage: true });
+            throw new Error("The invalid credit card expiration year input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card Exp Year Format.png", fullPage: true });
+    }
+
+    //invalid product checkout confirmation test method - invalid credit card CVV number format (special symbols only)
+    async invalidProductCheckoutConfirmationInvalidCreditCardCVVNumberFormatTest(page){
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const checkoutPage = new CheckoutPage(page);
+        const checkoutPageInvalidSingularInput = new CheckoutPageInvalidSingularInput(page);
+        const checkoutPageWebElementAsserts = new CheckoutPageWebElementAsserts();
+        const checkoutPageTextElementAsserts = new CheckoutPageTextElementAsserts();
+        const checkoutPageDataLoggers = new CheckoutPageDataLoggers();
+        const orderDetailsPage = new OrderDetailsPage(page);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //checkout page web element assert
+        await checkoutPageWebElementAsserts.isCheckoutPageWebElementVisible(page);
+        //checkout page credit/debit section web element assert (since it's opened on launch)
+        await checkoutPageWebElementAsserts.isCheckoutPageCreditSectionWebElementVisible(page);
+        //checkout page text element assert
+        await checkoutPageTextElementAsserts.isCheckoutPageTextAsExpected(page);
+        //checkout page credit/debit section text element assert (since it's opened on launch)
+        await checkoutPageTextElementAsserts.isCheckoutPageCreditTextAsExpected(page);
+        //log checkout page shipping address data
+        await checkoutPageDataLoggers.logCheckoutShipAddressData(page);
+        //log checkout page order summary product data
+        await checkoutPageDataLoggers.logCheckoutProductData(page);
+        //capture screenshot of the checkout page display before credit data input
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) Before Data Input.png", fullPage: true });
+        //input valid credit card number into credit card number input field
+        await checkoutPage.inputCreditCardNumberIntoCreditCardNumberInputField();
+        //input valid credit card name into credit card name input field
+        await checkoutPage.inputCreditCardNameIntoCreditCardNameInputField();
+        //input valid credit card expiration month into credit card expiration month input field
+        await checkoutPage.inputCreditCardExpMonthIntoCreditCardExpMonthInputField();
+        //input valid credit card expiration year into credit card expiration year input field
+        await checkoutPage.inputCreditCardExpYearIntoCreditCardExpYearInputField();
+        //input invalid credit card CVV format into credit card CVV input field (special symbols only)
+        await checkoutPageInvalidSingularInput.inputInvalidCreditCardCVVFormatIntoCreditCardCVVInputField();
+        //capture screenshot of the checkout page display after invalid credit data input - invalid credit card CVV number format
+        await page.screenshot({ path: "src/tests/screenshots/Checkout Page Display (with credit card section) After Invalid Data Input - Invalid Credit Card CVV Number Format.png", fullPage: true });
+        //click "Place Order" button
+        await checkoutPage.clickPlaceOrderButton();
+        //wait for element to load
+        await page.waitForTimeout(3100);
+        //since there's no error displayed to trigger a fail condition, trigger an error when the order is getting placed
+        const orderDetailsPageTitle = orderDetailsPage.orderDetailsPageTitle;
+        if(orderDetailsPageTitle){
+            await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card CVV Number Format.png", fullPage: true });
+            throw new Error("The invalid credit card CVV number input format error wasn't triggered, test has failed.")
+        }
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Invalid Product Checkout Confirmation Test Result - Invalid Credit Card CVV Number Format.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //cancel placed order test (only registered users have this feature)
+
+    //cancel placed order test method
+    async cancelPlacedOrderTest(page){
+        const generalPage = new GeneralPage(page)
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const accountDashboardPage = new AccountDashboardPage(page);
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        const myOrdersModal = new MyOrdersModal(page);
+        const myOrdersModalWebElementAsserts = new MyOrdersModalWebElementAsserts();
+        const myOrdersModalTextElementAsserts = new MyOrdersModalTextElementAsserts();
+        const myOrdersModalDataLogger = new MyOrdersModalDataLogger();
+        //click header "Account" icon button method
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //click "My Orders" account dashboard aside link
+        await accountDashboardPage.clickSetAsideAccountNavbarLink(1);
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4500);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //capture screenshot of the my orders modal display
+        await page.screenshot({ path: "src/tests/screenshots/My Orders Modal Display.png", fullPage: true });
+        //my orders modal web element
+        await myOrdersModalWebElementAsserts.isMyOrdersModalWebElementVisible(page);
+        //my orders modal text element assert
+        await myOrdersModalTextElementAsserts.isMyOrdersModalTextElementAsExpected(page);
+        //log my orders page placed order data
+        await myOrdersModalDataLogger.logMyOrdersModalOrderData(page);
+        //click set "Cancel" button
+        await myOrdersModal.clickSetOrderCancelBtn(0);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //capture screenshot of the my orders modal cancel pop-up display
+        await page.screenshot({ path: "src/tests/screenshots/My Orders Modal Cancel Order Pop Up Display.png", fullPage: true });
+        //my orders modal cancel pop-up web elements assert
+        await myOrdersModalWebElementAsserts.isMyOrdersModalCancelPopUpWebElementVisible(page);
+        //my orders modal cancel pop-up text element assert
+        await myOrdersModalTextElementAsserts.isMyOrdersModalCancelPopUpTextElementAsExpected(page);
+        //click "Cancel" pop-up button
+        await myOrdersModal.clickCancelOrderPopUpBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //empty my orders modal web element assert
+        await myOrdersModalWebElementAsserts.isEmptyMyOrdersModalWebElementVisible(page);
+        //empty my orders modal text element assert
+        await myOrdersModalTextElementAsserts.isEmptyMyOrdersModalTextElementAsExpected(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Cancel Placed Order Test Result.png", fullPage: true });
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
