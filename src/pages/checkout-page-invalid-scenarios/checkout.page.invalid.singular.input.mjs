@@ -34,6 +34,7 @@ class CheckoutPageInvalidSingularInput extends BasePage{
 
         //invalid checkout credit card input data - invalid singular input format
         this._invalidCheckoutCreditCardNumberFormat = "%^$%^&*^%$#$%^&*"; // special symbols only
+        this._invalidCheckoutCreditCardNameFormat = "&%^ &^*&"; // special symbols only
 
     }
 
@@ -79,6 +80,11 @@ class CheckoutPageInvalidSingularInput extends BasePage{
         const invalidCreditCardNumberFormat = this._invalidCheckoutCreditCardNumberFormat;
         Logger.info("Invalid user credit card number format: " + invalidCreditCardNumberFormat);
         await this._checkoutPagePayMethodCardNumberInputField.fill(String(invalidCreditCardNumberFormat));
+    }
+    async inputInvalidCreditCardNameFormatIntoCreditCardNameInputField(){
+        const invalidCreditCardNameFormat = this._invalidCheckoutCreditCardNameFormat;
+        Logger.info("Invalid user credit card name format: " + invalidCreditCardNameFormat);
+        await this._checkoutPagePayMethodCardholderInputField.fill(invalidCreditCardNameFormat);
     }
 
 }
