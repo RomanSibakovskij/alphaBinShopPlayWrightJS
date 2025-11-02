@@ -55,6 +55,7 @@ import {AddNewAddressModal} from "../../pages/modals/add.new.address.modal.mjs";
 import {ShoppingCartModal} from "../../pages/modals/shopping.cart.modal.mjs";
 import {AddReviewModal} from "../../pages/modals/add.review.modal.mjs";
 import {CheckoutPageShipAddressModal} from "../../pages/modals/checkout.page.ship.address.modal.mjs";
+import {MyOrdersModal} from "../../pages/modals/my.orders.modal.mjs";
 
 import {PersonalInfoModalWebElementAssert} from "../web-element-asserts/modals/personal.info.modal.web.element.assert.mjs";
 import {PasswordModalWebElementAssert} from "../web-element-asserts/modals/password.modal.web.element.assert.mjs";
@@ -63,6 +64,7 @@ import {AddNewAddressModalWebElementAssert} from "../web-element-asserts/modals/
 import {ShoppingCartModalWebElementAsserts} from "../web-element-asserts/modals/shopping.cart.modal.web.element.asserts.mjs";
 import {AddReviewModalWebElementAsserts} from "../web-element-asserts/modals/add.review.modal.web.element.asserts.mjs";
 import {CheckoutPageShipAddressModalWebElementAssert} from "../web-element-asserts/modals/checkout.page.ship.address.modal.web.element.assert.mjs";
+import {MyOrdersModalWebElementAsserts} from "../web-element-asserts/modals/my.orders.modal.web.element.asserts.mjs";
 
 import {PersonalInfoModalTextElementAssert} from "../text-element-asserts/modals/personal.info.modal.text.element.assert.mjs";
 import {PasswordModalTextElementAssert} from "../text-element-asserts/modals/password.modal.text.element.assert.mjs";
@@ -71,6 +73,7 @@ import {AddNewAddressModalTextElementAsserts} from "../text-element-asserts/moda
 import {ShoppingCartModalTextElementAsserts} from "../text-element-asserts/modals/shopping.cart.modal.text.element.asserts.mjs";
 import {AddReviewModalTextElementAsserts} from "../text-element-asserts/modals/add.review.modal.text.element.asserts.mjs";
 import {CheckoutPageShipAddressModalTextElementAssert} from "../text-element-asserts/modals/checkout.page.ship.address.modal.text.element.assert.mjs";
+import {MyOrdersModalTextElementAsserts} from "../text-element-asserts/modals/my.orders.modal.text.element.asserts.mjs";
 
 import {HomePageDataLoggers} from "../data-loggers/home.page.data.loggers.mjs";
 import {AccountDashPageDataLogger} from "../data-loggers/account.dash.page.data.logger.mjs";
@@ -84,6 +87,7 @@ import {OrderDetailsPageDataLogger} from "../data-loggers/order.details.page.dat
 import {AddressesDashboardModalDataLogger} from "../data-loggers/modals/addresses.dashboard.modal.data.logger.mjs";
 import {ShoppingCartModalDataLogger} from "../data-loggers/modals/shopping.cart.modal.data.logger.mjs";
 import {CheckoutPageShipAddressModalDataLogger} from "../data-loggers/modals/checkout.page.ship.address.modal.data.logger.mjs";
+import {MyOrdersModalDataLogger} from "../data-loggers/modals/my.orders.modal.data.logger.mjs";
 
 import {expect} from "@playwright/test";
 import {Logger} from "../../pages/utilities/logger.mjs";
