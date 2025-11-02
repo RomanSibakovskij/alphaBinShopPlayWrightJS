@@ -25,6 +25,7 @@ class CheckoutPageInvalidSingularInput extends BasePage{
 
         //invalid checkout shipping address input data - invalid singular input format
         this._invalidCheckoutShipAddressFullNameFormat = "!@# @%"; // special symbols only
+        this._invalidCheckoutShipAddressEmail = "safdfsdfakemail.com"; // missing '@'
 
     }
 
@@ -33,6 +34,11 @@ class CheckoutPageInvalidSingularInput extends BasePage{
         const invalidShipAddressFullNameFormat = this._invalidCheckoutShipAddressFullNameFormat;
         Logger.info("Invalid user shipping address full name format: " + invalidShipAddressFullNameFormat);
         await this._checkoutPageShipAddressFullNameInputField.fill(invalidShipAddressFullNameFormat);
+    }
+    async inputInvalidShipAddressEmailFormatIntoShipAddressEmailInputField(){
+        const invalidShipAddressEmailFormat = this._invalidCheckoutShipAddressEmail;
+        Logger.info("Invalid user shipping address email format: " + invalidShipAddressEmailFormat);
+        await this._checkoutPageShipAddressEmailInputField.fill(invalidShipAddressEmailFormat);
     }
 
 }
