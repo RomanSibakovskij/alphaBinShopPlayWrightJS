@@ -14522,5 +14522,80 @@ class TestMethods{
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //cancel placed order test (only registered users have this feature)
+
+    //cancel placed order test method
+    async cancelPlacedOrderTest(page){
+        const generalPage = new GeneralPage(page)
+        const generalPageWebElementAssert = new GeneralPageWebElementAssert();
+        const generalPageTextElementAssert = new GeneralPageTextElementAssert();
+        const accountDashboardPage = new AccountDashboardPage(page);
+        const accountDashboardPageWebElementAssert = new AccountDashboardPageWebElementAssert();
+        const accountDashboardPageTextElementAssert = new AccountDashboardPageTextElementAssert();
+        const accountDashPageDataLogger = new AccountDashPageDataLogger();
+        const personalInfoModalWebElementAssert = new PersonalInfoModalWebElementAssert();
+        const personalInfoModalTextElementAssert = new PersonalInfoModalTextElementAssert();
+        const myOrdersModal = new MyOrdersModal(page);
+        const myOrdersModalWebElementAsserts = new MyOrdersModalWebElementAsserts();
+        const myOrdersModalTextElementAsserts = new MyOrdersModalTextElementAsserts();
+        const myOrdersModalDataLogger = new MyOrdersModalDataLogger();
+        //click header "Account" icon button method
+        await generalPage.clickHeaderAccountIconBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //general page web element assert
+        await generalPageWebElementAssert.isGeneralPageWebElementVisible(page);
+        //general page text element assert
+        await generalPageTextElementAssert.isGeneralPageTextElementAsExpected(page);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //log account dashboard page displayed user data
+        await accountDashPageDataLogger.logAccountDashPageUserData(page);
+        //personal info modal web element assert (since it appears on the screen)
+        await personalInfoModalWebElementAssert.isPersonalInfoModalWebElementVisible(page);
+        //personal info modal text element assert (since it appears on the screen)
+        await personalInfoModalTextElementAssert.isPersonalInfoModalTextElementAsExpected(page);
+        //click "My Orders" account dashboard aside link
+        await accountDashboardPage.clickSetAsideAccountNavbarLink(1);
+        //wait for element to load (due to network issues, time is extended)
+        await page.waitForTimeout(4500);
+        //account dashboard page web element assert
+        await accountDashboardPageWebElementAssert.isAccountDashboardPageWebElementVisible(page);
+        //account dashboard page text element assert
+        await accountDashboardPageTextElementAssert.isAccountDashPageTextElementAsExpected(page);
+        //capture screenshot of the my orders modal display
+        await page.screenshot({ path: "src/tests/screenshots/My Orders Modal Display.png", fullPage: true });
+        //my orders modal web element
+        await myOrdersModalWebElementAsserts.isMyOrdersModalWebElementVisible(page);
+        //my orders modal text element assert
+        await myOrdersModalTextElementAsserts.isMyOrdersModalTextElementAsExpected(page);
+        //log my orders page placed order data
+        await myOrdersModalDataLogger.logMyOrdersModalOrderData(page);
+        //click set "Cancel" button
+        await myOrdersModal.clickSetOrderCancelBtn(0);
+        //wait for element to load
+        await page.waitForTimeout(2500);
+        //capture screenshot of the my orders modal cancel pop-up display
+        await page.screenshot({ path: "src/tests/screenshots/My Orders Modal Cancel Order Pop Up Display.png", fullPage: true });
+        //my orders modal cancel pop-up web elements assert
+        await myOrdersModalWebElementAsserts.isMyOrdersModalCancelPopUpWebElementVisible(page);
+        //my orders modal cancel pop-up text element assert
+        await myOrdersModalTextElementAsserts.isMyOrdersModalCancelPopUpTextElementAsExpected(page);
+        //click "Cancel" pop-up button
+        await myOrdersModal.clickCancelOrderPopUpBtn();
+        //wait for element to load
+        await page.waitForTimeout(3000);
+        //empty my orders modal web element assert
+        await myOrdersModalWebElementAsserts.isEmptyMyOrdersModalWebElementVisible(page);
+        //empty my orders modal text element assert
+        await myOrdersModalTextElementAsserts.isEmptyMyOrdersModalTextElementAsExpected(page);
+        //capture screenshot of the test result
+        await page.screenshot({ path: "src/tests/screenshots/Cancel Placed Order Test Result.png", fullPage: true });
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }
 export {TestMethods};
