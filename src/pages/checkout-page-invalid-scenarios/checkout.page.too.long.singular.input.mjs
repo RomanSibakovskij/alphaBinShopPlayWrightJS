@@ -38,6 +38,7 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         //invalid checkout credit card input data - too long singular input
         this._tooLongCheckoutCreditCardNumber = "34565456455678645"; // 17 digits
         this._tooLongCheckoutCreditCardName = "Fsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg Dsdfdgdfgfewtrythgydfggfgfjmbnjnvcvcxcsdrteytuiyioipokjghhfgdgrertrdtgdfghfjhgkjbvghgdfgfhfhujhjgfhg"; // 201 chars
+        this._tooLongCheckoutCreditCardExpMonth = "145"; // 3 digits
 
     }
 
@@ -88,6 +89,11 @@ class CheckoutPageTooLongSingularInput extends BasePage{
         const tooLongCreditCardName = this._tooLongCheckoutCreditCardName;
         Logger.info("Too long user credit card name: " + tooLongCreditCardName);
         await this._checkoutPagePayMethodCardholderInputField.fill(tooLongCreditCardName);
+    }
+    async inputTooLongCreditCardExpMonthIntoCreditCardExpMonthInputField(){
+        const tooLongCreditCardExpMonth = this._tooLongCheckoutCreditCardExpMonth;
+        Logger.info("Too long user credit card expiration month: " + tooLongCreditCardExpMonth);
+        await this._checkoutPagePayMethodExpDateMonthInputField.fill(tooLongCreditCardExpMonth);
     }
 
 }
