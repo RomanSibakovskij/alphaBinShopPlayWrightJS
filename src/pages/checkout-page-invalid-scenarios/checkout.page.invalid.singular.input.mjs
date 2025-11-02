@@ -35,6 +35,7 @@ class CheckoutPageInvalidSingularInput extends BasePage{
         //invalid checkout credit card input data - invalid singular input format
         this._invalidCheckoutCreditCardNumberFormat = "%^$%^&*^%$#$%^&*"; // special symbols only
         this._invalidCheckoutCreditCardNameFormat = "&%^ &^*&"; // special symbols only
+        this._invalidCheckoutCreditCardExpMonthFormat = "^&"; // special symbols only
 
     }
 
@@ -85,6 +86,11 @@ class CheckoutPageInvalidSingularInput extends BasePage{
         const invalidCreditCardNameFormat = this._invalidCheckoutCreditCardNameFormat;
         Logger.info("Invalid user credit card name format: " + invalidCreditCardNameFormat);
         await this._checkoutPagePayMethodCardholderInputField.fill(invalidCreditCardNameFormat);
+    }
+    async inputInvalidCreditCardExpMonthFormatIntoCreditCardExpMonthInputField(){
+        const invalidCreditCardExpMonthFormat = this._invalidCheckoutCreditCardExpMonthFormat;
+        Logger.info("Invalid user credit card expiration month format: " + invalidCreditCardExpMonthFormat);
+        await this._checkoutPagePayMethodExpDateMonthInputField.fill(invalidCreditCardExpMonthFormat);
     }
 
 }

@@ -190,4 +190,24 @@ test.describe("Invalid Single Featured Product Checkout Confirmation Tests - Inv
         await testMethods.invalidProductCheckoutConfirmationInvalidCreditCardNameFormatTest(page);
     });
 
+    // Test 029at -> invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card expiration month format (special symbols only) (the input field doesn't allow invalid input)
+    test("Invalid Single Featured Product Checkout Confirmation Test (as a registered user) - Invalid Credit Card Exp Month Format", async ({page}) => {
+        //launch the page
+        await page.goto('/');
+        //navigate to signup page test
+        await testMethods.navigateToSignUpPageTest(page);
+        //valid user account creation test
+        await testMethods.validUserAccountCreationTest(page)
+        //valid user login test
+        await testMethods.validUserLoginTest(page)
+        //valid add user address (without email) test
+        await testMethods.validAddUserAddressWithoutEmailTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to cart test (as a registered user)
+        await testMethods.addSingleFeaturedProductToCartRegUserTest(page);
+        //add single featured product ("Epson EF-100 Smart Portable Projector") to check out test (as a registered user)
+        await testMethods.addProductToCheckoutTest(page);
+        //invalid single featured product ("Epson EF-100 Smart Portable Projector") check out confirmation test (as a registered user) - invalid credit card expiration month format
+        await testMethods.invalidProductCheckoutConfirmationInvalidCreditCardExpMonthFormatTest(page);
+    });
+
 });
